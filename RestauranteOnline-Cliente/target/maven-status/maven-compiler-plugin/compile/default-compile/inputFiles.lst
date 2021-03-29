@@ -1,14 +1,14 @@
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\restauranteonline\client\domain\services\UserService.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\resturanteonline\presentacion\Main.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\resturanteonline\presentacion\GUIActualizarAlmuerzo.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\restauranteonline\client\domain\services\CustomerService.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\resturanteonline\client\domain\User.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\restauranteonline\client\access\CustomerAccessImplSockets.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\restauranteonline\client\access\Factory.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\restauranteonline\client\infra\Security.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\restauranteonline\client\infra\TravelAgencySocket.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\restauranteonline\client\access\ICustomerAccess.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\resturanteonline\presentacion\GUIListarComponentes.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\resturanteonline\presentacion\GUIAgregarComponente.java
-C:\Users\hp\Documents\NetBeansProjects\PryResturanteOnline\PryResturanteOnline\pryRestauranteOnline\src\main\java\co\unicauca\restauranteonline\client\infra\Messages.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\client\domain\User.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\CustomerAccessImplSockets.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\ICustomerAccess.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\infra\restauranteOnlineSocket.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\Factory.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\Main.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\infra\Messages.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\domain\services\UserService.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\GUIActualizarAlmuerzo.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\domain\services\CustomerService.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\GUIListarComponentes.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\infra\Security.java
+F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\GUIAgregarComponente.java
