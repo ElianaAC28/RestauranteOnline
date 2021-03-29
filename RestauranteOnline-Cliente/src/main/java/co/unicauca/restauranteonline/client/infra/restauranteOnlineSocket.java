@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author Libardo, Julio
  */
-public class TravelAgencySocket {
+public class restauranteOnlineSocket {
 
     /**
      * Socket de la aplicación cliente
@@ -75,7 +75,7 @@ public class TravelAgencySocket {
         try {
             socket.close();
         } catch (IOException ex) {
-            Logger.getLogger(TravelAgencySocket.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(restauranteOnlineSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

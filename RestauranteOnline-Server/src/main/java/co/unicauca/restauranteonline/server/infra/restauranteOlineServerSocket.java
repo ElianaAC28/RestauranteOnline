@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author Libardo, Julio
  */
-public class TravelAgencyServerSocket implements Runnable {
+public class restauranteOlineServerSocket implements Runnable {
 
     /**
      * Servicio de clientes
@@ -54,7 +54,7 @@ public class TravelAgencyServerSocket implements Runnable {
     /**
      * Constructor
      */
-    public TravelAgencyServerSocket() {
+    public restauranteOlineServerSocket() {
         // Se hace la inyección de dependencia
         ICustomerRepository repository = Factory.getInstance().getRepository();
         service = new CustomerService(repository);
@@ -76,7 +76,7 @@ public class TravelAgencyServerSocket implements Runnable {
      * Lanza el hilo
      */
     private static void throwThread() {
-        new Thread(new TravelAgencyServerSocket()).start();
+        new Thread(new restauranteOlineServerSocket()).start();
     }
 
     /**
@@ -87,7 +87,7 @@ public class TravelAgencyServerSocket implements Runnable {
             ssock = new ServerSocket(PORT);
             Logger.getLogger("Server").log(Level.INFO, "Servidor iniciado, escuchando por el puerto {0}", PORT);
         } catch (IOException ex) {
-            Logger.getLogger(TravelAgencyServerSocket.class.getName()).log(Level.SEVERE, "Error del server socket al abrir el puerto", ex);
+            Logger.getLogger(restauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Error del server socket al abrir el puerto", ex);
         }
     }
 
@@ -99,7 +99,7 @@ public class TravelAgencyServerSocket implements Runnable {
             socket = ssock.accept();
             Logger.getLogger("Socket").log(Level.INFO, "Socket conectado");
         } catch (IOException ex) {
-            Logger.getLogger(TravelAgencyServerSocket.class.getName()).log(Level.SEVERE, "Eror al abrir un socket", ex);
+            Logger.getLogger(restauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Eror al abrir un socket", ex);
         }
     }
 
@@ -114,7 +114,7 @@ public class TravelAgencyServerSocket implements Runnable {
             closeStream();
 
         } catch (IOException ex) {
-            Logger.getLogger(TravelAgencyServerSocket.class.getName()).log(Level.SEVERE, "Eror al leer el flujo", ex);
+            Logger.getLogger(restauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Eror al leer el flujo", ex);
         }
     }
 

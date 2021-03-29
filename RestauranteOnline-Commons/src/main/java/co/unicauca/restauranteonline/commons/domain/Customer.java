@@ -9,6 +9,9 @@ import java.util.Date;
  */
 public class Customer {
 
+    private String id;
+
+ 
     /**
      * Nombre Cliente
      */
@@ -40,16 +43,8 @@ public class Customer {
     public Customer() {
     }
 
-    /**
-     *
-     * @param nombreCliente
-     * @param fechaNac
-     * @param genero
-     * @param email
-     * @param contrasena
-     * @param celular
-     */
-    public Customer(String nombreCliente, Date fechaNac, String genero, String email, String contrasena, String celular) {
+    public Customer(String id, String nombreCliente, Date fechaNac, String genero, String email, String contrasena, String celular) {
+        this.id = id;
         this.nombreCliente = nombreCliente;
         this.fechaNac = fechaNac;
         this.genero = genero;
@@ -58,102 +53,64 @@ public class Customer {
         this.celular = celular;
     }
 
-    /**
-     *
-     * @return
-     */
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getNombreCliente() {
         return nombreCliente;
     }
 
-    /**
-     *
-     * @param nombreCliente
-     */
     public void setNombreCliente(String nombreCliente) {
         this.nombreCliente = nombreCliente;
     }
 
-    /**
-     *
-     * @return
-     */
     public Date getFechaNac() {
         return fechaNac;
     }
 
-    /**
-     *
-     * @param fechaNac
-     */
     public void setFechaNac(Date fechaNac) {
         this.fechaNac = fechaNac;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getGenero() {
         return genero;
     }
 
-    /**
-     *
-     * @param genero
-     */
     public void setGenero(String genero) {
         this.genero = genero;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getEmail() {
         return email;
     }
 
-    /**
-     *
-     * @param email
-     */
     public void setEmail(String email) {
         this.email = email;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getContrasena() {
         return contrasena;
     }
 
-    /**
-     *
-     * @param contrasena
-     */
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getCelular() {
         return celular;
     }
 
-    /**
-     *
-     * @param celular
-     */
     public void setCelular(String celular) {
         this.celular = celular;
     }
-  
+
+    
+
     
 
  
