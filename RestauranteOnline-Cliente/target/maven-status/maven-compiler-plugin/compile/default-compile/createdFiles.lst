@@ -6,10 +6,10 @@ co\unicauca\resturanteonline\presentacion\GUIActualizarAlmuerzo.class
 co\unicauca\resturanteonline\presentacion\GUIListarComponentes$3.class
 co\unicauca\restauranteonline\client\access\CustomerAccessImplSockets.class
 co\unicauca\resturanteonline\client\domain\User.class
-co\unicauca\restauranteonline\client\infra\TravelAgencySocket.class
 co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante$7.class
 co\unicauca\restauranteonline\client\access\ICustomerAccess.class
 co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante$2.class
+.netbeans_automatic_build
 co\unicauca\resturanteonline\presentacion\GUIAgregarComponente$1.class
 co\unicauca\resturanteonline\presentacion\GUIListarComponentes$1.class
 co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante.class
@@ -23,5 +23,6 @@ co\unicauca\restauranteonline\client\domain\services\UserService.class
 co\unicauca\restauranteonline\client\domain\services\CustomerService.class
 co\unicauca\restauranteonline\client\access\Factory.class
 co\unicauca\resturanteonline\presentacion\GUIListarComponentes$2.class
+co\unicauca\restauranteonline\client\infra\restauranteOnlineSocket.class
 co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante$3.class
 co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante$6.class
