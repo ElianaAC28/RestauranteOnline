@@ -26,11 +26,10 @@ public class CustomerRepositoryImplMysql implements ICustomerRepository {
 
     }
     /**
-     * Busca en la bd un customer
-     * @param id cedula
-     * @return objeto customer, null si no lo encuentra
+     * @param id
+     * @return
      */
-    @Override
+   
     public Customer findCustomer(String id) {
         Customer customer = null;
 
@@ -119,5 +118,7 @@ public class CustomerRepositoryImplMysql implements ICustomerRepository {
             Logger.getLogger(CustomerRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);
         }
     }
+
+   
 
 }

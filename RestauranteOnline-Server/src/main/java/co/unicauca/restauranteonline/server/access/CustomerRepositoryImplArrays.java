@@ -1,5 +1,6 @@
 package co.unicauca.restauranteonline.server.access;
 
+import co.unicauca.restauranteonline.server.access.ICustomerRepository;
 import co.unicauca.restauranteonline.commons.domain.Customer;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,18 +28,9 @@ public final class CustomerRepositoryImplArrays implements ICustomerRepository {
     }
 
     public void inicializar() {
-       // customers.add(new Customer("98000001", "Andrea", "Sanchez", "Calle 14 No 11-12 Popayan", "3145878752", "andrea@hotmail.com", "Femenino"));
+       //customers.add(new Customer("98000001", "Andrea", "12/03/1999", "F", "andrea@hotmail.com", "Femenino", "411"));
+       
 
-    }
-
-    @Override
-    public Customer findCustomer(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String createCustomer(Customer customer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -47,8 +39,8 @@ public final class CustomerRepositoryImplArrays implements ICustomerRepository {
      * @param id cedula del customer
      * @return objeto Customer
      */
-   
-  /*  public Customer findCustomer(String id) {
+    @Override
+    public Customer findCustomer(String id) {
         for (Customer customer : customers) {
             if (customer.getId().equals(id)) {
                 return customer;
@@ -62,5 +54,5 @@ public final class CustomerRepositoryImplArrays implements ICustomerRepository {
         customers.add(customer);
         return customer.getId();
     }
-*/
+
 }

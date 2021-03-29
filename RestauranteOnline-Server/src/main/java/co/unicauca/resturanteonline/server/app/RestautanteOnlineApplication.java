@@ -1,6 +1,6 @@
 package co.unicauca.resturanteonline.server.app;
 
-import co.unicauca.restauranteonline.server.infra.TravelAgencyServerSocket;
+import co.unicauca.restauranteonline.server.infra.restauranteOlineServerSocket;
 
 
 
@@ -8,9 +8,9 @@ import co.unicauca.restauranteonline.server.infra.TravelAgencyServerSocket;
  * Aplicación principal que lanza el servidor en un hilo
  * @author Libardo, Julio
  */
-public class AgenciaViajesApplication {
+public class RestautanteOnlineApplication {
     public static void main(String args[]){
-        TravelAgencyServerSocket server = new TravelAgencyServerSocket();
+        restauranteOlineServerSocket server = new restauranteOlineServerSocket();
         server.start();
     }
 }

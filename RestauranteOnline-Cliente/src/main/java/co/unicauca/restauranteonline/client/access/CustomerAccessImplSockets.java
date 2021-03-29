@@ -3,7 +3,7 @@ package co.unicauca.restauranteonline.client.access;
 import co.unicauca.restauranteonline.commons.infra.Protocol;
 import co.unicauca.restauranteonline.commons.domain.Customer;
 import co.unicauca.restauranteonline.commons.infra.JsonError;
-import co.unicauca.restauranteonline.client.infra.TravelAgencySocket;
+import co.unicauca.restauranteonline.client.infra.restauranteOnlineSocket;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -20,10 +20,10 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
     /**
      * El servicio utiliza un socket para comunicarse con la aplicación server
      */
-    private TravelAgencySocket mySocket;
+    private restauranteOnlineSocket mySocket;
 
     public CustomerAccessImplSockets() {
-        mySocket = new TravelAgencySocket();
+        mySocket = new restauranteOnlineSocket();
     }
 
     /**

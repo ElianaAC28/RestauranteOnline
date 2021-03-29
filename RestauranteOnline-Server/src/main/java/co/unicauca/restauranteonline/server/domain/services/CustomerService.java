@@ -49,21 +49,26 @@ public class CustomerService {
         List<JsonError> errors = new ArrayList<>();
   
         // Validaciones y reglas de negocio
-       /* if (customer.getId().isEmpty() || customer.getFirstName().isEmpty()
-                || customer.getLastName().isEmpty() || customer.getEmail().isEmpty()
-                || customer.getGender().isEmpty()) {
+       if (
+                customer.getId().isEmpty() ||
+               customer.getNombreCliente().isEmpty() ||
+               customer.getEmail().isEmpty() ||
+               customer.getGenero().isEmpty())
+              
+       {
            errors.add(new JsonError("400", "BAD_REQUEST","id, nombres, apellidos, email y género son obligatorios. "));
-        }
+        } else {
+       }
         
         if (!customer.getEmail().contains("@")){
             errors.add(new JsonError("400", "BAD_REQUEST","Email debe tener una @. "));
         }
         
-        if(!(customer.getGender().equalsIgnoreCase("M") || customer.getGender().equalsIgnoreCase("F"))){
+        if(!(customer.getGenero().equalsIgnoreCase("M") || customer.getGenero().equalsIgnoreCase("F"))){
             errors.add(new JsonError("400", "BAD_REQUEST","Sexo debo ser M o F. "));
         }      
         
-        if(!Utilities.isNumeric(customer.getMobile())){
+        if(!Utilities.isNumeric(customer.getCelular())){
             errors.add(new JsonError("400", "BAD_REQUEST","Teléfono móvil debe contener sólo dígitos "));
             
         }
@@ -78,9 +83,11 @@ public class CustomerService {
             Gson gson = new Gson();
             String errorsJson = gson.toJson(errors);
             return errorsJson;
-        }*/             
+        }         
         return repo.createCustomer(customer);
     }
+
+    
 
 
 }
