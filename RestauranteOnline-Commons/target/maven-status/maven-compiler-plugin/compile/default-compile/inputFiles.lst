@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\infra\Utilities.java
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\domain\Customer.java
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\infra\JsonError.java
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\infra\Protocol.java
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\domain\Restaurante.java
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\infra\Parameter.java
+=======
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\infra\Utilities.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\infra\JsonError.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\domain\Customer.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\domain\Restaurante.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\infra\Parameter.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Commons\src\main\java\co\unicauca\restauranteonline\commons\infra\Protocol.java
+>>>>>>> 2206efb5edc5338b819e02d78406f334e6f39443

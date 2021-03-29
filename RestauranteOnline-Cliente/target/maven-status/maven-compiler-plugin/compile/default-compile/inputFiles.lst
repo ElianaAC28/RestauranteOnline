@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\client\domain\User.java
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\CustomerAccessImplSockets.java
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\ICustomerAccess.java
@@ -12,3 +13,19 @@ F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnl
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\GUIListarComponentes.java
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\infra\Security.java
 F:\Trabajos\Laboratiorio de Ing. de Software II\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\GUIAgregarComponente.java
+=======
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\domain\services\UserService.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\infra\Messages.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\GUIListarComponentes.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\ICustomerAccess.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\CustomerAccessImplSockets.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\GUIActualizarAlmuerzo.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\GUIAgregarComponente.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\infra\Security.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\infra\restauranteOnlineSocket.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\client\domain\User.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\domain\services\CustomerService.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\Main.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\Factory.java
+E:\Daniel\Universidad\Semestre 6\Lab Ingenieria De Software 2\restaurante\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante.java
+>>>>>>> 2206efb5edc5338b819e02d78406f334e6f39443

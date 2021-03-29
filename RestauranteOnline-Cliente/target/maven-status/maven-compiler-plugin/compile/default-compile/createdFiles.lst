@@ -9,6 +9,7 @@ co\unicauca\resturanteonline\client\domain\User.class
 co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante$7.class
 co\unicauca\restauranteonline\client\access\ICustomerAccess.class
 co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante$2.class
+.netbeans_automatic_build
 co\unicauca\resturanteonline\presentacion\GUIAgregarComponente$1.class
 co\unicauca\resturanteonline\presentacion\GUIListarComponentes$1.class
 co\unicauca\resturanteonline\presentacion\GuiaCiudadRestaurante.class
