@@ -14,10 +14,11 @@ import java.sql.SQLException;
 public class Conectar extends javax.swing.JFrame {
     private static Connection con;
     // Declaramos los datos de conexion a la bd
-    private static final String driver="com.mysql.jdbc.Driver";
+    private static final String driver="com.mysql.cj.jdbc.Driver";
     private static final String user="root";
-    private static final String pass="";
-    private static final String url="jdbc:mysql://localhost:3306/RestauranteOnline";
+    private static final String pass="1999";
+    private static final String url="jdbc:mysql://localhost:3306/bdprueba?useUnicode=true&useJDBC"
+            +"CompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     /**
      * Creates new form Conectar
      */
@@ -78,7 +79,7 @@ public class Conectar extends javax.swing.JFrame {
         try{
             Class.forName(driver);
             // Nos conectamos a la bd
-            con= (Connection) DriverManager.getConnection(url, user, pass);
+            con = (Connection) DriverManager.getConnection(url, user, pass);
             // Si la conexion fue exitosa mostramos un mensaje de conexion exitosa
             if (con!=null){
                 jLabel1.setText("Conexion establecida");
