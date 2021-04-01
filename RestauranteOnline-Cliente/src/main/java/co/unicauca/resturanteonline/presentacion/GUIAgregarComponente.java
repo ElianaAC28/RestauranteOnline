@@ -17,6 +17,8 @@ public class GUIAgregarComponente extends javax.swing.JFrame {
      */
     public GUIAgregarComponente() {
         initComponents();
+        setLocationRelativeTo(null); //centrar la ventana
+        
     }
 
     /**
@@ -37,8 +39,6 @@ public class GUIAgregarComponente extends javax.swing.JFrame {
         cbType = new javax.swing.JComboBox<>();
         lblTipoCom = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblAgregarCom.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         lblAgregarCom.setText("AGREGAR COMPONENTES");

@@ -9,14 +9,13 @@ package co.unicauca.resturanteonline.presentacion;
  *
  * @author dania
  */
-public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
+public class GUIAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public GUIRestaurantesDisponibles() {
+    public GUIAdmin() {
         initComponents();
-         setLocationRelativeTo(null); //centrar la ventana
     }
 
     /**
@@ -33,10 +32,9 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
         pnlRestDispon = new javax.swing.JPanel();
         pnlCiuRes = new javax.swing.JPanel();
         lblRestDisponibles = new javax.swing.JLabel();
-        btnRest1 = new javax.swing.JButton();
-        bntRest2 = new javax.swing.JButton();
-        btnRest4 = new javax.swing.JButton();
-        btnRest3 = new javax.swing.JButton();
+        btnAgregarComp = new javax.swing.JButton();
+        btnListarComp = new javax.swing.JButton();
+        btnActualizarAlm = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -52,25 +50,34 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         pnlCiuRes.setPreferredSize(new java.awt.Dimension(600, 530));
 
         lblRestDisponibles.setFont(new java.awt.Font("Verdana", 0, 20)); // NOI18N
-        lblRestDisponibles.setText("Restaurantes Disponibles");
+        lblRestDisponibles.setText("Modo: Administrador");
 
-        btnRest1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btnRest1.setText("Restaurante 1");
-
-        bntRest2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        bntRest2.setText("Restaurante 2");
-
-        btnRest4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btnRest4.setText("Restaurante 4");
-
-        btnRest3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btnRest3.setText("Restaurante 3");
-        btnRest3.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarComp.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnAgregarComp.setText("Agregar componentes");
+        btnAgregarComp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRest3ActionPerformed(evt);
+                btnAgregarCompActionPerformed(evt);
+            }
+        });
+
+        btnListarComp.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnListarComp.setText("Listar Componentes");
+        btnListarComp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarCompActionPerformed(evt);
+            }
+        });
+
+        btnActualizarAlm.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnActualizarAlm.setText("Actualizar Almuerzo");
+        btnActualizarAlm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarAlmActionPerformed(evt);
             }
         });
 
@@ -82,14 +89,13 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
                 .addGap(94, 94, 94)
                 .addGroup(pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(btnRest4, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnRest1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
-                        .addComponent(bntRest2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRest3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnAgregarComp, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                        .addComponent(btnListarComp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnActualizarAlm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(41, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCiuResLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(190, Short.MAX_VALUE)
                 .addComponent(lblRestDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
         );
@@ -101,14 +107,12 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel1)
                 .addGap(37, 37, 37)
-                .addComponent(btnRest1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAgregarComp, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bntRest2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnListarComp, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRest3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(btnRest4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addComponent(btnActualizarAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlRestDisponLayout = new javax.swing.GroupLayout(pnlRestDispon);
@@ -146,9 +150,30 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRest3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRest3ActionPerformed
+    private void btnActualizarAlmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAlmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRest3ActionPerformed
+         GUIActualizarAlmuerzo update = new GUIActualizarAlmuerzo();
+         update.setVisible(true);
+         //dispose();
+        
+    }//GEN-LAST:event_btnActualizarAlmActionPerformed
+
+    private void btnAgregarCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCompActionPerformed
+        // TODO add your handling code here:
+        
+       GUIAgregarComponente add = new GUIAgregarComponente();
+       add.setVisible(true);
+      // dispose();
+       
+    }//GEN-LAST:event_btnAgregarCompActionPerformed
+
+    private void btnListarCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarCompActionPerformed
+        // TODO add your handling code here:
+        GUIListaComponentes lista = new GUIListaComponentes();
+        lista.setVisible(true);
+        //dispose();
+         
+    }//GEN-LAST:event_btnListarCompActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,14 +192,30 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIRestaurantesDisponibles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIRestaurantesDisponibles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIRestaurantesDisponibles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIRestaurantesDisponibles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -195,16 +236,15 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIRestaurantesDisponibles().setVisible(true);
+                new GUIAdmin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntRest2;
-    private javax.swing.JButton btnRest1;
-    private javax.swing.JButton btnRest3;
-    private javax.swing.JButton btnRest4;
+    private javax.swing.JButton btnActualizarAlm;
+    private javax.swing.JButton btnAgregarComp;
+    private javax.swing.JButton btnListarComp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

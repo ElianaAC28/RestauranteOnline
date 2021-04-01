@@ -15,6 +15,7 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
     /** Creates new form GUIActualizarAlmuerzo */
     public GUIActualizarAlmuerzo() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -28,10 +29,10 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
 
         pnlActualizar = new javax.swing.JPanel();
         jLabelActualizarAlmuerzo = new javax.swing.JLabel();
-        jLabelActEntrada = new javax.swing.JLabel();
-        jLabelActProteina = new javax.swing.JLabel();
-        jLabelActBebida = new javax.swing.JLabel();
-        jLabelActPrincipio = new javax.swing.JLabel();
+        lblEntrada = new javax.swing.JLabel();
+        lblProteina = new javax.swing.JLabel();
+        lblBebida = new javax.swing.JLabel();
+        lblPrincipio = new javax.swing.JLabel();
         cbEntrada = new javax.swing.JComboBox<>();
         cbPrincipio = new javax.swing.JComboBox<>();
         cbProteina = new javax.swing.JComboBox<>();
@@ -42,24 +43,22 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
         textAreaDesc = new javax.swing.JTextArea();
         btnActualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         pnlActualizar.setPreferredSize(new java.awt.Dimension(600, 600));
 
         jLabelActualizarAlmuerzo.setFont(new java.awt.Font("Verdana", 0, 20)); // NOI18N
         jLabelActualizarAlmuerzo.setText("ACTUALIZAR ALMUERZO");
 
-        jLabelActEntrada.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabelActEntrada.setText("Entrada:");
+        lblEntrada.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEntrada.setText("Entrada:");
 
-        jLabelActProteina.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabelActProteina.setText("Proteina:");
+        lblProteina.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblProteina.setText("Proteina:");
 
-        jLabelActBebida.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabelActBebida.setText("Bebida:");
+        lblBebida.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblBebida.setText("Bebida:");
 
-        jLabelActPrincipio.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabelActPrincipio.setText("Principio:");
+        lblPrincipio.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblPrincipio.setText("Principio:");
 
         cbEntrada.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sopa de Verduras", "Sopa de Carantanta" }));
@@ -105,10 +104,10 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
             .addGroup(pnlActualizarLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelActBebida)
-                    .addComponent(jLabelActProteina)
-                    .addComponent(jLabelActEntrada)
-                    .addComponent(jLabelActPrincipio))
+                    .addComponent(lblBebida)
+                    .addComponent(lblProteina)
+                    .addComponent(lblEntrada)
+                    .addComponent(lblPrincipio))
                 .addGap(27, 27, 27)
                 .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlActualizarLayout.createSequentialGroup()
@@ -129,14 +128,13 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
                         .addComponent(lblDescripcion)
                         .addGap(219, 219, 219))))
             .addGroup(pnlActualizarLayout.createSequentialGroup()
-                .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlActualizarLayout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabelActualizarAlmuerzo))
-                    .addGroup(pnlActualizarLayout.createSequentialGroup()
-                        .addGap(223, 223, 223)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(164, 164, 164)
+                .addComponent(jLabelActualizarAlmuerzo)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlActualizarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlActualizarLayout.setVerticalGroup(
             pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,28 +146,28 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
                     .addGroup(pnlActualizarLayout.createSequentialGroup()
                         .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelActEntrada))
+                            .addComponent(lblEntrada))
                         .addGap(6, 6, 6))
                     .addComponent(btnSelecImg))
                 .addGap(12, 12, 12)
                 .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelActPrincipio)
+                    .addComponent(lblPrincipio)
                     .addComponent(lblDescripcion))
                 .addGap(16, 16, 16)
                 .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlActualizarLayout.createSequentialGroup()
                         .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelActProteina)
+                            .addComponent(lblProteina)
                             .addComponent(cbProteina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelActBebida)
+                            .addComponent(lblBebida)
                             .addComponent(cbBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(54, 54, 54)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addGap(44, 44, 44))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -239,13 +237,13 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbEntrada;
     private javax.swing.JComboBox<String> cbPrincipio;
     private javax.swing.JComboBox<String> cbProteina;
-    private javax.swing.JLabel jLabelActBebida;
-    private javax.swing.JLabel jLabelActEntrada;
-    private javax.swing.JLabel jLabelActPrincipio;
-    private javax.swing.JLabel jLabelActProteina;
     private javax.swing.JLabel jLabelActualizarAlmuerzo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblBebida;
     private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblEntrada;
+    private javax.swing.JLabel lblPrincipio;
+    private javax.swing.JLabel lblProteina;
     private javax.swing.JPanel pnlActualizar;
     private javax.swing.JTextArea textAreaDesc;
     // End of variables declaration//GEN-END:variables

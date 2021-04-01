@@ -90,7 +90,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="lblEntrada" min="-2" pref="84" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -99,9 +99,9 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel6" min="-2" pref="84" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                          <Component id="lblPrincipio" min="-2" pref="84" max="-2" attributes="0"/>
+                                          <Component id="lblProteina" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                          <Component id="lblBebida" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -113,7 +113,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jLabel1" min="-2" pref="85" max="-2" attributes="0"/>
+                                              <Component id="lblCiudad" min="-2" pref="85" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
@@ -141,29 +141,29 @@
                       <Component id="xx" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="lblCiudad" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="jComboBox2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="jComboBox4" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jComboBox3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="lblEntrada" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jComboBox5" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="lblPrincipio" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jComboBox6" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="lblProteina" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jComboBox7" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="lblBebida" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -220,7 +220,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="lblCiudad">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="12" style="0"/>
@@ -254,7 +254,7 @@
                 <Property name="text" type="java.lang.String" value="Restaurante"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="lblEntrada">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="12" style="0"/>
@@ -295,7 +295,7 @@
                 <Property name="text" type="java.lang.String" value="Plato Ejecutivo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
+            <Component class="javax.swing.JLabel" name="lblPrincipio">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="12" style="0"/>
@@ -303,7 +303,7 @@
                 <Property name="text" type="java.lang.String" value="Principio"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
+            <Component class="javax.swing.JLabel" name="lblProteina">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="12" style="0"/>
@@ -329,7 +329,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel8">
+            <Component class="javax.swing.JLabel" name="lblBebida">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="12" style="0"/>

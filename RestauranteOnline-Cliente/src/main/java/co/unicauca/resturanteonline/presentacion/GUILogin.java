@@ -5,6 +5,9 @@
  */
 package co.unicauca.resturanteonline.presentacion;
 
+import javax.swing.JOptionPane;
+import jdk.internal.agent.Agent;
+
 /**
  *
  * @author dania
@@ -31,11 +34,11 @@ public class GUILogin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lblImg = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
-        textContra = new javax.swing.JTextField();
         lblContra = new javax.swing.JLabel();
-        textUser = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         btnIniciarSesion = new javax.swing.JButton();
         lbnIniciarSesion1 = new javax.swing.JLabel();
+        Password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,15 +48,18 @@ public class GUILogin extends javax.swing.JFrame {
         lblUsuario.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblUsuario.setText("Usuario: ");
 
-        textContra.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
         lblContra.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblContra.setText("Contraseña:");
 
-        textUser.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         btnIniciarSesion.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnIniciarSesion.setText("Iniciar Sesión");
+        btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarSesionActionPerformed(evt);
+            }
+        });
 
         lbnIniciarSesion1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lbnIniciarSesion1.setText("Iniciar Sesión");
@@ -74,8 +80,8 @@ public class GUILogin extends javax.swing.JFrame {
                             .addComponent(lblUsuario))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textContra, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(textUser)))
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(Password)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(250, 250, 250)
                         .addComponent(lblImg)))
@@ -89,16 +95,16 @@ public class GUILogin extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(147, Short.MAX_VALUE)
+                .addContainerGap(150, Short.MAX_VALUE)
                 .addComponent(lblImg)
                 .addGap(131, 131, 131)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsuario)
-                    .addComponent(textUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblContra)
-                    .addComponent(textContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75)
                 .addComponent(btnIniciarSesion)
                 .addGap(66, 66, 66))
@@ -135,6 +141,28 @@ public class GUILogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
+        // TODO add your handling code here:
+        String Usuario = "admin";
+        String Contraseña = "admin";
+        
+        String Pass = new String(Password.getPassword());
+                
+        //PROBLEMA, NO AUTENTICA LA CONTRASEÑA
+        // if(txtUsuario.getText().equals(Usuario) && Password.equals(Contraseña)){ LINEA ERROR
+        if(txtUsuario.getText().equals(Usuario)){
+            //accede
+            
+            GUIAdmin admin = new GUIAdmin();
+            admin.setVisible(true);
+            dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrectas");
+        }
+            
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,6 +201,7 @@ public class GUILogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField Password;
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -180,7 +209,6 @@ public class GUILogin extends javax.swing.JFrame {
     private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lbnIniciarSesion1;
-    private javax.swing.JTextField textContra;
-    private javax.swing.JTextField textUser;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
