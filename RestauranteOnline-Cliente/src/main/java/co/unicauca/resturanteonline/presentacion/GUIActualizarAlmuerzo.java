@@ -6,6 +6,9 @@
 
 package co.unicauca.resturanteonline.presentacion;
 
+import javax.swing.ImageIcon;
+import java.awt.Graphics;
+
 /**
  *
  * @author Luis
@@ -16,6 +19,11 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
     public GUIActualizarAlmuerzo() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        
+    }
+    public void paint(Graphics grafico){
+        
     }
 
     /** This method is called from within the constructor to

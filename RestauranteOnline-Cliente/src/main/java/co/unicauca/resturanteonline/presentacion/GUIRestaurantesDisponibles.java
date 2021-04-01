@@ -59,6 +59,11 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
 
         btnRest1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnRest1.setText("Restaurante 1");
+        btnRest1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRest1ActionPerformed(evt);
+            }
+        });
 
         bntRest2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         bntRest2.setText("Restaurante 2");
@@ -149,6 +154,12 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
     private void btnRest3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRest3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRest3ActionPerformed
+
+    private void btnRest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRest1ActionPerformed
+        // TODO add your handling code here:
+        GUICiudadRestaurante rest = new GUICiudadRestaurante();
+        rest.setVisible(true);
+    }//GEN-LAST:event_btnRest1ActionPerformed
 
     /**
      * @param args the command line arguments
