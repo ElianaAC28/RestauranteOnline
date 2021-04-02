@@ -1,5 +1,9 @@
 package co.unicauca.resturanteonline.presentacion;
-
+import co.unicauca.restauranteonline.client.access.Factory;
+import co.unicauca.restauranteonline.client.access.IComponentes;
+import co.unicauca.restauranteonline.client.domain.services.ComponenteService;
+import static co.unicauca.restauranteonline.client.infra.Messages.successMessage;
+import co.unicauca.restauranteonline.commons.domain.Componente;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -77,6 +81,11 @@ public class GUIAgregarComponente extends javax.swing.JFrame {
 
         btnAgregar1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnAgregar1.setText("Agregar");
+        btnAgregar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,6 +179,32 @@ public class GUIAgregarComponente extends javax.swing.JFrame {
         admin.setVisible(true);
     }//GEN-LAST:event_btnAtrasActionPerformed
 
+    private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
+        // TODO add your handling code here:
+        IComponentes service= Factory.getInstance().getComponenteService();
+        
+        ComponenteService componenteService= new ComponenteService(service);
+        
+        Componente componente = new Componente();
+        
+        componente.setIdComponente(textId.getText());
+        componente.setNombreComponente(textNombre.getText());
+        componente.setTipoComponente(cbType.getSelectedItem().toString());
+        
+        try {
+            String response = componenteService.createComponente(componente);
+             successMessage("Componente  " + response + " agregado con exito.", "Atención");
+             clearCotronls();
+             
+        } catch (Exception ex) {
+                System.out.println(ex);
+                successMessage(ex.getMessage() + "Error", "Atención");
+        }
+    }//GEN-LAST:event_btnAgregar1ActionPerformed
+    private void clearCotronls() {
+        textId.setText("");
+        textNombre.setText("");
+    }
     /**
      * @param args the command line arguments
      */

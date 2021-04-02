@@ -1,10 +1,10 @@
 co\unicauca\restauranteonline\server\app\RestauranteOnlineApplication.class
+co\unicauca\restauranteonline\server\domain\services\ComponenteService.class
 co\unicauca\restauranteonline\server\infra\restauranteOlineServerSocket.class
-co\unicauca\restauranteonline\server\access\Conectar$2.class
-co\unicauca\restauranteonline\server\access\Conectar.class
+co\unicauca\restauranteonline\server\access\ComponenteRepositoryImplMysql.class
 co\unicauca\restauranteonline\server\access\ICustomerRepository.class
 co\unicauca\restauranteonline\server\access\CustomerRepositoryImplArrays.class
 co\unicauca\restauranteonline\server\access\CustomerRepositoryImplMysql.class
 co\unicauca\restauranteonline\server\access\Factory.class
-co\unicauca\restauranteonline\server\access\Conectar$1.class
+co\unicauca\restauranteonline\server\access\IComponenteRepository.class
 co\unicauca\restauranteonline\server\domain\services\CustomerService.class

@@ -48,4 +48,16 @@ public class Factory {
         return result;
 
     }
+    
+    public IComponentes getComponenteService() {
+        IComponentes result = null;
+        String type = Utilities.loadProperty("customer.service");
+
+        switch (type) {
+            case "default":
+                result = new ComponenteAccessImplSockets();
+                break;
+        }
+        return result;
+    }
 }

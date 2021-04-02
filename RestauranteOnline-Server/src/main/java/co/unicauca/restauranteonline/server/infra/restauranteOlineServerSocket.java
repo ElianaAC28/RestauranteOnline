@@ -1,10 +1,14 @@
 package co.unicauca.restauranteonline.server.infra;
 
 import co.unicauca.restauranteonline.commons.domain.Customer;
+import co.unicauca.restauranteonline.commons.domain.Componente;
 import co.unicauca.restauranteonline.commons.infra.JsonError;
 import co.unicauca.restauranteonline.commons.infra.Protocol;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
 import co.unicauca.restauranteonline.server.access.Factory;
+import co.unicauca.restauranteonline.server.access.IComponenteRepository;
+import co.unicauca.restauranteonline.server.domain.services.ComponenteService;
+
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -30,6 +34,8 @@ public class restauranteOlineServerSocket implements Runnable {
      * Servicio de clientes
      */
     private final CustomerService service;
+    
+    private final ComponenteService serviceComponente;
     /**
      * Server Socket, la orejita
      */
@@ -58,6 +64,9 @@ public class restauranteOlineServerSocket implements Runnable {
         // Se hace la inyección de dependencia
         ICustomerRepository repository = Factory.getInstance().getRepository();
         service = new CustomerService(repository);
+        
+        IComponenteRepository repositoryComponente = Factory.getInstance().getRepositoryComponente();
+        serviceComponente = new ComponenteService(repositoryComponente);
     }
 
     /**
@@ -170,6 +179,10 @@ public class restauranteOlineServerSocket implements Runnable {
 
                 }
                 break;
+            case "Componente":
+                if (protocolRequest.getAction().equals("post")) {
+                    processPostComponente(protocolRequest);
+                }
         }
 
     }
@@ -191,6 +204,20 @@ public class restauranteOlineServerSocket implements Runnable {
         }
     }
 
+    /**
+     * Procesa la solicitud de agregar un Componente.
+     */
+    private void processPostComponente(Protocol protocolRequest) {
+        Componente objComponente = new Componente();
+
+        objComponente.setIdComponente(protocolRequest.getParameters().get(0).getValue());
+        objComponente.setNombreComponente(protocolRequest.getParameters().get(1).getValue());
+        objComponente.setTipoComponente(protocolRequest.getParameters().get(2).getValue());
+        String response = serviceComponente.CreateComponente(objComponente);
+        output.println(response);
+    }
+    
+    
     /**
      * Procesa la solicitud de agregar un customer
      *
