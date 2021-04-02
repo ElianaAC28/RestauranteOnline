@@ -57,12 +57,12 @@ public class Factory {
     }
     
     /**
-     * Método que crea una instancia concreta de la jerarquia IDishRepository.
+     * Método que crea una instancia concreta de la jerarquia IComponenterepository.
      *
-     * @return una clase hija de la abstracción IDishRepository.
+     * @return una clase hija de la abstracción IComponenterepository.
      */
     public IComponenteRepository getRepositoryComponente() {
-        String type = Utilities.loadProperty("comp.repository");
+        String type = Utilities.loadProperty("customer.repository");
         if (type.isEmpty()) {
             type = "mysql";
         }

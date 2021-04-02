@@ -49,6 +49,11 @@ public class Factory {
 
     }
     
+    /**
+     * Método que crea una instancia concreta de la jerarquia IComponenteService
+     *
+     * @return una clase hija de la abstracción IComponenteRepository
+     */
     public IComponentes getComponenteService() {
         IComponentes result = null;
         String type = Utilities.loadProperty("customer.service");
