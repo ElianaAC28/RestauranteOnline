@@ -17,6 +17,7 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
     public GUIRestaurantesDisponibles() {
         initComponents();
          setLocationRelativeTo(null); //centrar la ventana
+         setTitle("Restaurantes disponibles");
     }
 
     /**

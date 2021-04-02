@@ -6,8 +6,7 @@
 
 package co.unicauca.resturanteonline.presentacion;
 
-import javax.swing.ImageIcon;
-import java.awt.Graphics;
+
 
 /**
  *
@@ -19,12 +18,11 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
     public GUIActualizarAlmuerzo() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("Actualizar Almuerzo");
         
         
     }
-    public void paint(Graphics grafico){
-        
-    }
+   
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -50,6 +48,7 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaDesc = new javax.swing.JTextArea();
         btnActualizar = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
 
         pnlActualizar.setPreferredSize(new java.awt.Dimension(600, 600));
 
@@ -105,51 +104,63 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
         btnActualizar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnActualizar.setText("Actualizar");
 
+        btnAtras.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlActualizarLayout = new javax.swing.GroupLayout(pnlActualizar);
         pnlActualizar.setLayout(pnlActualizarLayout);
         pnlActualizarLayout.setHorizontalGroup(
             pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlActualizarLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBebida)
-                    .addComponent(lblProteina)
-                    .addComponent(lblEntrada)
-                    .addComponent(lblPrincipio))
-                .addGap(27, 27, 27)
-                .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlActualizarLayout.createSequentialGroup()
-                        .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbProteina, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(pnlActualizarLayout.createSequentialGroup()
-                        .addComponent(cbEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(btnSelecImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(pnlActualizarLayout.createSequentialGroup()
-                        .addComponent(cbPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblDescripcion)
-                        .addGap(219, 219, 219))))
-            .addGroup(pnlActualizarLayout.createSequentialGroup()
                 .addGap(164, 164, 164)
                 .addComponent(jLabelActualizarAlmuerzo)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlActualizarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(pnlActualizarLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlActualizarLayout.createSequentialGroup()
+                        .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBebida)
+                            .addComponent(lblProteina)
+                            .addComponent(lblEntrada)
+                            .addComponent(lblPrincipio))
+                        .addGap(27, 27, 27)
+                        .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlActualizarLayout.createSequentialGroup()
+                                .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbProteina, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(pnlActualizarLayout.createSequentialGroup()
+                                .addComponent(cbEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(btnSelecImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                            .addGroup(pnlActualizarLayout.createSequentialGroup()
+                                .addComponent(cbPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblDescripcion)
+                                .addGap(219, 219, 219))))
+                    .addGroup(pnlActualizarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))))
         );
         pnlActualizarLayout.setVerticalGroup(
             pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlActualizarLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jLabelActualizarAlmuerzo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlActualizarLayout.createSequentialGroup()
                         .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -173,9 +184,14 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
                             .addComponent(lblBebida)
                             .addComponent(cbBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlActualizarLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlActualizarLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(96, 96, 96))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,6 +218,12 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
     private void cbBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBebidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbBebidaActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        // TODO add your handling code here:
+        GUIAdmin admin= new GUIAdmin();
+        admin.setVisible(true);
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,6 +262,7 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnSelecImg;
     private javax.swing.JComboBox<String> cbBebida;
     private javax.swing.JComboBox<String> cbEntrada;
