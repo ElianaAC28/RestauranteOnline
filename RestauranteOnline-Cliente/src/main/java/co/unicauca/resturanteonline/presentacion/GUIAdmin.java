@@ -15,7 +15,10 @@ public class GUIAdmin extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public GUIAdmin() {
+        
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Administrador");
     }
 
     /**
