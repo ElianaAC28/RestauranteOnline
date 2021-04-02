@@ -185,7 +185,7 @@ public class GUILogin extends javax.swing.JFrame {
 
         //PROBLEMA, NO AUTENTICA LA CONTRASEÑA
         // if(txtUsuario.getText().equals(Usuario) && Password.equals(Contraseña)){ LINEA ERROR
-        if (txtUsuario.getText().equals(Usuario)) {
+        if (txtUsuario.getText().equals(Usuario) && Contraseña.equals(Pass)) {
             //accede
 
             GUIAdmin admin = new GUIAdmin();
