@@ -64,6 +64,45 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
     }
 
     /**
+     *
+     * @param username
+     * @param userpassword
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public boolean autenticarCustomer(String username, String userpassword) throws Exception {
+        String jsonResponse = null;
+        String requestJson = autenticarCustomerRequestJson(username,userpassword);
+        try {
+            mySocket.connect();
+            jsonResponse = mySocket.sendStream(requestJson);
+            mySocket.closeStream();
+            mySocket.disconnect();
+
+        } catch (IOException ex) {
+            Logger.getLogger(CustomerAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+        }
+        if (jsonResponse == null) {
+            throw new Exception("No se pudo conectar con el servidor");
+        } else {
+
+            if (jsonResponse.contains("error")) {
+                //Devolvió algún error                
+                Logger.getLogger(CustomerAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                throw new Exception(extractMessages(jsonResponse));
+            } else {
+                
+                //Agregó correctamente, devuelve la cedula del customer 
+                return true;
+                //    customer.getId();
+            }
+
+        }
+
+    }
+
+    /**
      * Crea un Customer. Utiliza socket para pedir el servicio al servidor
      *
      * @param customer cliente de la agencia de viajes
@@ -95,14 +134,16 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
                 String e = null;
                 //Agregó correctamente, devuelve la cedula del customer 
                 return e;
-                    //    customer.getId();
+                //    customer.getId();
             }
 
         }
 
     }
+
     /**
      * Extra los mensajes de la lista de errores
+     *
      * @param jsonResponse lista de mensajes json
      * @return Mensajes de error
      */
@@ -147,7 +188,18 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
 
         return requestJson;
     }
+    private String autenticarCustomerRequestJson(String username, String userpassword ) {
+        //{"recource":"customer", "action":"get", "parametrers":"[{"name": "id", "value": 9800001"},{}]"}
+        Protocol protocol = new Protocol();
+        protocol.setResource("customer");
+        protocol.setAction("aut");
+        protocol.addParameter("userName", username);
+        protocol.addParameter("userPassword", userpassword);
+        Gson gson = new Gson();
+        String requestJson = gson.toJson(protocol);
 
+        return requestJson;
+    }
     /**
      * Crea la solicitud json de creación del customer para ser enviado por el
      * socket
@@ -161,14 +213,14 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
         Protocol protocol = new Protocol();
         protocol.setResource("customer");
         protocol.setAction("post");
-/*        protocol.addParameter("id", customer.getId());
+        /*        protocol.addParameter("id", customer.getId());
         protocol.addParameter("fistName", customer.getFirstName());
         protocol.addParameter("lastName", customer.getLastName());
         protocol.addParameter("address", customer.getAddress());
         protocol.addParameter("email", customer.getEmail());
         protocol.addParameter("gender", customer.getGender());
         protocol.addParameter("mobile", customer.getMobile());
-*/
+         */
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
         System.out.println("json: " + requestJson);

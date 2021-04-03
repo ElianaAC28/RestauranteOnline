@@ -27,4 +27,6 @@ public interface ICustomerAccess {
      */
 
     public String createCustomer(Customer customer) throws Exception;
+    
+    public boolean autenticarCustomer(String username, String userpassword) throws Exception;
 }

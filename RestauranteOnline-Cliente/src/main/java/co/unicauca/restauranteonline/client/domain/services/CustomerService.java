@@ -38,5 +38,8 @@ public class CustomerService {
         return service.createCustomer(customer);
 
     }    
+    public boolean autenticarCustomer(String username, String userpassword) throws Exception {
+        return service.autenticarCustomer(username, userpassword);
 
+    }  
 }

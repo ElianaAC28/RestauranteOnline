@@ -1,13 +1,11 @@
 package co.unicauca.restauranteonline.server.infra;
 
-import co.unicauca.restauranteonline.commons.domain.Almuerzo;
 import co.unicauca.restauranteonline.commons.domain.Customer;
 import co.unicauca.restauranteonline.commons.domain.Componente;
 import co.unicauca.restauranteonline.commons.infra.JsonError;
 import co.unicauca.restauranteonline.commons.infra.Protocol;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
 import co.unicauca.restauranteonline.server.access.Factory;
-import co.unicauca.restauranteonline.server.access.IAlmuerzoRepository;
 import co.unicauca.restauranteonline.server.access.IComponenteRepository;
 import co.unicauca.restauranteonline.server.domain.services.ComponenteService;
 
@@ -20,7 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import co.unicauca.restauranteonline.server.domain.services.CustomerService;
 import co.unicauca.restauranteonline.server.access.ICustomerRepository;
-import co.unicauca.restauranteonline.server.domain.services.AlmuerzoService;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +28,7 @@ import java.util.List;
  *
  * @author Libardo, Julio
  */
-public class RestauranteOlineServerSocket implements Runnable {
+public class RestauranteOnlineServerSocket implements Runnable {
 
     /**
      * Servicio de clientes
@@ -39,12 +36,6 @@ public class RestauranteOlineServerSocket implements Runnable {
     private final CustomerService service;
 
     private final ComponenteService serviceComponente;
-     /**
-     * Servicio de Almuerzo
-     */
-    private final AlmuerzoService serviceAlm;
-
-   
     /**
      * Server Socket, la orejita
      */
@@ -69,18 +60,13 @@ public class RestauranteOlineServerSocket implements Runnable {
     /**
      * Constructor
      */
-    public RestauranteOlineServerSocket() {
+    public RestauranteOnlineServerSocket() {
         // Se hace la inyección de dependencia
         ICustomerRepository repository = Factory.getInstance().getRepository();
         service = new CustomerService(repository);
 
         IComponenteRepository repositoryComponente = Factory.getInstance().getRepositoryComponente();
         serviceComponente = new ComponenteService(repositoryComponente);
-
-        IAlmuerzoRepository repositoryAlm =  Factory.getInstance().getRepositoryAlmuerzo();
-        serviceAlm = new AlmuerzoService(repositoryAlm);
-
-       
     }
 
     /**
@@ -99,7 +85,7 @@ public class RestauranteOlineServerSocket implements Runnable {
      * Lanza el hilo
      */
     private static void throwThread() {
-        new Thread(new RestauranteOlineServerSocket()).start();
+        new Thread(new RestauranteOnlineServerSocket()).start();
     }
 
     /**
@@ -110,7 +96,7 @@ public class RestauranteOlineServerSocket implements Runnable {
             ssock = new ServerSocket(PORT);
             Logger.getLogger("Server").log(Level.INFO, "Servidor iniciado, escuchando por el puerto {0}", PORT);
         } catch (IOException ex) {
-            Logger.getLogger(RestauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Error del server socket al abrir el puerto", ex);
+            Logger.getLogger(RestauranteOnlineServerSocket.class.getName()).log(Level.SEVERE, "Error del server socket al abrir el puerto", ex);
         }
     }
 
@@ -122,7 +108,7 @@ public class RestauranteOlineServerSocket implements Runnable {
             socket = ssock.accept();
             Logger.getLogger("Socket").log(Level.INFO, "Socket conectado");
         } catch (IOException ex) {
-            Logger.getLogger(RestauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Eror al abrir un socket", ex);
+            Logger.getLogger(RestauranteOnlineServerSocket.class.getName()).log(Level.SEVERE, "Eror al abrir un socket", ex);
         }
     }
 
@@ -137,9 +123,7 @@ public class RestauranteOlineServerSocket implements Runnable {
             closeStream();
 
         } catch (IOException ex) {
-            Logger.getLogger(RestauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Eror al leer el flujo", ex);
-        } catch (Exception ex) {
-            Logger.getLogger(RestauranteOlineServerSocket.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RestauranteOnlineServerSocket.class.getName()).log(Level.SEVERE, "Eror al leer el flujo", ex);
         }
     }
 
@@ -156,7 +140,7 @@ public class RestauranteOlineServerSocket implements Runnable {
     /**
      * Lee el flujo del socket
      */
-    private void readStream() throws Exception {
+    private void readStream() {
         if (input.hasNextLine()) {
             // Extrae el flujo que envió la aplicación cliente
             String request = input.nextLine();
@@ -177,7 +161,7 @@ public class RestauranteOlineServerSocket implements Runnable {
      * "{"resource":"customer","action":"get","parameters":[{"name":"id","value":"98000001"}]}"
      *
      */
-    private void processRequest(String requestJson) throws Exception {
+    private void processRequest(String requestJson) {
         // Convertir la solicitud a objeto Protocol para poderlo procesar
         Gson gson = new Gson();
         Protocol protocolRequest = gson.fromJson(requestJson, Protocol.class);
@@ -192,21 +176,16 @@ public class RestauranteOlineServerSocket implements Runnable {
                 if (protocolRequest.getAction().equals("post")) {
                     // Agregar un customer    
                     processPostCustomer(protocolRequest);
-
                 }
-             
+                if (protocolRequest.getAction().equals("aut")) {
+                    // Agregar un customer    
+                    processAutCustomer(protocolRequest);
+                }
+                break;
             case "Componente":
                 if (protocolRequest.getAction().equals("post")) {
                     processPostComponente(protocolRequest);
                 }
-               
-            case "Almuerzo":
-                if (protocolRequest.getAction().equals("get")) {
-                    // Consultar un almuerzo
-                    processGetAlmuerzo(protocolRequest);
-                }
-                break;
-                
         }
 
     }
@@ -225,6 +204,20 @@ public class RestauranteOlineServerSocket implements Runnable {
             output.println(errorJson);
         } else {
             output.println(objectToJSON(customer));
+        }
+    }
+
+    private boolean processAutCustomer(Protocol protocolRequest) {
+        // Extraer la cedula del primer parámetro
+        String user = protocolRequest.getParameters().get(0).getValue();
+        String pass = protocolRequest.getParameters().get(1).getValue();
+        boolean customer = service.autenticarCustomer(user, pass);
+        if (customer == false) {
+            String errorJson = generateNotFoundErrorJson();
+            output.println(errorJson);
+            return false;
+        } else {
+            return true;
         }
     }
 
@@ -254,24 +247,6 @@ public class RestauranteOlineServerSocket implements Runnable {
         String response = service.createCustomer(customer);
         output.println(response);
     }
-    
-
-    /**
-     * Procesa la solicitud de consultar un almuerzo
-     *
-     * @param protocolRequest Protocolo de la solicitud
-     */
-    private void processGetAlmuerzo(Protocol protocolRequest) throws Exception {
-        // Extraer la cedula del primer parámetro
-        String idAlmuerzo = protocolRequest.getParameters().get(0).getValue();
-        Almuerzo alm = serviceAlm.findAlmuerzo(idAlmuerzo);
-        if (alm == null) {
-            String errorJson = generateNotFoundErrorJson();
-            output.println(errorJson);
-        } else {
-            output.println(objectToJSON(alm));
-        }
-    }
 
     /**
      * Genera un ErrorJson de cliente no encontrado
@@ -283,7 +258,7 @@ public class RestauranteOlineServerSocket implements Runnable {
         JsonError error = new JsonError();
         error.setCode("404");
         error.setError("NOT_FOUND");
-        error.setMessage("Cliente no encontradoloadProperty. Cédula no existe");
+        error.setMessage("Usuario no encontradoloadProperty.");
         errors.add(error);
 
         Gson gson = new Gson();
@@ -332,18 +307,6 @@ public class RestauranteOlineServerSocket implements Runnable {
     private String objectToJSON(Customer customer) {
         Gson gson = new Gson();
         String strObject = gson.toJson(customer);
-        return strObject;
-    }
-    /**
-     * Convierte el objeto Customer a json para que el servidor lo envie como
-     * respuesta por el socket
-     *
-     * @param customer cliente
-     * @return customer en formato json
-     */
-    private String objectToJSON(Almuerzo almuerzo) {
-        Gson gson = new Gson();
-        String strObject = gson.toJson(almuerzo);
         return strObject;
     }
 

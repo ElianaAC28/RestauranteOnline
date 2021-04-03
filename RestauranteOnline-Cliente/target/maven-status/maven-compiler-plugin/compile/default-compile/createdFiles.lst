@@ -22,6 +22,7 @@ co\unicauca\restauranteonline\presentacion\GUILogin$1.class
 co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo$3.class
 co\unicauca\restauranteonline\client\domain\services\CustomerService.class
 co\unicauca\restauranteonline\client\infra\restauranteOnlineSocket.class
+co\unicauca\restauranteonline\presentacion\GUILogin$4.class
 co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante$1.class
 co\unicauca\restauranteonline\presentacion\GUIListaComponentes$2.class
 co\unicauca\restauranteonline\presentacion\GUIAdmin.class

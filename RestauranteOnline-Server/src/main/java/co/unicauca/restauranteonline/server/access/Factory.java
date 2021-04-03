@@ -44,9 +44,9 @@ public class Factory {
         ICustomerRepository result = null;
 
         switch (type) {
-            case "default":
-                result = new CustomerRepositoryImplArrays();
-                break;
+//            case "default":
+//    //            result = new CustomerRepositoryImplArrays();
+//                break;
             case "mysql":
                 result = new CustomerRepositoryImplMysql();
                 break;

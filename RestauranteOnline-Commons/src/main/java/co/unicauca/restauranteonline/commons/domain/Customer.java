@@ -9,109 +9,111 @@ import java.util.Date;
  */
 public class Customer {
 
-    private String id;
-
- 
+    private String userName;
     /**
      * Nombre Cliente
      */
-    private String nombreCliente;
+    private String userPassword;
+    /**
+     * Nombre Cliente
+     */
+    private String userNombre;
+    /**
+     * Apellido Cliente
+     */
+    private String userApellido;
     /**
      * Fecha Nacimiento
      */
-    private Date fechaNac;
+    private Date userFechaNac;
     /**
      * Genero
      */
-    private String genero;
+    private String userGenero;
     /**
-     * Email 
+     * Nombre Cliente
      */
-    private String email;
+    private int userCelular;
     /**
-     * Contraseña
+     * Email
      */
-    private String contrasena;
-    /**
-     * Celular
-     */
-    private String celular;
+    private String userEmail;
 
-    /**
-     * Constructor
-     */
+    public Customer(String userName, String userPassword, String userNombre, String userApellido, Date userFechaNac, String userGenero, int userCelular, String userEmail) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userNombre = userNombre;
+        this.userApellido = userApellido;
+        this.userFechaNac = userFechaNac;
+        this.userGenero = userGenero;
+        this.userCelular = userCelular;
+        this.userEmail = userEmail;
+    }
+    //CONSTRUCTOR POR DEFECTO
     public Customer() {
+
+    }
+    public String getUserName() {
+        return userName;
     }
 
-    public Customer(String id, String nombreCliente, Date fechaNac, String genero, String email, String contrasena, String celular) {
-        this.id = id;
-        this.nombreCliente = nombreCliente;
-        this.fechaNac = fechaNac;
-        this.genero = genero;
-        this.email = email;
-        this.contrasena = contrasena;
-        this.celular = celular;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public String getId() {
-        return id;
+    public String getUserNombre() {
+        return userNombre;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getUserApellido() {
+        return userApellido;
     }
 
-    public String getNombreCliente() {
-        return nombreCliente;
+    public Date getUserFechaNac() {
+        return userFechaNac;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    public String getUserGenero() {
+        return userGenero;
     }
 
-    public Date getFechaNac() {
-        return fechaNac;
+    public int getUserCelular() {
+        return userCelular;
     }
 
-    public void setFechaNac(Date fechaNac) {
-        this.fechaNac = fechaNac;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public String getGenero() {
-        return genero;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public String getEmail() {
-        return email;
+    public void setUserNombre(String userNombre) {
+        this.userNombre = userNombre;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserApellido(String userApellido) {
+        this.userApellido = userApellido;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public void setUserFechaNac(Date userFechaNac) {
+        this.userFechaNac = userFechaNac;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setUserGenero(String userGenero) {
+        this.userGenero = userGenero;
     }
 
-    public String getCelular() {
-        return celular;
+    public void setUserCelular(int userCelular) {
+        this.userCelular = userCelular;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
-
-    
-
-    
-
- 
 }

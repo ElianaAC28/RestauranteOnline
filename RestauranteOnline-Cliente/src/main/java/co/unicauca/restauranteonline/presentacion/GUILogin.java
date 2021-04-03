@@ -5,6 +5,11 @@
  */
 package co.unicauca.restauranteonline.presentacion;
 
+import co.unicauca.restauranteonline.client.access.Factory;
+import co.unicauca.restauranteonline.client.access.ICustomerAccess;
+import co.unicauca.restauranteonline.client.domain.services.CustomerService;
+import static co.unicauca.restauranteonline.client.infra.Messages.successMessage;
+import static co.unicauca.restauranteonline.client.infra.Messages.warningMessage;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -22,12 +27,10 @@ public class GUILogin extends javax.swing.JFrame {
     /**
      * Creates new form GUIALogin
      */
-  
-  //  FondoPanel fondo = new FondoPanel();
-
+    //  FondoPanel fondo = new FondoPanel();
     public GUILogin() {
-  //lblImg = new JLabel(new ImageIcon("Logo_restaurante.png"));
-    //pnlLogin.add(lblImg);
+        //lblImg = new JLabel(new ImageIcon("Logo_restaurante.png"));
+        //pnlLogin.add(lblImg);
         //this.setContentPane(fondo);
         initComponents();
     }
@@ -177,22 +180,33 @@ public class GUILogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        // TODO add your handling code here:
-        String Usuario = "admin";
-        String Contraseña = "admin";
-
-        String Pass = new String(Password.getPassword());
-
-        //PROBLEMA, NO AUTENTICA LA CONTRASEÑA
-        // if(txtUsuario.getText().equals(Usuario) && Password.equals(Contraseña)){ LINEA ERROR
-        if (txtUsuario.getText().equals(Usuario) && Contraseña.equals(Pass)) {
-            //accede
-
-            GUIAdmin admin = new GUIAdmin();
-            admin.setVisible(true);
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectas");
+// TODO add your handling code here:
+        //co.unicauca.restauranteonline.client.infra.Security.usuario = new User(txtUsuario.getText(), Password.getText(), "");
+        ICustomerAccess repo = Factory.getInstance().getCustomerService();
+        CustomerService customerService = new CustomerService(repo);
+        //Aqui vendria el analizar si el usuario existe en el sistema
+        try {
+            if(txtUsuario.getText().isEmpty() || Password.getText().isEmpty()){
+                warningMessage("CAMPOS VACIOS", "Atención");
+            }
+            boolean login = customerService.autenticarCustomer(txtUsuario.getText(), Password.getText());
+            if (login) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        GUIAdmin ins = new GUIAdmin();
+                        //ins.setExtendedState(MAXIMIZED_BOTH);
+                        ins.setVisible(true);
+                        warningMessage("Autenticacion exitosa!","BIENVENIDO");
+                    }
+                });
+                this.dispose();
+            } 
+//            else {
+//                warningMessage("Contraseña incorrecta", "Atención");
+//            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+            successMessage(ex.getMessage() + "", "");
         }
 
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
@@ -253,7 +267,7 @@ public class GUILogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-  /*  class FondoPanel extends JPanel {
+    /*  class FondoPanel extends JPanel {
 
         private Image imagen;
 
@@ -265,5 +279,5 @@ public class GUILogin extends javax.swing.JFrame {
             setOpaque(false);
             super.paint(g);
         }
-    } intento de colocar una imagen de fondo*/ 
+    } intento de colocar una imagen de fondo*/
 }
