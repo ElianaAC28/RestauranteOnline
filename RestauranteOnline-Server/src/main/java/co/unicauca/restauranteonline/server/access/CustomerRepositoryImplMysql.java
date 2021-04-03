@@ -41,14 +41,8 @@ public class CustomerRepositoryImplMysql implements ICustomerRepository {
             ResultSet res = pstmt.executeQuery();
             if (res.next()) {
                 customer = new Customer();
-               /* customer.setId(res.getString("id"));
-                customer.setFirstName(res.getString("first_name"));
-                customer.setLastName(res.getString("last_name"));
-                customer.setAddress(res.getString("address"));
-                customer.setMobile(res.getString("mobile"));
-                customer.setGender(res.getString("gender"));
-                customer.setEmail(res.getString("email"));
-*/
+              
+
             }
             pstmt.close();
             this.disconnect();
@@ -66,15 +60,9 @@ public class CustomerRepositoryImplMysql implements ICustomerRepository {
             this.connect();
             String sql = "INSERT INTO customers(id, first_name, last_name, address, mobile, email, gender) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-         /*   pstmt.setString(1, customer.getId());
-            pstmt.setString(2, customer.getFirstName());
-            pstmt.setString(3, customer.getLastName());
-            pstmt.setString(4, customer.getAddress());
-            pstmt.setString(5, customer.getMobile());
-            pstmt.setString(6, customer.getEmail());
-            pstmt.setString(7, customer.getGender());
+        
 
-*/
+
             pstmt.executeUpdate();
             pstmt.close();
             this.disconnect();

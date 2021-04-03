@@ -54,8 +54,8 @@ public class Factory {
      *
      * @return una clase hija de la abstracción IComponenteRepository
      */
-    public IComponentes getComponenteService() {
-        IComponentes result = null;
+    public IComponentesAccess getComponenteService() {
+        IComponentesAccess result = null;
         String type = Utilities.loadProperty("customer.service");
 
         switch (type) {
@@ -64,5 +64,19 @@ public class Factory {
                 break;
         }
         return result;
+    }
+    public IAlmuerzoAccess getAlmuerzoService() {
+
+        IAlmuerzoAccess result = null;
+        String type = Utilities.loadProperty("customer.service");
+
+        switch (type) {
+            case "default":
+                result = new AlmuerzoAccessImplSockets();
+                break;
+        }
+
+        return result;
+
     }
 }

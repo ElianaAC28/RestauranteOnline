@@ -74,4 +74,28 @@ public class Factory {
         }
         return result;
     }
+    
+     /**
+     * Método que crea una instancia concreta de la jerarquia IComponenterepository.
+     *
+     * @return una clase hija de la abstracción IComponenterepository.
+     */
+    
+    
+    public IAlmuerzoRepository getRepositoryAlmuerzo() {
+       String type = Utilities.loadProperty("customer.repository");
+        if (type.isEmpty()) {
+            type = "default";
+        }
+        IAlmuerzoRepository result = null;
+
+        switch (type) {
+         
+            case "mysql":
+                result = new AlmuerzoRepositoryImplMysql();
+                break;
+        }
+
+        return result;
+    }
 }

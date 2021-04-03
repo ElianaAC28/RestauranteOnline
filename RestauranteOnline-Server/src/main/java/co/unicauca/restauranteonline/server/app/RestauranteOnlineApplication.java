@@ -1,6 +1,6 @@
 package co.unicauca.restauranteonline.server.app;
 
-import co.unicauca.restauranteonline.server.infra.restauranteOlineServerSocket;
+import co.unicauca.restauranteonline.server.infra.RestauranteOlineServerSocket;
 
 
 
@@ -10,7 +10,7 @@ import co.unicauca.restauranteonline.server.infra.restauranteOlineServerSocket;
  */
 public class RestauranteOnlineApplication {
     public static void main(String args[]){
-        restauranteOlineServerSocket server = new restauranteOlineServerSocket();
+        RestauranteOlineServerSocket server = new RestauranteOlineServerSocket();
         server.start();
     }
 }

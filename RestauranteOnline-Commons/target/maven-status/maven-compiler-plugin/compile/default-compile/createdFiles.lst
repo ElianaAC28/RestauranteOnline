@@ -1,6 +1,8 @@
-co\unicauca\restauranteonline\commons\domain\Restaurante.class
-co\unicauca\restauranteonline\commons\infra\Protocol.class
-co\unicauca\restauranteonline\commons\infra\Utilities.class
 co\unicauca\restauranteonline\commons\infra\JsonError.class
 co\unicauca\restauranteonline\commons\domain\Customer.class
 co\unicauca\restauranteonline\commons\infra\Parameter.class
+co\unicauca\restauranteonline\commons\domain\Componente.class
+co\unicauca\restauranteonline\commons\domain\Restaurante.class
+co\unicauca\restauranteonline\commons\infra\Protocol.class
+co\unicauca\restauranteonline\commons\infra\Utilities.class
+co\unicauca\restauranteonline\commons\domain\Almuerzo.class

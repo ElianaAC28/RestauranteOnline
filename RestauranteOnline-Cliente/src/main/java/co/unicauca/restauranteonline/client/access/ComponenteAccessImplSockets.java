@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author Libardo Pantoja, Julio A. Hurtado
  */
-public class ComponenteAccessImplSockets implements IComponentes{
+public class ComponenteAccessImplSockets implements IComponentesAccess{
 
     /**
      * El servicio utiliza un socket para comunicarse con la aplicación server

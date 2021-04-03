@@ -1,11 +1,13 @@
 package co.unicauca.restauranteonline.server.infra;
 
+import co.unicauca.restauranteonline.commons.domain.Almuerzo;
 import co.unicauca.restauranteonline.commons.domain.Customer;
 import co.unicauca.restauranteonline.commons.domain.Componente;
 import co.unicauca.restauranteonline.commons.infra.JsonError;
 import co.unicauca.restauranteonline.commons.infra.Protocol;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
 import co.unicauca.restauranteonline.server.access.Factory;
+import co.unicauca.restauranteonline.server.access.IAlmuerzoRepository;
 import co.unicauca.restauranteonline.server.access.IComponenteRepository;
 import co.unicauca.restauranteonline.server.domain.services.ComponenteService;
 
@@ -18,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import co.unicauca.restauranteonline.server.domain.services.CustomerService;
 import co.unicauca.restauranteonline.server.access.ICustomerRepository;
+import co.unicauca.restauranteonline.server.domain.services.AlmuerzoService;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +31,20 @@ import java.util.List;
  *
  * @author Libardo, Julio
  */
-public class restauranteOlineServerSocket implements Runnable {
+public class RestauranteOlineServerSocket implements Runnable {
 
     /**
      * Servicio de clientes
      */
     private final CustomerService service;
-    
+
     private final ComponenteService serviceComponente;
+     /**
+     * Servicio de Almuerzo
+     */
+    private final AlmuerzoService serviceAlm;
+
+   
     /**
      * Server Socket, la orejita
      */
@@ -60,13 +69,18 @@ public class restauranteOlineServerSocket implements Runnable {
     /**
      * Constructor
      */
-    public restauranteOlineServerSocket() {
+    public RestauranteOlineServerSocket() {
         // Se hace la inyección de dependencia
         ICustomerRepository repository = Factory.getInstance().getRepository();
         service = new CustomerService(repository);
-        
+
         IComponenteRepository repositoryComponente = Factory.getInstance().getRepositoryComponente();
         serviceComponente = new ComponenteService(repositoryComponente);
+
+        IAlmuerzoRepository repositoryAlm =  Factory.getInstance().getRepositoryAlmuerzo();
+        serviceAlm = new AlmuerzoService(repositoryAlm);
+
+       
     }
 
     /**
@@ -85,7 +99,7 @@ public class restauranteOlineServerSocket implements Runnable {
      * Lanza el hilo
      */
     private static void throwThread() {
-        new Thread(new restauranteOlineServerSocket()).start();
+        new Thread(new RestauranteOlineServerSocket()).start();
     }
 
     /**
@@ -96,7 +110,7 @@ public class restauranteOlineServerSocket implements Runnable {
             ssock = new ServerSocket(PORT);
             Logger.getLogger("Server").log(Level.INFO, "Servidor iniciado, escuchando por el puerto {0}", PORT);
         } catch (IOException ex) {
-            Logger.getLogger(restauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Error del server socket al abrir el puerto", ex);
+            Logger.getLogger(RestauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Error del server socket al abrir el puerto", ex);
         }
     }
 
@@ -108,7 +122,7 @@ public class restauranteOlineServerSocket implements Runnable {
             socket = ssock.accept();
             Logger.getLogger("Socket").log(Level.INFO, "Socket conectado");
         } catch (IOException ex) {
-            Logger.getLogger(restauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Eror al abrir un socket", ex);
+            Logger.getLogger(RestauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Eror al abrir un socket", ex);
         }
     }
 
@@ -123,7 +137,9 @@ public class restauranteOlineServerSocket implements Runnable {
             closeStream();
 
         } catch (IOException ex) {
-            Logger.getLogger(restauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Eror al leer el flujo", ex);
+            Logger.getLogger(RestauranteOlineServerSocket.class.getName()).log(Level.SEVERE, "Eror al leer el flujo", ex);
+        } catch (Exception ex) {
+            Logger.getLogger(RestauranteOlineServerSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -140,7 +156,7 @@ public class restauranteOlineServerSocket implements Runnable {
     /**
      * Lee el flujo del socket
      */
-    private void readStream() {
+    private void readStream() throws Exception {
         if (input.hasNextLine()) {
             // Extrae el flujo que envió la aplicación cliente
             String request = input.nextLine();
@@ -161,7 +177,7 @@ public class restauranteOlineServerSocket implements Runnable {
      * "{"resource":"customer","action":"get","parameters":[{"name":"id","value":"98000001"}]}"
      *
      */
-    private void processRequest(String requestJson) {
+    private void processRequest(String requestJson) throws Exception {
         // Convertir la solicitud a objeto Protocol para poderlo procesar
         Gson gson = new Gson();
         Protocol protocolRequest = gson.fromJson(requestJson, Protocol.class);
@@ -178,11 +194,19 @@ public class restauranteOlineServerSocket implements Runnable {
                     processPostCustomer(protocolRequest);
 
                 }
-                break;
+             
             case "Componente":
                 if (protocolRequest.getAction().equals("post")) {
                     processPostComponente(protocolRequest);
                 }
+               
+            case "Almuerzo":
+                if (protocolRequest.getAction().equals("get")) {
+                    // Consultar un almuerzo
+                    processGetAlmuerzo(protocolRequest);
+                }
+                break;
+                
         }
 
     }
@@ -216,8 +240,7 @@ public class restauranteOlineServerSocket implements Runnable {
         String response = serviceComponente.CreateComponente(objComponente);
         output.println(response);
     }
-    
-    
+
     /**
      * Procesa la solicitud de agregar un customer
      *
@@ -226,11 +249,28 @@ public class restauranteOlineServerSocket implements Runnable {
     private void processPostCustomer(Protocol protocolRequest) {
         Customer customer = new Customer();
         // Reconstruir el customer a partid de lo que viene en los parámetros
-       // customer.setId(protocolRequest.getParameters().get(0).getValue());
-       
+        // customer.setId(protocolRequest.getParameters().get(0).getValue());
 
         String response = service.createCustomer(customer);
         output.println(response);
+    }
+    
+
+    /**
+     * Procesa la solicitud de consultar un almuerzo
+     *
+     * @param protocolRequest Protocolo de la solicitud
+     */
+    private void processGetAlmuerzo(Protocol protocolRequest) throws Exception {
+        // Extraer la cedula del primer parámetro
+        String idAlmuerzo = protocolRequest.getParameters().get(0).getValue();
+        Almuerzo alm = serviceAlm.findAlmuerzo(idAlmuerzo);
+        if (alm == null) {
+            String errorJson = generateNotFoundErrorJson();
+            output.println(errorJson);
+        } else {
+            output.println(objectToJSON(alm));
+        }
     }
 
     /**
@@ -292,6 +332,18 @@ public class restauranteOlineServerSocket implements Runnable {
     private String objectToJSON(Customer customer) {
         Gson gson = new Gson();
         String strObject = gson.toJson(customer);
+        return strObject;
+    }
+    /**
+     * Convierte el objeto Customer a json para que el servidor lo envie como
+     * respuesta por el socket
+     *
+     * @param customer cliente
+     * @return customer en formato json
+     */
+    private String objectToJSON(Almuerzo almuerzo) {
+        Gson gson = new Gson();
+        String strObject = gson.toJson(almuerzo);
         return strObject;
     }
 
