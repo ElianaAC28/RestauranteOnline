@@ -1,6 +1,7 @@
 package co.unicauca.restauranteonline.server.access;
 
 import co.unicauca.restauranteonline.commons.domain.Componente;
+import java.util.List;
 
 /**
  * Interface del repositorio de Componentes.
@@ -22,4 +23,6 @@ public interface IComponenteRepository {
     public String uptadeComponente();
 
     public String findComponente();
+    
+    public List<Componente> findAllComponentes();
 }

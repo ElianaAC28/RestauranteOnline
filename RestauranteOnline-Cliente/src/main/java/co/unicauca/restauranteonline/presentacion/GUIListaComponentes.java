@@ -5,6 +5,15 @@
  */
 package co.unicauca.restauranteonline.presentacion;
 
+import co.unicauca.restauranteonline.client.access.Factory;
+import co.unicauca.restauranteonline.client.access.IComponentesAccess;
+import co.unicauca.restauranteonline.client.domain.services.ComponenteService;
+import co.unicauca.restauranteonline.commons.domain.Componente;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author AC
@@ -92,6 +101,11 @@ public class GUIListaComponentes extends javax.swing.JFrame {
 
         btnListar1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnListar1.setText("Mostrar Componentes");
+        btnListar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -113,8 +127,7 @@ public class GUIListaComponentes extends javax.swing.JFrame {
                                 .addGap(49, 49, 49)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jComboBox1, 0, 121, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(61, 61, 61))))
+                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -176,6 +189,15 @@ public class GUIListaComponentes extends javax.swing.JFrame {
         admin.setVisible(true);
     }//GEN-LAST:event_btnAtrasActionPerformed
 
+    private void btnListar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListar1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            llenarTabla();
+        } catch (Exception ex) {
+            Logger.getLogger(GUIListaComponentes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnListar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -223,4 +245,29 @@ public class GUIListaComponentes extends javax.swing.JFrame {
     private javax.swing.JLabel lblRest1;
     private javax.swing.JTable tblListaComp;
     // End of variables declaration//GEN-END:variables
+
+    private void llenarTabla() throws Exception {
+        IComponentesAccess service= Factory.getInstance().getComponenteService();
+        ComponenteService componenteService= new ComponenteService(service);
+
+        //Componente objComponente = new Componente();
+        List<Componente> objListComponentes = new ArrayList<Componente>();
+
+        objListComponentes = componenteService.listComponentes();
+
+        String matriz[][] = new String[objListComponentes.size()][3];
+
+        for (int i = 0; i < objListComponentes.size(); i++) {
+            matriz[i][0] = objListComponentes.get(i).getIdComponente();
+            matriz[i][1] = objListComponentes.get(i).getNombreComponente();
+            matriz[i][2] = objListComponentes.get(i).getTipoComponente();
+        }
+
+        tblListaComp.setModel(new javax.swing.table.DefaultTableModel(
+                matriz,
+                new String[]{
+                     "ID","Nombre", "Tipo"
+                }
+        ));
+    }
 }

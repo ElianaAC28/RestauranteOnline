@@ -5,6 +5,7 @@
  */
 package co.unicauca.restauranteonline.client.access;
 import co.unicauca.restauranteonline.commons.domain.Componente;
+import java.util.List;
 
 /**
  *
@@ -28,4 +29,12 @@ public interface IComponentesAccess {
      * @throws Exception
      */
     public String createComponente(Componente componente) throws Exception;
+    
+    /**
+     * Retorna una lista con todos los componentes registrados previamente.
+     *
+     * @return List<Componente> Lista de componentes
+     * @throws Exception
+     */
+    public List<Componente> ListComponentes() throws Exception;
 }

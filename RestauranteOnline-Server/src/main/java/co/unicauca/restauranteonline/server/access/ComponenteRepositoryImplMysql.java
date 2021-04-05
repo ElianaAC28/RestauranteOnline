@@ -5,7 +5,10 @@ import co.unicauca.restauranteonline.commons.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,6 +62,35 @@ public class ComponenteRepositoryImplMysql implements IComponenteRepository {
     @Override
     public String findComponente() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    /**
+     * Metodo encargado de obtener una lista de todos los componentes.
+     *
+     * @return Se retorna una lista con los resultados de la busqueda.
+     */
+    @Override
+    public List<Componente> findAllComponentes() {
+        List<Componente> objList = new ArrayList<Componente>();
+        this.connect();
+        Componente objComponente = new Componente();
+        try {
+            String sql = "SELECT * FROM componente;";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet comp = pstmt.executeQuery();
+            while (comp.next()) {
+                objComponente.setIdComponente(comp.getString("COMPID"));
+                objComponente.setNombreComponente(comp.getString("COMPNOMBRE"));
+                objComponente.setTipoComponente(comp.getString("COMPTIPO"));
+                objList.add(objComponente);
+                objComponente = new Componente();
+            }
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(ComponenteRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar el restaurante de la base de datos", ex);
+        }
+        return objList;
     }
 
     /**

@@ -5,7 +5,9 @@ import co.unicauca.restauranteonline.commons.domain.Componente;
 import co.unicauca.restauranteonline.commons.infra.JsonError;
 import co.unicauca.restauranteonline.client.infra.ComponenteSocket;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -134,9 +136,9 @@ public class ComponenteAccessImplSockets implements IComponentesAccess{
      */
     private String findComponenteRequestJson(String idComponente) {
         Protocol protocol = new Protocol();
-        protocol.setResource("componente");
+        protocol.setResource("Componente");
         protocol.setAction("get");
-        protocol.addParameter("id", idComponente);
+        protocol.addParameter("compid", idComponente);
 
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
@@ -179,7 +181,76 @@ public class ComponenteAccessImplSockets implements IComponentesAccess{
         Componente componente = gson.fromJson(jsonComponente, Componente.class);
 
         return componente;
-
     }
+    
+    /**
+     * Trasforma un jsonComponente a una lista de componentes
+     *
+     * @param jsonComponente
+     * @return lista de componentes
+     */
+    private List<Componente> jsonToListComponentes(String jsonComponente) {
+        Gson gson = new Gson();
+
+        java.lang.reflect.Type listType = new TypeToken<List<Componente>>() {
+        }.getType();
+
+        List<Componente> listComponentes = gson.fromJson(jsonComponente, listType);
+
+        return listComponentes;
+    }
+    
+    /**
+     * Crea una solicitud json para ser enviada por el socket
+     *
+     *
+     * @return solicitud de consulta de restaurantes en formato Json, algo como:
+     * {"resource":"Componentes","action":"gets","parameters":[]}
+     */
+    private String findAllComponentesRequestJson() {
+
+        Protocol protocol = new Protocol();
+        protocol.setResource("Componente");
+        protocol.setAction("gets");
+        Gson gson = new Gson();
+        String requestJson = gson.toJson(protocol);
+        System.out.println("json: " + requestJson);
+
+        return requestJson;
+    }
+    
+    /**
+     * Busca todos los Componentes. Utiliza socket para pedir el servicio al
+     * servidor
+     *
+     * @return Lista de Componentes.
+     * @throws Exception cuando no pueda conectarse con el servidor
+     */
+    @Override
+    public List<Componente> ListComponentes() throws Exception {
+        String jsonResponse = null;
+        String requestJson = findAllComponentesRequestJson();
+
+        try {
+            mySocket.connect();
+            jsonResponse = mySocket.sendStream(requestJson);
+            mySocket.closeStream();
+            mySocket.disconnect();
+        } catch (IOException ex) {
+            Logger.getLogger(ComponenteAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+        }
+        if (jsonResponse == null) {
+            throw new Exception("No se pudo conectar con el servidor. Revise la red o que el servidor este escuchando");
+        } else {
+            if (jsonResponse.contains("error")) {
+                //Devolvio algun error
+                Logger.getLogger(ComponenteAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                throw new Exception(extractMessages(jsonResponse));
+            } else {
+                //Encontro el Componente
+                List<Componente> componente = jsonToListComponentes(jsonResponse);
+                return componente;
+            }
+        }    }
 
 }

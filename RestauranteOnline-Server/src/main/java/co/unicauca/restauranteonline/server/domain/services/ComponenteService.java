@@ -44,4 +44,20 @@ public class ComponenteService {
         }
         return repoComponente.createComponente(parComponente);
     }
+    
+    /**
+     * Metodo encargado de obtener una lista de todos los componentes
+     * existentes.
+     *
+     * @return llamado a metodo findAllComponentes.
+     */
+    public List<Componente> ListComponentes() {
+        List<JsonError> errors = new ArrayList<>();
+        if (!repoComponente.findAllComponentes().isEmpty()) {
+            if (!errors.isEmpty()) {
+                errors.add(new JsonError("400", "BAD_REQUEST", "ERROR AL GENERAR PEDIDO SQL"));
+            }
+        }
+        return repoComponente.findAllComponentes();
+    }
 }

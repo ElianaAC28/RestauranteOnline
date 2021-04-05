@@ -186,6 +186,10 @@ public class RestauranteOnlineServerSocket implements Runnable {
                 if (protocolRequest.getAction().equals("post")) {
                     processPostComponente(protocolRequest);
                 }
+                if (protocolRequest.getAction().equals("gets")) {
+                    // Consultar todos los componenetes
+                    processGetListComponentes();
+                }
         }
 
     }
@@ -307,6 +311,35 @@ public class RestauranteOnlineServerSocket implements Runnable {
     private String objectToJSON(Customer customer) {
         Gson gson = new Gson();
         String strObject = gson.toJson(customer);
+        return strObject;
+    }
+
+    /**
+     * Procesa la solicitud para consultar todos los componentes.
+     *
+     * @param protocolRequest
+     */
+    private void processGetListComponentes() {
+        List<Componente> listaComponentes = serviceComponente.ListComponentes();
+        if (!listaComponentes.isEmpty()) {
+            output.println(ArrayToJSON(listaComponentes));
+        } else {
+            String errorJson = generateNotFoundErrorJson();
+            output.println(errorJson);
+        }
+
+    }
+
+    /**
+     * Convierte Una lista de Componentes a json para que el servidor lo envie
+     * como respuesta al socket.
+     *
+     * @param parLista Lista de tipo Componentes.
+     * @return Lista de componentes en formato json (String).
+     */
+    private String ArrayToJSON(List<Componente> parLista) {
+        Gson gson = new Gson();
+        String strObject = gson.toJson(parLista);
         return strObject;
     }
 

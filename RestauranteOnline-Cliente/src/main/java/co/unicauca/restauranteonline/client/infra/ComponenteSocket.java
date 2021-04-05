@@ -46,8 +46,8 @@ public class ComponenteSocket {
      */
     public String sendStream(String requestJson) throws IOException {
         String response = "";
-        input = new Scanner(socket.getInputStream());
         output = new PrintStream(socket.getOutputStream());
+        input = new Scanner(socket.getInputStream());
         output.flush();
 
         // Enviar la solicitud

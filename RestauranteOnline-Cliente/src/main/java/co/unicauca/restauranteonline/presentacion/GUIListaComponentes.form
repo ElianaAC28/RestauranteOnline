@@ -63,7 +63,6 @@
                                       <Component id="jComboBox1" pref="121" max="32767" attributes="0"/>
                                       <Component id="jComboBox2" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -218,6 +217,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Mostrar Componentes"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListar1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
