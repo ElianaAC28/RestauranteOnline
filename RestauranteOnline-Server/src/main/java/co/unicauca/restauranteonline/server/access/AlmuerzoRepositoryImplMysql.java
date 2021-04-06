@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,10 +27,7 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
      */
     public Connection conn;
 
-    public AlmuerzoRepositoryImplMysql() {
-       
-    }
-
+ 
     @Override
     public Almuerzo findAlmuerzo(String idAlmuerzo) {
 
@@ -62,6 +61,8 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
         }
         return almuerzo;
     }
+    
+    
 
     public int connect() {
         try {
@@ -93,6 +94,30 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
     @Override
     public String uptadeAlmuerzo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Almuerzo> findAllAlmuerzos() {
+        List<Almuerzo> objList = new ArrayList<Almuerzo>();
+        this.connect();
+        Almuerzo objAlmuerzo = new Almuerzo();
+        try {
+            String sql = "SELECT * FROM ALMUERZO;";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet res = pstmt.executeQuery();
+            while (res.next()) {
+                objAlmuerzo.setEntradaAlm(res.getString("ALMUENTRADA"));
+                objAlmuerzo.setPrincipioAlm(res.getString("ALMUPRINCIPIO"));
+                objAlmuerzo.setProteinaAlm(res.getString("ALMUPROTEINA"));
+                objAlmuerzo.setBebidaAlm(res.getString("ALMUBEBIDA"));
+                objList.add(objAlmuerzo);
+                objAlmuerzo = new Almuerzo();
+            }
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlmuerzoRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar el restaurante de la base de datos", ex);
+        }
+        return objList;
     }
 
 }

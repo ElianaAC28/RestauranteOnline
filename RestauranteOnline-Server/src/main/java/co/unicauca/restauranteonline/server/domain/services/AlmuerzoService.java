@@ -5,6 +5,10 @@ import co.unicauca.restauranteonline.commons.domain.Almuerzo;
 import co.unicauca.restauranteonline.server.access.IAlmuerzoRepository;
 import co.unicauca.restauranteonline.client.access.IAlmuerzoAccess;
 import co.unicauca.restauranteonline.client.access.IComponentesAccess;
+import co.unicauca.restauranteonline.commons.domain.Componente;
+import co.unicauca.restauranteonline.commons.infra.JsonError;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -24,7 +28,21 @@ public class AlmuerzoService {
 public Almuerzo findAlmuerzo(String idAlmuerzo) throws Exception {
         return repositoryAlm.findAlmuerzo(idAlmuerzo);
     }
-    
+  /**
+     * Metodo encargado de obtener una lista de todos los componentes
+     * existentes.
+     *
+     * @return llamado a metodo findAllComponentes.
+     */
+    public List<Almuerzo> ListAlmuerzos() {
+        List<JsonError> errors = new ArrayList<>();
+        if (!repositoryAlm.findAllAlmuerzos().isEmpty()) {
+            if (!errors.isEmpty()) {
+                errors.add(new JsonError("400", "BAD_REQUEST", "ERROR AL GENERAR PEDIDO SQL"));
+            }
+        }
+        return repositoryAlm.findAllAlmuerzos();
+    }
     
 
    

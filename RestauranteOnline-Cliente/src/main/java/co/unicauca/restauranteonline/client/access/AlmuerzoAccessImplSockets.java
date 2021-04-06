@@ -7,7 +7,9 @@ import co.unicauca.restauranteonline.commons.infra.JsonError;
 import co.unicauca.restauranteonline.client.infra.ComponenteSocket;
 import co.unicauca.restauranteonline.commons.domain.Almuerzo;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,7 +29,7 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
     public AlmuerzoAccessImplSockets() {
         mySocket = new AlmuerzoSocket();
     }
-    
+
     @Override
     public Almuerzo findAlmuerzo(String idAlmuerzo) throws Exception {
         //{"id"="9800001", "nombres":"juan", "apellidos":"perez", "direcciones":"[{}, {}, {}]"}
@@ -56,10 +58,8 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
             }
         }
 
-    
-        
     }
-    
+
     private String extractMessages(String jsonResponse) {
         JsonError[] errors = jsonToErrors(jsonResponse);
         String msjs = "";
@@ -68,13 +68,14 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
         }
         return msjs;
     }
-     private JsonError[] jsonToErrors(String jsonError) {
+
+    private JsonError[] jsonToErrors(String jsonError) {
         Gson gson = new Gson();
         JsonError[] error = gson.fromJson(jsonError, JsonError[].class);
         return error;
     }
-     
-     private String findAlmuerzoRequestJson(String idAlmuerzo) {
+
+    private String findAlmuerzoRequestJson(String idAlmuerzo) {
         //{"recource":"customer", "action":"get", "parametrers":"[{"name": "id", "value": 9800001"},{}]"}
         Protocol protocol = new Protocol();
         protocol.setResource("almuerzo");
@@ -86,7 +87,8 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
 
         return requestJson;
     }
-     private Almuerzo jsonToAlmuerzo(String jsonAlmuerzo) {
+
+    private Almuerzo jsonToAlmuerzo(String jsonAlmuerzo) {
 
         Gson gson = new Gson();
         Almuerzo al = gson.fromJson(jsonAlmuerzo, Almuerzo.class);
@@ -95,12 +97,81 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
 
     }
 
+    /**
+     * Trasforma un jsonAlmuerzos a una lista de Almuerzos
+     *
+     * @param jsonAlmuerzo
+     * @return lista de componentes
+     */
+    private List<Almuerzo> jsonToListAlmuerzos(String jsonAlmuerzo) {
+        Gson gson = new Gson();
+
+        java.lang.reflect.Type listType = new TypeToken<List<Almuerzo>>() {
+        }.getType();
+
+        List<Almuerzo> listAlmuerzo = gson.fromJson(jsonAlmuerzo, listType);
+
+        return listAlmuerzo;
+    }
+
+    /**
+     * Crea una solicitud json para ser enviada por el socket
+     *
+     *
+     * @return solicitud de consulta de restaurantes en formato Json, algo como:
+     * {"resource":"Componentes","action":"gets","parameters":[]}
+     */
+    private String findAllAlmuerzosRequestJson() {
+
+        Protocol protocol = new Protocol();
+        protocol.setResource("Almuerzo");
+        protocol.setAction("gets");
+        Gson gson = new Gson();
+        String requestJson = gson.toJson(protocol);
+        System.out.println("json: " + requestJson);
+
+        return requestJson;
+    }
 
     @Override
     public String uptadeAlmuerzo() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
+    /**
+     * Busca todos los Componentes. Utiliza socket para pedir el servicio al
+     * servidor
+     *
+     * @return Lista de Componentes.
+     * @throws Exception cuando no pueda conectarse con el servidor
+     */
+    @Override
+    public List<Almuerzo> ListAlmuerzos() throws Exception {
+        String jsonResponse = null;
+        String requestJson = findAllAlmuerzosRequestJson();
+
+        try {
+            mySocket.connect();
+            jsonResponse = mySocket.sendStream(requestJson);
+            mySocket.closeStream();
+            mySocket.disconnect();
+        } catch (IOException ex) {
+            Logger.getLogger(AlmuerzoAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+        }
+        if (jsonResponse == null) {
+            throw new Exception("No se pudo conectar con el servidor. Revise la red o que el servidor este escuchando");
+        } else {
+            if (jsonResponse.contains("error")) {
+                //Devolvio algun error
+                Logger.getLogger(AlmuerzoAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                throw new Exception(extractMessages(jsonResponse));
+            } else {
+                //Encontro el Componente
+                List<Almuerzo> almuerzo = jsonToListAlmuerzos(jsonResponse);
+                return almuerzo;
+            }
+        }
+
+    }
 
 }

@@ -1,11 +1,13 @@
 package co.unicauca.restauranteonline.server.infra;
 
+import co.unicauca.restauranteonline.commons.domain.Almuerzo;
 import co.unicauca.restauranteonline.commons.domain.Customer;
 import co.unicauca.restauranteonline.commons.domain.Componente;
 import co.unicauca.restauranteonline.commons.infra.JsonError;
 import co.unicauca.restauranteonline.commons.infra.Protocol;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
 import co.unicauca.restauranteonline.server.access.Factory;
+import co.unicauca.restauranteonline.server.access.IAlmuerzoRepository;
 import co.unicauca.restauranteonline.server.access.IComponenteRepository;
 import co.unicauca.restauranteonline.server.domain.services.ComponenteService;
 
@@ -18,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import co.unicauca.restauranteonline.server.domain.services.CustomerService;
 import co.unicauca.restauranteonline.server.access.ICustomerRepository;
+import co.unicauca.restauranteonline.server.domain.services.AlmuerzoService;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +39,7 @@ public class RestauranteOnlineServerSocket implements Runnable {
     private final CustomerService service;
 
     private final ComponenteService serviceComponente;
+    private final AlmuerzoService serviceAlm;
     /**
      * Server Socket, la orejita
      */
@@ -67,6 +71,9 @@ public class RestauranteOnlineServerSocket implements Runnable {
 
         IComponenteRepository repositoryComponente = Factory.getInstance().getRepositoryComponente();
         serviceComponente = new ComponenteService(repositoryComponente);
+        
+        IAlmuerzoRepository repositoryAlm = Factory.getInstance().getRepositoryAlmuerzo();
+        serviceAlm = new AlmuerzoService(repositoryAlm);
     }
 
     /**
@@ -190,10 +197,21 @@ public class RestauranteOnlineServerSocket implements Runnable {
                     // Consultar todos los componenetes
                     processGetListComponentes();
                 }
+                break;
+            case "Almuerzo":
+                 if (protocolRequest.getAction().equals("gets")) {
+                    // Consultar todos los almuerzos
+                    processGetListAlmuerzo();
+                }
         }
 
     }
-
+ /**
+     * Procesa la solicitud de consultar un customer
+     *
+     * @param protocolRequest Protocolo de la solicitud
+     */
+ 
     /**
      * Procesa la solicitud de consultar un customer
      *
@@ -329,6 +347,23 @@ public class RestauranteOnlineServerSocket implements Runnable {
         }
 
     }
+    
+     /**
+     * Procesa la solicitud para consultar todos los componentes.
+     *
+     * @param protocolRequest
+     */
+    private void processGetListAlmuerzo() {
+        List<Almuerzo> listaAlmuerzos = serviceAlm.ListAlmuerzos();
+        if (!listaAlmuerzos.isEmpty()) {
+            output.println(ArrayToJSONAlm(listaAlmuerzos));
+        } else {
+            String errorJson = generateNotFoundErrorJson();
+            output.println(errorJson);
+        }
+
+    }
+
 
     /**
      * Convierte Una lista de Componentes a json para que el servidor lo envie
@@ -338,6 +373,11 @@ public class RestauranteOnlineServerSocket implements Runnable {
      * @return Lista de componentes en formato json (String).
      */
     private String ArrayToJSON(List<Componente> parLista) {
+        Gson gson = new Gson();
+        String strObject = gson.toJson(parLista);
+        return strObject;
+    }
+    private String ArrayToJSONAlm(List<Almuerzo> parLista) {
         Gson gson = new Gson();
         String strObject = gson.toJson(parLista);
         return strObject;

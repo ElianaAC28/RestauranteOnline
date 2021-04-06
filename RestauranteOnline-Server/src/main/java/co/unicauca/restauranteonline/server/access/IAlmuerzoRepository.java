@@ -7,6 +7,7 @@ package co.unicauca.restauranteonline.server.access;
 
 import co.unicauca.restauranteonline.commons.domain.Almuerzo;
 import co.unicauca.restauranteonline.commons.domain.Componente;
+import java.util.List;
 
 /**
  *
@@ -24,4 +25,5 @@ public interface IAlmuerzoRepository {
     public String uptadeAlmuerzo();
 
     public Almuerzo findAlmuerzo(String idAlmuerzo);
+      public List<Almuerzo> findAllAlmuerzos();
 }

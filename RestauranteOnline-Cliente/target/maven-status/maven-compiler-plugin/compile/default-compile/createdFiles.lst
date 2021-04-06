@@ -6,6 +6,7 @@ co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante$3.class
 co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo$1.class
 co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante$6.class
 co\unicauca\restauranteonline\presentacion\GUIRestaurantesDisponibles$2.class
+co\unicauca\restauranteonline\client\access\AlmuerzoAccessImplSockets$1.class
 co\unicauca\restauranteonline\client\access\ICustomerAccess.class
 co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo$4.class
 co\unicauca\restauranteonline\presentacion\GUIListaComponentes$1.class

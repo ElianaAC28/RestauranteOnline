@@ -6,6 +6,8 @@
 package co.unicauca.restauranteonline.client.access;
 
 import co.unicauca.restauranteonline.commons.domain.Almuerzo;
+import co.unicauca.restauranteonline.commons.domain.Componente;
+import java.util.List;
 
 /**
  *
@@ -17,5 +19,7 @@ public interface IAlmuerzoAccess {
    public String uptadeAlmuerzo()throws Exception;
 
     public Almuerzo findAlmuerzo(String idAlmuerzo)throws Exception;
+    
+    public List<Almuerzo> ListAlmuerzos() throws Exception;
 
 }
