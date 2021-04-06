@@ -7,7 +7,8 @@ package co.unicauca.restauranteonline.presentacion;
 
 /**
  *
- * @author hp
+ * @author SoftwareTeam
+ * 
  */
 public class Main {
 

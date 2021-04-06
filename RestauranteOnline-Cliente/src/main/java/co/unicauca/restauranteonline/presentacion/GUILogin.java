@@ -16,11 +16,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import jdk.internal.agent.Agent;
 
 /**
  *
- * @author dania
+ * @author SoftwareTeam
+ * 
  */
 public class GUILogin extends javax.swing.JFrame {
 

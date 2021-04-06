@@ -7,7 +7,8 @@ package co.unicauca.restauranteonline.presentacion;
 
 /**
  *
- * @author dania
+ * @author SoftwareTeam
+ * 
  */
 public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
 

@@ -5,17 +5,37 @@
  */
 package co.unicauca.restauranteonline.presentacion;
 
+import co.unicauca.restauranteonline.client.access.Factory;
+import co.unicauca.restauranteonline.client.access.IComponentesAccess;
+import co.unicauca.restauranteonline.client.domain.services.ComponenteService;
+import co.unicauca.restauranteonline.commons.domain.Componente;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
- * @author dania
+ * @author SoftwareTeam
+ * 
  */
-public class GUICiudadRestaurante extends javax.swing.JFrame {
+public class GUICiudadRestaurante extends javax.swing.JFrame 
+{
 
     /**
      * Creates new form NewJFrame
      */
-    public GUICiudadRestaurante() {
+    public GUICiudadRestaurante() 
+    {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Menu ");
+        try {
+            limpiar();
+            mostrar();
+        } catch (Exception ex) 
+        {
+            Logger.getLogger(GUIListaComponentes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -31,18 +51,18 @@ public class GUICiudadRestaurante extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         pnlPlatoEjecutivo = new javax.swing.JPanel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbxEntrada = new javax.swing.JComboBox<>();
         lblImagen = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         ss = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        cbxPrincipio = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        cbxProteina = new javax.swing.JComboBox<>();
+        cbxBebida = new javax.swing.JComboBox<>();
         lblIDescr = new javax.swing.JLabel();
-        btnHacerPedido = new javax.swing.JButton();
+        btnCargarDeNuevo = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -60,11 +80,10 @@ public class GUICiudadRestaurante extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mazamorra" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        cbxEntrada.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbxEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                cbxEntradaActionPerformed(evt);
             }
         });
 
@@ -83,38 +102,40 @@ public class GUICiudadRestaurante extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel7.setText("Proteina:");
 
-        jComboBox5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Frijoles" }));
-        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+        cbxPrincipio.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbxPrincipio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox5ActionPerformed(evt);
+                cbxPrincipioActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel8.setText("Bebida:");
 
-        jComboBox6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chuleta de Pollo" }));
-        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+        cbxProteina.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbxProteina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox6ActionPerformed(evt);
+                cbxProteinaActionPerformed(evt);
             }
         });
 
-        jComboBox7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cocacola" }));
-        jComboBox7.addActionListener(new java.awt.event.ActionListener() {
+        cbxBebida.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbxBebida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox7ActionPerformed(evt);
+                cbxBebidaActionPerformed(evt);
             }
         });
 
         lblIDescr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         lblIDescr.setText("[Retornar descripción del almuerzo ejecutivo]");
 
-        btnHacerPedido.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btnHacerPedido.setText("RealizarPedido");
+        btnCargarDeNuevo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnCargarDeNuevo.setText("Cargar de nuevo");
+        btnCargarDeNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarDeNuevoActionPerformed(evt);
+            }
+        });
 
         btnAtras.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnAtras.setText("Atras");
@@ -134,33 +155,31 @@ public class GUICiudadRestaurante extends javax.swing.JFrame {
                     .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
                         .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
                                 .addGap(216, 216, 216)
-                                .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                        .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(83, 83, 83)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(253, 253, 253)
-                                .addComponent(btnHacerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 43, Short.MAX_VALUE))))
+                                .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
+                                        .addComponent(cbxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
+                                        .addComponent(cbxPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbxProteina, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
+                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(253, 253, 253)
+                        .addComponent(btnCargarDeNuevo)))
+                .addGap(0, 43, Short.MAX_VALUE))
             .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
                 .addGap(134, 134, 134)
                 .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,19 +198,19 @@ public class GUICiudadRestaurante extends javax.swing.JFrame {
                 .addComponent(lblIDescr, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addGap(39, 39, 39)
                 .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxProteina, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78)
+                .addGap(79, 79, 79)
                 .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnHacerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCargarDeNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -229,27 +248,37 @@ public class GUICiudadRestaurante extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+    private void cbxPrincipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPrincipioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox5ActionPerformed
+    }//GEN-LAST:event_cbxPrincipioActionPerformed
 
-    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+    private void cbxProteinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxProteinaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox6ActionPerformed
+    }//GEN-LAST:event_cbxProteinaActionPerformed
 
-    private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed
+    private void cbxBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxBebidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox7ActionPerformed
+    }//GEN-LAST:event_cbxBebidaActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void cbxEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEntradaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_cbxEntradaActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
         GUIRestaurantesDisponibles rest = new GUIRestaurantesDisponibles();
         rest.setVisible(true);
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnCargarDeNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDeNuevoActionPerformed
+        try {
+            limpiar();
+            mostrar();
+        } catch (Exception ex) 
+        {
+            Logger.getLogger(GUIListaComponentes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnCargarDeNuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,11 +348,11 @@ public class GUICiudadRestaurante extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnHacerPedido;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JButton btnCargarDeNuevo;
+    private javax.swing.JComboBox<String> cbxBebida;
+    private javax.swing.JComboBox<String> cbxEntrada;
+    private javax.swing.JComboBox<String> cbxPrincipio;
+    private javax.swing.JComboBox<String> cbxProteina;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -336,4 +365,49 @@ public class GUICiudadRestaurante extends javax.swing.JFrame {
     private javax.swing.JPanel pnlPlatoEjecutivo;
     private javax.swing.JLabel ss;
     // End of variables declaration//GEN-END:variables
+
+    public void mostrar() throws Exception 
+    {
+        IComponentesAccess service= Factory.getInstance().getComponenteService();
+        ComponenteService componenteService= new ComponenteService(service);
+
+        //Componente objComponente = new Componente();
+        List<Componente> objListComponentes = new ArrayList<Componente>();
+
+        objListComponentes = componenteService.listComponentes();
+        
+        for (int i = 0; i < objListComponentes.size(); i++) 
+        {
+            if("Entrada".equals(objListComponentes.get(i).getTipoComponente()))
+            {
+                String componenteMenu = objListComponentes.get(i).getNombreComponente();
+                cbxEntrada.addItem(componenteMenu);
+            }
+            if("Principio".equals(objListComponentes.get(i).getTipoComponente()))
+            {
+                String componenteMenu = objListComponentes.get(i).getNombreComponente();
+                cbxPrincipio.addItem(componenteMenu);
+            }
+            if("Proteina".equals(objListComponentes.get(i).getTipoComponente()) || "Proteína".equals(objListComponentes.get(i).getTipoComponente()))
+            {
+                String componenteMenu = objListComponentes.get(i).getNombreComponente();
+                cbxProteina.addItem(componenteMenu);
+            }
+            if("Bebida".equals(objListComponentes.get(i).getTipoComponente()))
+            {
+                String componenteMenu = objListComponentes.get(i).getNombreComponente();
+                cbxBebida.addItem(componenteMenu);
+            }
+        }
+    }
+
+    private void limpiar() 
+    {
+        cbxEntrada.removeAllItems();
+        cbxBebida.removeAllItems();
+        cbxPrincipio.removeAllItems();
+        cbxProteina.removeAllItems();
+    }
 }
+
+

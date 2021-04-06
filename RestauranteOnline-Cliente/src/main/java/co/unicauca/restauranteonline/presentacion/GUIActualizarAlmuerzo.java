@@ -24,7 +24,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Luis
+ * @author SoftwareTeam
+ * 
  */
 public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
 

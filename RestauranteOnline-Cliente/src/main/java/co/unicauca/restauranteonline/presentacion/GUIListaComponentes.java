@@ -16,7 +16,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author AC
+ * @author SoftwareTeam
+ * 
  */
 public class GUIListaComponentes extends javax.swing.JFrame {
 

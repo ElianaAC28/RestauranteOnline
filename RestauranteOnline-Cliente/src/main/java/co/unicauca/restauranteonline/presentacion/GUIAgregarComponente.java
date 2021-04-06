@@ -13,7 +13,8 @@ import co.unicauca.restauranteonline.client.access.IComponentesAccess;
 
 /**
  *
- * @author usuario
+ * @author SoftwareTeam
+ * 
  */
 public class GUIAgregarComponente extends javax.swing.JFrame {
 
