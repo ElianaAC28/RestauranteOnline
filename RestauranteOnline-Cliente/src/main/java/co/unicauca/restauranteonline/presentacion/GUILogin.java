@@ -196,6 +196,7 @@ public class GUILogin extends javax.swing.JFrame {
                         GUIAdmin ins = new GUIAdmin();
                         //ins.setExtendedState(MAXIMIZED_BOTH);
                         ins.setVisible(true);
+                        
                         warningMessage("Autenticacion exitosa!","BIENVENIDO");
                     }
                 });

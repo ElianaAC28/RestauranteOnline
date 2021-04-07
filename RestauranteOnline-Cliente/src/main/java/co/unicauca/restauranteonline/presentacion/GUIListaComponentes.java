@@ -188,6 +188,8 @@ public class GUIListaComponentes extends javax.swing.JFrame {
         // TODO add your handling code here:
         GUIAdmin admin= new GUIAdmin();
         admin.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnListar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListar1ActionPerformed

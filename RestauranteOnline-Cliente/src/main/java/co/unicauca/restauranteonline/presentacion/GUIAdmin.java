@@ -158,7 +158,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
          GUIActualizarAlmuerzo update = new GUIActualizarAlmuerzo();
          update.setVisible(true);
-         //dispose();
+         this.dispose();
         
     }//GEN-LAST:event_btnActualizarAlmActionPerformed
 
@@ -167,7 +167,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         
        GUIAgregarComponente add = new GUIAgregarComponente();
        add.setVisible(true);
-      // dispose();
+       this.dispose();
        
     }//GEN-LAST:event_btnAgregarCompActionPerformed
 
@@ -175,7 +175,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         GUIListaComponentes lista = new GUIListaComponentes();
         lista.setVisible(true);
-        //dispose();
+        this.dispose();
          
     }//GEN-LAST:event_btnListarCompActionPerformed
 
