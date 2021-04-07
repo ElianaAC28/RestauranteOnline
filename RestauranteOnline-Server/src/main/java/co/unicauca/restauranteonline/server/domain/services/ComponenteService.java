@@ -34,8 +34,9 @@ public class ComponenteService {
     
     public String CreateComponente(Componente parComponente) {
         List<JsonError> errors = new ArrayList<>();
-        if (parComponente.getIdComponente().isEmpty() || parComponente.getNombreComponente().isEmpty() || parComponente.getTipoComponente().isEmpty()) {
-            errors.add(new JsonError("400", "BAD_REQUEST", "LA INFORMACION X ES OBLIGATORIA "));
+        if (parComponente.getIdComponente()== null || parComponente.getIdRestaurante()==null || parComponente.getNombreComponente().isEmpty() 
+            || parComponente.getTipoComponente().isEmpty() || parComponente.getIdtipoComponente() == null) {
+            errors.add(new JsonError("400", "BAD_REQUEST", "LA INFORMACION  ES OBLIGATORIA "));
         }
         if (!errors.isEmpty()) {
             Gson gson = new Gson();

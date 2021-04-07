@@ -159,9 +159,11 @@ public class ComponenteAccessImplSockets implements IComponentesAccess{
         Protocol protocol = new Protocol();
         protocol.setResource("Componente");
         protocol.setAction("post");
-        protocol.addParameter("idComponente", componente.getIdComponente());
+        protocol.addParameter("idComponente", componente.getIdComponente()+"");
+        protocol.addParameter("idRestaurante", componente.getIdRestaurante()+"");
         protocol.addParameter("nombreComponente", componente.getNombreComponente());
         protocol.addParameter("tipoComponente", componente.getTipoComponente());
+        protocol.addParameter("idtipoComponente", componente.getIdtipoComponente()+"");
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
         System.out.println("json: " + requestJson);

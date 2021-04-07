@@ -131,11 +131,11 @@ public class GUIAgregarComponente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addComponent(lblAgregarCom)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblId))
-                .addGap(34, 34, 34)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNombreCom))
@@ -158,16 +158,16 @@ public class GUIAgregarComponente extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(22, 22, 22)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,19 +185,22 @@ public class GUIAgregarComponente extends javax.swing.JFrame {
 
     private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
         // TODO add your handling code here:
+        int Idtipocomponente;
         IComponentesAccess service= Factory.getInstance().getComponenteService();
         
         ComponenteService componenteService= new ComponenteService(service);
-        
+        Idtipocomponente = TipoComponente();
         Componente componente = new Componente();
         
-        componente.setIdComponente(textId.getText());
+        componente.setIdComponente(Integer.parseInt(textId.getText()));
+        componente.setIdRestaurante(1); //revisar para enviar el id restaurante 
         componente.setNombreComponente(textNombre.getText());
         componente.setTipoComponente(cbType.getSelectedItem().toString());
+        componente.setIdtipoComponente(Idtipocomponente);
         
         try {
             String response = componenteService.createComponente(componente);
-             successMessage("Componente  " + response + " agregado con exito.", "Atención");
+             successMessage("Componente " + response + " agregado con exito.", "Atención");
              clearCotronls();
              
         } catch (Exception ex) {
@@ -208,6 +211,17 @@ public class GUIAgregarComponente extends javax.swing.JFrame {
     private void clearCotronls() {
         textId.setText("");
         textNombre.setText("");
+    }
+    private int TipoComponente(){
+        if(cbType.getSelectedItem().toString() == "Entrada")
+            return 1;
+        if(cbType.getSelectedItem().toString() == "Principio")
+            return 2;
+        if(cbType.getSelectedItem().toString() == "Proteína")
+            return 3;
+        if (cbType.getSelectedItem().toString() == "Bebida")
+            return 4;
+        return 0;
     }
     /**
      * @param args the command line arguments

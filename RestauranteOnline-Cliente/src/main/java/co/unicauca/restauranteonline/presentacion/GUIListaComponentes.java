@@ -259,7 +259,7 @@ public class GUIListaComponentes extends javax.swing.JFrame {
         String matriz[][] = new String[objListComponentes.size()][3];
 
         for (int i = 0; i < objListComponentes.size(); i++) {
-            matriz[i][0] = objListComponentes.get(i).getIdComponente();
+            matriz[i][0] = objListComponentes.get(i).getIdComponente()+"";
             matriz[i][1] = objListComponentes.get(i).getNombreComponente();
             matriz[i][2] = objListComponentes.get(i).getTipoComponente();
         }

@@ -33,11 +33,13 @@ public class ComponenteRepositoryImplMysql implements IComponenteRepository {
     public String createComponente(Componente parComponente) {
         try {
             this.connect();
-            String sql = "INSERT INTO componente(COMPID, COMPNOMBRE, COMPTIPO) VALUES (?,?,?)";
+            String sql = "INSERT INTO componente(COMPID,RESTID, COMPNOMBRE, COMPTIPO, COMPIDTIPO) VALUES (?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, parComponente.getIdComponente());
-            pstmt.setString(2, parComponente.getNombreComponente());
-            pstmt.setString(3, parComponente.getTipoComponente());
+            pstmt.setString(1, parComponente.getIdComponente()+"");
+            pstmt.setString(2, parComponente.getIdRestaurante()+"");
+            pstmt.setString(3, parComponente.getNombreComponente());
+            pstmt.setString(4, parComponente.getTipoComponente());
+            pstmt.setString(5, parComponente.getIdtipoComponente()+"");
             pstmt.executeUpdate();
 
             pstmt.close();
@@ -80,7 +82,7 @@ public class ComponenteRepositoryImplMysql implements IComponenteRepository {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet comp = pstmt.executeQuery();
             while (comp.next()) {
-                objComponente.setIdComponente(comp.getString("COMPID"));
+                objComponente.setIdComponente(comp.getInt("COMPID"));
                 objComponente.setNombreComponente(comp.getString("COMPNOMBRE"));
                 objComponente.setTipoComponente(comp.getString("COMPTIPO"));
                 objList.add(objComponente);

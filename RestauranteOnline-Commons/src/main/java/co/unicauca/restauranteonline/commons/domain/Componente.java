@@ -16,8 +16,12 @@ public class Componente {
     /**
      * Id del componente
      */
-    private String idComponente;
+    private Integer idComponente;
 
+    /**
+     * Id del restaurante
+     */
+    private Integer idRestaurante;
     /**
      * Nombre Componente
      */
@@ -26,25 +30,43 @@ public class Componente {
      * Tipo de componente
      */
     private String tipoComponente;
-
+    /**
+     * ide Tipo de componente
+     */
+    private Integer idtipoComponente;
+    
     // Sigleton
     public Componente() {
     }
     
     //Cosntructor parametrizado 
-    public Componente(String idComponente, String nombreComponente, String tipoComponente) {
+
+    public Componente(Integer idComponente, Integer idRestaurante, String nombreComponente, String tipoComponente, Integer idtipoComponente) {
         this.idComponente = idComponente;
+        this.idRestaurante = idRestaurante;
         this.nombreComponente = nombreComponente;
         this.tipoComponente = tipoComponente;
+        this.idtipoComponente = idtipoComponente;
     }
+
     
+
     //Getters and Setters 
-    public String getIdComponente() {
+
+    public Integer getIdComponente() {
         return idComponente;
     }
 
-    public void setIdComponente(String idComponente) {
+    public void setIdComponente(Integer idComponente) {
         this.idComponente = idComponente;
+    }
+
+    public Integer getIdRestaurante() {
+        return idRestaurante;
+    }
+
+    public void setIdRestaurante(Integer idRestaurante) {
+        this.idRestaurante = idRestaurante;
     }
 
     public String getNombreComponente() {
@@ -63,5 +85,13 @@ public class Componente {
         this.tipoComponente = tipoComponente;
     }
 
+    public Integer getIdtipoComponente() {
+        return idtipoComponente;
+    }
+
+    public void setIdtipoComponente(Integer idtipoComponente) {
+        this.idtipoComponente = idtipoComponente;
+    }
     
-}
+} 
+    

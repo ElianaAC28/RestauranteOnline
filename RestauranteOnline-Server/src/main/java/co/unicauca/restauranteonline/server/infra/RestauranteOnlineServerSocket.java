@@ -249,9 +249,11 @@ public class RestauranteOnlineServerSocket implements Runnable {
     private void processPostComponente(Protocol protocolRequest) {
         Componente objComponente = new Componente();
 
-        objComponente.setIdComponente(protocolRequest.getParameters().get(0).getValue());
-        objComponente.setNombreComponente(protocolRequest.getParameters().get(1).getValue());
-        objComponente.setTipoComponente(protocolRequest.getParameters().get(2).getValue());
+        objComponente.setIdComponente(Integer.parseInt(protocolRequest.getParameters().get(0).getValue()));
+        objComponente.setIdRestaurante(Integer.parseInt(protocolRequest.getParameters().get(1).getValue()));
+        objComponente.setNombreComponente(protocolRequest.getParameters().get(2).getValue());
+        objComponente.setTipoComponente(protocolRequest.getParameters().get(3).getValue());
+        objComponente.setIdtipoComponente(Integer.parseInt(protocolRequest.getParameters().get(4).getValue()));
         String response = serviceComponente.CreateComponente(objComponente);
         output.println(response);
     }
