@@ -33,11 +33,13 @@ public class ComponenteRepositoryImplMysql implements IComponenteRepository {
     public String createComponente(Componente parComponente) {
         try {
             this.connect();
-            String sql = "INSERT INTO componente(COMPID, COMPNOMBRE, COMPTIPO) VALUES (?,?,?)";
+            String sql = "INSERT INTO componente(COMPID,RESTID, COMPNOMBRE, COMPTIPO, COMPIDTIPO) VALUES (?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, parComponente.getIdComponente());
-            pstmt.setString(2, parComponente.getNombreComponente());
-            pstmt.setString(3, parComponente.getTipoComponente());
+            pstmt.setString(1, parComponente.getIdComponente()+"");
+            pstmt.setString(2, parComponente.getIdRestaurante()+"");
+            pstmt.setString(3, parComponente.getNombreComponente());
+            pstmt.setString(4, parComponente.getTipoComponente());
+            pstmt.setString(5, parComponente.getIdtipoComponente()+"");
             pstmt.executeUpdate();
 
             pstmt.close();
@@ -80,7 +82,8 @@ public class ComponenteRepositoryImplMysql implements IComponenteRepository {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet comp = pstmt.executeQuery();
             while (comp.next()) {
-                objComponente.setIdComponente(comp.getString("COMPID"));
+                objComponente.setIdComponente(comp.getInt("COMPID"));
+                objComponente.setIdRestaurante(Integer.parseInt(comp.getString("RESTID")));
                 objComponente.setNombreComponente(comp.getString("COMPNOMBRE"));
                 objComponente.setTipoComponente(comp.getString("COMPTIPO"));
                 objList.add(objComponente);
@@ -92,6 +95,34 @@ public class ComponenteRepositoryImplMysql implements IComponenteRepository {
         }
         return objList;
     }
+    
+    /**
+     * Metodo encargado de obtener una lista de todos los componentes de un almuerzo.
+     *
+     * @return Se retorna una lista con los resultados de la busqueda.
+     */
+    @Override
+    public List<Componente> findAllComponentesAlmuerzo(String almuId) {
+        List<Componente> objList = new ArrayList<Componente>();
+        this.connect();
+        Componente objComponente = new Componente();
+        try {
+            String sql = "SELECT * FROM componente NATURAL JOIN tiene WHERE almuId = "+ almuId + ";";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet comp = pstmt.executeQuery();
+            while (comp.next()) {
+                objComponente.setIdComponente(comp.getInt("COMPID"));
+                objComponente.setIdRestaurante(Integer.parseInt(comp.getString("RESTID")));
+                objComponente.setNombreComponente(comp.getString("COMPNOMBRE"));
+                objComponente.setTipoComponente(comp.getString("COMPTIPO"));
+                objList.add(objComponente);
+                objComponente = new Componente();
+            }
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(ComponenteRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar el restaurante de la base de datos", ex);
+        }
+        return objList;    }
 
     /**
      * Metodo que se encarga de realizar la conexion con la base de datos.
@@ -118,7 +149,6 @@ public class ComponenteRepositoryImplMysql implements IComponenteRepository {
      */
     private void disconnect() {
         try {
-            conn.close();
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(ComponenteRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);

@@ -1,8 +1,9 @@
 package co.unicauca.restauranteonline.server.infra;
 
 import co.unicauca.restauranteonline.commons.domain.Almuerzo;
-import co.unicauca.restauranteonline.commons.domain.Customer;
+import co.unicauca.restauranteonline.commons.domain.Usuario;
 import co.unicauca.restauranteonline.commons.domain.Componente;
+import co.unicauca.restauranteonline.commons.domain.Restaurante;
 import co.unicauca.restauranteonline.commons.infra.JsonError;
 import co.unicauca.restauranteonline.commons.infra.Protocol;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
@@ -18,9 +19,11 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import co.unicauca.restauranteonline.server.domain.services.CustomerService;
-import co.unicauca.restauranteonline.server.access.ICustomerRepository;
+import co.unicauca.restauranteonline.server.domain.services.UsuarioService;
+import co.unicauca.restauranteonline.server.access.IUsuarioRepository;
+import co.unicauca.restauranteonline.server.access.IRestauranteRepository;
 import co.unicauca.restauranteonline.server.domain.services.AlmuerzoService;
+import co.unicauca.restauranteonline.server.domain.services.RestauranteService;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +39,11 @@ public class RestauranteOnlineServerSocket implements Runnable {
     /**
      * Servicio de clientes
      */
-    private final CustomerService service;
+    private final UsuarioService service;
 
     private final ComponenteService serviceComponente;
     private final AlmuerzoService serviceAlm;
+    private final RestauranteService serviceRestaurante;
     /**
      * Server Socket, la orejita
      */
@@ -66,14 +70,17 @@ public class RestauranteOnlineServerSocket implements Runnable {
      */
     public RestauranteOnlineServerSocket() {
         // Se hace la inyección de dependencia
-        ICustomerRepository repository = Factory.getInstance().getRepository();
-        service = new CustomerService(repository);
+        IUsuarioRepository repository = Factory.getInstance().getRepository();
+        service = new UsuarioService(repository);
 
         IComponenteRepository repositoryComponente = Factory.getInstance().getRepositoryComponente();
         serviceComponente = new ComponenteService(repositoryComponente);
         
         IAlmuerzoRepository repositoryAlm = Factory.getInstance().getRepositoryAlmuerzo();
         serviceAlm = new AlmuerzoService(repositoryAlm);
+        
+        IRestauranteRepository repositoryRestaurante = Factory.getInstance().getRepositoryRestaurante();
+        serviceRestaurante = new RestauranteService();
     }
 
     /**
@@ -174,19 +181,19 @@ public class RestauranteOnlineServerSocket implements Runnable {
         Protocol protocolRequest = gson.fromJson(requestJson, Protocol.class);
 
         switch (protocolRequest.getResource()) {
-            case "customer":
+            case "Usuario":
                 if (protocolRequest.getAction().equals("get")) {
-                    // Consultar un customer
-                    processGetCustomer(protocolRequest);
+                    // Consultar un usuario
+                    processGetUsuario(protocolRequest);
                 }
 
                 if (protocolRequest.getAction().equals("post")) {
-                    // Agregar un customer    
-                    processPostCustomer(protocolRequest);
+                    // Agregar un usuario    
+                    processPostUsuario(protocolRequest);
                 }
                 if (protocolRequest.getAction().equals("aut")) {
-                    // Agregar un customer    
-                    processAutCustomer(protocolRequest);
+                    // Autoriza un usuario    
+                    processAutUsuario(protocolRequest);
                 }
                 break;
             case "Componente":
@@ -194,8 +201,12 @@ public class RestauranteOnlineServerSocket implements Runnable {
                     processPostComponente(protocolRequest);
                 }
                 if (protocolRequest.getAction().equals("gets")) {
-                    // Consultar todos los componenetes
+                    // Consultar todos los componentes
                     processGetListComponentes();
+                }
+                if (protocolRequest.getAction().equals("getsA")){
+                    // Consultar todos los componentes de un almuerzo
+                    proccessGetListComponentesAlmuerzo(protocolRequest);
                 }
                 break;
             case "Almuerzo":
@@ -203,42 +214,45 @@ public class RestauranteOnlineServerSocket implements Runnable {
                     // Consultar todos los almuerzos
                     processGetListAlmuerzo();
                 }
+<<<<<<< HEAD
                  if (protocolRequest.getAction().equals("post")) {
                     // Consultar todos los almuerzos
                     processGetListAlmuerzo();
+=======
+                break;
+            case "Restaurante":
+                if (protocolRequest.getAction().equals("gets")){
+                    //Consultar todos los restaurantes
+                    proccessGetListRestaurantes();
+>>>>>>> 23c24fed3407ff6c7333d99de02878b1cfe597c9
                 }
         }
 
     }
- /**
-     * Procesa la solicitud de consultar un customer
-     *
-     * @param protocolRequest Protocolo de la solicitud
-     */
  
     /**
-     * Procesa la solicitud de consultar un customer
+     * Procesa la solicitud de consultar un usuario
      *
      * @param protocolRequest Protocolo de la solicitud
      */
-    private void processGetCustomer(Protocol protocolRequest) {
+    private void processGetUsuario(Protocol protocolRequest) {
         // Extraer la cedula del primer parámetro
-        String id = protocolRequest.getParameters().get(0).getValue();
-        Customer customer = service.findCustomer(id);
-        if (customer == null) {
+        String userId = protocolRequest.getParameters().get(0).getValue();
+        Usuario usuario = service.findUsuario(userId);
+        if (usuario == null) {
             String errorJson = generateNotFoundErrorJson();
             output.println(errorJson);
         } else {
-            output.println(objectToJSON(customer));
+            output.println(objectToJSON(usuario));
         }
     }
 
-    private boolean processAutCustomer(Protocol protocolRequest) {
+    private boolean processAutUsuario(Protocol protocolRequest) {
         // Extraer la cedula del primer parámetro
         String user = protocolRequest.getParameters().get(0).getValue();
         String pass = protocolRequest.getParameters().get(1).getValue();
-        boolean customer = service.autenticarCustomer(user, pass);
-        if (customer == false) {
+        boolean usuario = service.autenticarUsuario(user, pass);
+        if (usuario == false) {
             String errorJson = generateNotFoundErrorJson();
             output.println(errorJson);
             return false;
@@ -253,24 +267,26 @@ public class RestauranteOnlineServerSocket implements Runnable {
     private void processPostComponente(Protocol protocolRequest) {
         Componente objComponente = new Componente();
 
-        objComponente.setIdComponente(protocolRequest.getParameters().get(0).getValue());
-        objComponente.setNombreComponente(protocolRequest.getParameters().get(1).getValue());
-        objComponente.setTipoComponente(protocolRequest.getParameters().get(2).getValue());
+        objComponente.setIdComponente(Integer.parseInt(protocolRequest.getParameters().get(0).getValue()));
+        objComponente.setIdRestaurante(Integer.parseInt(protocolRequest.getParameters().get(1).getValue()));
+        objComponente.setNombreComponente(protocolRequest.getParameters().get(2).getValue());
+        objComponente.setTipoComponente(protocolRequest.getParameters().get(3).getValue());
+        objComponente.setIdtipoComponente(Integer.parseInt(protocolRequest.getParameters().get(4).getValue()));
         String response = serviceComponente.CreateComponente(objComponente);
         output.println(response);
     }
 
     /**
-     * Procesa la solicitud de agregar un customer
+     * Procesa la solicitud de agregar un usuario
      *
      * @param protocolRequest Protocolo de la solicitud
      */
-    private void processPostCustomer(Protocol protocolRequest) {
-        Customer customer = new Customer();
+    private void processPostUsuario(Protocol protocolRequest) {
+        Usuario usuario = new Usuario();
         // Reconstruir el customer a partid de lo que viene en los parámetros
-        // customer.setId(protocolRequest.getParameters().get(0).getValue());
+        usuario.setUserId(protocolRequest.getParameters().get(0).getValue());
 
-        String response = service.createCustomer(customer);
+        String response = service.createUsuario(usuario);
         output.println(response);
     }
 
@@ -327,12 +343,12 @@ public class RestauranteOnlineServerSocket implements Runnable {
      * Convierte el objeto Customer a json para que el servidor lo envie como
      * respuesta por el socket
      *
-     * @param customer cliente
+     * @param usuario usuario
      * @return customer en formato json
      */
-    private String objectToJSON(Customer customer) {
+    private String objectToJSON(Usuario usuario) {
         Gson gson = new Gson();
-        String strObject = gson.toJson(customer);
+        String strObject = gson.toJson(usuario);
         return strObject;
     }
 
@@ -349,7 +365,6 @@ public class RestauranteOnlineServerSocket implements Runnable {
             String errorJson = generateNotFoundErrorJson();
             output.println(errorJson);
         }
-
     }
     
      /**
@@ -385,6 +400,38 @@ public class RestauranteOnlineServerSocket implements Runnable {
         Gson gson = new Gson();
         String strObject = gson.toJson(parLista);
         return strObject;
+    }
+
+    /**
+     * Procesa la solicitud para consultar todos los restaurante.
+     *
+     * @param protocolRequest
+     */
+    private void proccessGetListRestaurantes() {
+        List<Restaurante> listaRestaurantes = serviceRestaurante.ListRestaurantes();
+        if (!listaRestaurantes.isEmpty()) {
+            output.println(ArrayToJSONRest(listaRestaurantes));
+        } else {
+            String errorJson = generateNotFoundErrorJson();
+            output.println(errorJson);
+        }
+    }
+
+    private String ArrayToJSONRest(List<Restaurante> parLista) {
+        Gson gson = new Gson();
+        String strObject = gson.toJson(parLista);
+        return strObject;    
+    }
+
+    private void proccessGetListComponentesAlmuerzo(Protocol protocolRequest) {
+        String almuId = protocolRequest.getParameters().get(0).getValue();
+        List<Componente> listaComponentes = serviceComponente.ListComponentesAlmuerzo(almuId);
+        if (!listaComponentes.isEmpty()) {
+            output.println(ArrayToJSON(listaComponentes));
+        } else {
+            String errorJson = generateNotFoundErrorJson();
+            output.println(errorJson);
+        }
     }
 
 }

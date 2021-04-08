@@ -5,6 +5,9 @@
  */
 package co.unicauca.restauranteonline.presentacion;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author SoftwareTeam
@@ -158,7 +161,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
          GUIActualizarAlmuerzo update = new GUIActualizarAlmuerzo();
          update.setVisible(true);
-         //dispose();
+         this.dispose();
         
     }//GEN-LAST:event_btnActualizarAlmActionPerformed
 
@@ -167,15 +170,20 @@ public class GUIAdmin extends javax.swing.JFrame {
         
        GUIAgregarComponente add = new GUIAgregarComponente();
        add.setVisible(true);
-      // dispose();
+       this.dispose();
        
     }//GEN-LAST:event_btnAgregarCompActionPerformed
 
     private void btnListarCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarCompActionPerformed
         // TODO add your handling code here:
-        GUIListaComponentes lista = new GUIListaComponentes();
+        GUIListaComponentes lista = null;
+        try {
+            lista = new GUIListaComponentes();
+        } catch (Exception ex) {
+            Logger.getLogger(GUIAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         lista.setVisible(true);
-        //dispose();
+        this.dispose();
          
     }//GEN-LAST:event_btnListarCompActionPerformed
 

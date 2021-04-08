@@ -2,7 +2,6 @@ package co.unicauca.restauranteonline.server.access;
 
 import co.unicauca.restauranteonline.commons.domain.Almuerzo;
 import co.unicauca.restauranteonline.commons.domain.Componente;
-import co.unicauca.restauranteonline.commons.domain.Customer;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
 import co.unicauca.restauranteonline.presentacion.GUIActualizarAlmuerzo;
 import java.sql.Connection;
@@ -47,9 +46,7 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
                 almuerzo = new Almuerzo();
 
                 almuerzo.setIdAlmuerzo(res.getString("ALMUID"));
-                almuerzo.setEntradaAlm(res.getString("ALMUENTRADA"));
-                almuerzo.setPrincipioAlm(res.getString("ALMUPRINCIPIO"));
-                almuerzo.setBebidaAlm(res.getString("ALMUBEBIDA"));
+                almuerzo.setRestId(res.getString("RESTID"));
                 almuerzo.setCostoAlm(res.getInt("ALMUCOSTO"));
 
             } else {
@@ -58,7 +55,7 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
             pstmt.close();
             this.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar almuerzo de la base de datos", ex);
+            Logger.getLogger(AlmuerzoRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar almuerzo de la base de datos", ex);
         }
         return almuerzo;
     }
@@ -141,11 +138,17 @@ public List<Almuerzo> findAllAlmuerzos() {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
+<<<<<<< HEAD
 
                 objAlmuerzo.setEntradaAlm(res.getString("ALMUENTRADA"));
                 objAlmuerzo.setPrincipioAlm(res.getString("ALMUPRINCIPIO"));
                 objAlmuerzo.setProteinaAlm(res.getString("ALMUPROTEINA"));
                 objAlmuerzo.setBebidaAlm(res.getString("ALMUBEBIDA"));
+=======
+                objAlmuerzo.setIdAlmuerzo(res.getString("ALMUID"));
+                objAlmuerzo.setRestId(res.getString("RESTID"));
+                objAlmuerzo.setCostoAlm(Integer.parseInt(res.getString("ALMUCOSTO")));
+>>>>>>> 23c24fed3407ff6c7333d99de02878b1cfe597c9
                 objList.add(objAlmuerzo);
                 objAlmuerzo = new Almuerzo();
 

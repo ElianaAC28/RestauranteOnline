@@ -1,6 +1,6 @@
 package co.unicauca.restauranteonline.server.access;
 
-import co.unicauca.restauranteonline.commons.domain.Customer;
+import co.unicauca.restauranteonline.commons.domain.Usuario;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,51 +16,51 @@ import java.util.logging.Logger;
  *
  * @author Libardo, Julio
  */
-public class CustomerRepositoryImplMysql implements ICustomerRepository {
+public class UsuarioRepositoryImplMysql implements IUsuarioRepository {
 
     /**
      * Conección con Mysql
      */
     private Connection conn;
 
-    public CustomerRepositoryImplMysql() {
+    public UsuarioRepositoryImplMysql() {
 
     }
 
     /**
-     * @param id
+     * @param userId
      * @return
      */
-    public Customer findCustomer(String id) {
-        Customer customer = null;
+    public Usuario findUsuario(String userId) {
+        Usuario usuario = null;
 
         this.connect();
         try {
             String sql = "SELECT * from usuario where id=? ";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, id);
+            pstmt.setString(1, userId);
             ResultSet res = pstmt.executeQuery();
             if (res.next()) {
-                customer = new Customer();
-                /* customer.setId(res.getString("id"));
-                customer.setFirstName(res.getString("first_name"));
-                customer.setLastName(res.getString("last_name"));
-                customer.setAddress(res.getString("address"));
-                customer.setMobile(res.getString("mobile"));
-                customer.setGender(res.getString("gender"));
-                customer.setEmail(res.getString("email"));
-                 */
+                usuario = new Usuario();
+                usuario.setUserId(res.getString("userId"));
+                usuario.setUserName(res.getString("userName"));
+                usuario.setUserPassword(res.getString("userPassword"));
+                usuario.setUserNombre(res.getString("userNombre"));
+                usuario.setUserApellido(res.getString("userApellido"));
+                usuario.setUserCelular(res.getString("userCelular"));
+                usuario.setUserEmail(res.getString("userEmail"));
+                
             }
             pstmt.close();
             this.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar Customer de la base de datos", ex);
+            Logger.getLogger(UsuarioRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar Customer de la base de datos", ex);
         }
-        return customer;
+        return usuario;
     }
 
-    public boolean autenticarCustomer(String username, String userpassword) {
-        Customer customer = null;
+    public boolean autenticarUsuario(String username, String userpassword) {
+        Usuario usuario = null;
         boolean ingreso = false;
         this.connect();
         try {
@@ -76,37 +76,34 @@ public class CustomerRepositoryImplMysql implements ICustomerRepository {
             this.disconnect();
 
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar Customer de la base de datos", ex);
+            Logger.getLogger(UsuarioRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar Customer de la base de datos", ex);
         }
         return ingreso;
     }
 
     @Override
-    public String createCustomer(Customer customer) {
+    public String createUsuario(Usuario usuario) {
 
         try {
 
             this.connect();
-            String sql = "INSERT INTO customers(id, first_name, last_name, address, mobile, email, gender) VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO usuario(userId, userName, userPassword, userNombre, userApellido, userCelular, userEmail) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            /*   pstmt.setString(1, customer.getId());
-            pstmt.setString(2, customer.getFirstName());
-            pstmt.setString(3, customer.getLastName());
-            pstmt.setString(4, customer.getAddress());
-            pstmt.setString(5, customer.getMobile());
-            pstmt.setString(6, customer.getEmail());
-            pstmt.setString(7, customer.getGender());
-
-             */
+            pstmt.setString(1, usuario.getUserId());
+            pstmt.setString(2, usuario.getUserName());
+            pstmt.setString(3, usuario.getUserPassword());
+            pstmt.setString(4, usuario.getUserNombre());
+            pstmt.setString(5, usuario.getUserApellido());
+            pstmt.setString(6, usuario.getUserCelular());
+            pstmt.setString(7, usuario.getUserEmail());
             pstmt.executeUpdate();
             pstmt.close();
             this.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
+            Logger.getLogger(UsuarioRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
         }
-        String e = null;
+        String e = usuario.getUserId();
         return e;
-        //customer.getId();
 
     }
 
@@ -125,7 +122,7 @@ public class CustomerRepositoryImplMysql implements ICustomerRepository {
             conn = DriverManager.getConnection(url, username, pwd);
             return 1;
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(CustomerRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar Customer de la base de datos", ex);
+            Logger.getLogger(UsuarioRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar Customer de la base de datos", ex);
         }
         return -1;
     }
@@ -138,7 +135,7 @@ public class CustomerRepositoryImplMysql implements ICustomerRepository {
         try {
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);
+            Logger.getLogger(UsuarioRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);
         }
     }
 

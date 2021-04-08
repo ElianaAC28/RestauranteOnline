@@ -11,6 +11,7 @@ package co.unicauca.restauranteonline.commons.domain;
  */
 public class Almuerzo {
     String idAlmuerzo;
+    String restId;
     String entradaAlm;
     String principioAlm;
     String proteinaAlm;
@@ -23,8 +24,9 @@ public class Almuerzo {
     public Almuerzo() {
     }
 
-    public Almuerzo(String idAlmuerzo, String entradaAlm, String principioAlm, String proteinaAlm, String bebidaAlm, int costoAlm) {
+    public Almuerzo(String idAlmuerzo, String restId,String entradaAlm, String principioAlm, String proteinaAlm, String bebidaAlm, int costoAlm) {
         this.idAlmuerzo = idAlmuerzo;
+        this.restId = restId;
         this.entradaAlm = entradaAlm;
         this.principioAlm = principioAlm;
         this.proteinaAlm = proteinaAlm;
@@ -39,6 +41,16 @@ public class Almuerzo {
     public void setIdAlmuerzo(String idAlmuerzo) {
         this.idAlmuerzo = idAlmuerzo;
     }
+
+    public String getRestId() {
+        return restId;
+    }
+
+    public void setRestId(String restId) {
+        this.restId = restId;
+    }
+    
+    
 
     public String getEntradaAlm() {
         return entradaAlm;

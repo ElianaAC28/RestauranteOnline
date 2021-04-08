@@ -101,9 +101,15 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+<<<<<<< HEAD
                       <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
                       <Component id="lbnIniciarSesion1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="150" max="32767" attributes="0"/>
+=======
+                      <EmptySpace pref="144" max="32767" attributes="0"/>
+                      <Component id="lblImg" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+>>>>>>> 23c24fed3407ff6c7333d99de02878b1cfe597c9
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtUsuario" alignment="3" min="-2" max="-2" attributes="0"/>

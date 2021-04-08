@@ -268,6 +268,7 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
         // TODO add your handling code here:
         GUIRestaurantesDisponibles rest = new GUIRestaurantesDisponibles();
         rest.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnCargarDeNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDeNuevoActionPerformed

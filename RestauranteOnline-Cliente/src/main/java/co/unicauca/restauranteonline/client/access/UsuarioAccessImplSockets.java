@@ -1,9 +1,11 @@
 package co.unicauca.restauranteonline.client.access;
 
+import co.unicauca.restauranteonline.client.infra.UsuarioSocket;
 import co.unicauca.restauranteonline.commons.infra.Protocol;
-import co.unicauca.restauranteonline.commons.domain.Customer;
+import co.unicauca.restauranteonline.commons.domain.Usuario;
 import co.unicauca.restauranteonline.commons.infra.JsonError;
 import co.unicauca.restauranteonline.client.infra.restauranteOnlineSocket;
+import co.unicauca.restauranteonline.commons.domain.Usuario;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -15,29 +17,29 @@ import java.util.logging.Logger;
  *
  * @author Libardo Pantoja, Julio A. Hurtado
  */
-public class CustomerAccessImplSockets implements ICustomerAccess {
+public class UsuarioAccessImplSockets implements IUsuarioAccess {
 
     /**
      * El servicio utiliza un socket para comunicarse con la aplicación server
      */
-    private restauranteOnlineSocket mySocket;
+    private UsuarioSocket mySocket;
 
-    public CustomerAccessImplSockets() {
-        mySocket = new restauranteOnlineSocket();
+    public UsuarioAccessImplSockets() {
+        this.mySocket = new UsuarioSocket();
     }
 
     /**
-     * Busca un Customer. Utiliza socket para pedir el servicio al servidor
+     * Busca un Usuario. Utiliza socket para pedir el servicio al servidor
      *
-     * @param id cedula del cliente
-     * @return Objeto Customer
+     * @param userId id del usuario
+     * @return Objeto usuario
      * @throws Exception cuando no pueda conectarse con el servidor
      */
     @Override
-    public Customer findCustomer(String id) throws Exception {
+    public Usuario findUsuario(String userId) throws Exception {
         //{"id"="9800001", "nombres":"juan", "apellidos":"perez", "direcciones":"[{}, {}, {}]"}
         String jsonResponse = null;
-        String requestJson = findCustomerRequestJson(id);
+        String requestJson = findUsuarioRequestJson(userId);
         try {
             mySocket.connect();
             jsonResponse = mySocket.sendStream(requestJson);
@@ -45,19 +47,19 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
             mySocket.disconnect();
 
         } catch (IOException ex) {
-            Logger.getLogger(CustomerAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+            Logger.getLogger(UsuarioAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
         }
         if (jsonResponse == null) {
             throw new Exception("No se pudo conectar con el servidor. Revise la red o que el servidor esté escuchando. ");
         } else {
             if (jsonResponse.contains("error")) {
                 //Devolvió algún error
-                Logger.getLogger(CustomerAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                Logger.getLogger(UsuarioAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
                 throw new Exception(extractMessages(jsonResponse));
             } else {
                 //Encontró el customer
-                Customer customer = jsonToCustomer(jsonResponse);
-                return customer;
+                Usuario usuario = jsonToUsuario(jsonResponse);
+                return usuario;
             }
         }
 
@@ -71,9 +73,9 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
      * @throws Exception
      */
     @Override
-    public boolean autenticarCustomer(String username, String userpassword) throws Exception {
+    public boolean autenticarUsuario(String username, String userpassword) throws Exception {
         String jsonResponse = null;
-        String requestJson = autenticarCustomerRequestJson(username,userpassword);
+        String requestJson = autenticarUsuarioRequestJson(username,userpassword);
         try {
             mySocket.connect();
             jsonResponse = mySocket.sendStream(requestJson);
@@ -81,7 +83,7 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
             mySocket.disconnect();
 
         } catch (IOException ex) {
-            Logger.getLogger(CustomerAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+            Logger.getLogger(UsuarioAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
         }
         if (jsonResponse == null) {
             throw new Exception("No se pudo conectar con el servidor");
@@ -89,13 +91,10 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
 
             if (jsonResponse.contains("error")) {
                 //Devolvió algún error                
-                Logger.getLogger(CustomerAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                Logger.getLogger(UsuarioAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
                 throw new Exception(extractMessages(jsonResponse));
             } else {
-                
-                //Agregó correctamente, devuelve la cedula del customer 
                 return true;
-                //    customer.getId();
             }
 
         }
@@ -103,16 +102,16 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
     }
 
     /**
-     * Crea un Customer. Utiliza socket para pedir el servicio al servidor
+     * Crea un usuario. Utiliza socket para pedir el servicio al servidor
      *
-     * @param customer cliente de la agencia de viajes
-     * @return devuelve la cedula del cliente creado
+     * @param usuario usuario de la base de datos
+     * @return devuelve la id del usuario
      * @throws Exception error crear el cliente
      */
     @Override
-    public String createCustomer(Customer customer) throws Exception {
+    public String createUsuario(Usuario usuario) throws Exception {
         String jsonResponse = null;
-        String requestJson = createCustomerRequestJson(customer);
+        String requestJson = createUsuarioRequestJson(usuario);
         try {
             mySocket.connect();
             jsonResponse = mySocket.sendStream(requestJson);
@@ -120,7 +119,7 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
             mySocket.disconnect();
 
         } catch (IOException ex) {
-            Logger.getLogger(CustomerAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+            Logger.getLogger(UsuarioAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
         }
         if (jsonResponse == null) {
             throw new Exception("No se pudo conectar con el servidor");
@@ -128,13 +127,12 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
 
             if (jsonResponse.contains("error")) {
                 //Devolvió algún error                
-                Logger.getLogger(CustomerAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                Logger.getLogger(UsuarioAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
                 throw new Exception(extractMessages(jsonResponse));
             } else {
-                String e = null;
                 //Agregó correctamente, devuelve la cedula del customer 
+                String e = usuario.getUserId();
                 return e;
-                //    customer.getId();
             }
 
         }
@@ -172,26 +170,26 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
      * Crea una solicitud json para ser enviada por el socket
      *
      *
-     * @param idCustomer identificación del cliente
+     * @param userId identificación del usuario
      * @return solicitud de consulta del cliente en formato Json, algo como:
-     * {"resource":"customer","action":"get","parameters":[{"name":"id","value":"98000001"}]}
+     * {"resource":"usuario","action":"get","parameters":[{"name":"id","value":"98000001"}]}
      */
-    private String findCustomerRequestJson(String idCustomer) {
-        //{"recource":"customer", "action":"get", "parametrers":"[{"name": "id", "value": 9800001"},{}]"}
+    private String findUsuarioRequestJson(String userId) {
+        //{"recource":"Usuario", "action":"get", "parametrers":"[{"name": "id", "value": 9800001"},{}]"}
         Protocol protocol = new Protocol();
-        protocol.setResource("customer");
+        protocol.setResource("Usuario");
         protocol.setAction("get");
-        protocol.addParameter("id", idCustomer);
+        protocol.addParameter("userId", userId);
 
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
 
         return requestJson;
     }
-    private String autenticarCustomerRequestJson(String username, String userpassword ) {
-        //{"recource":"customer", "action":"get", "parametrers":"[{"name": "id", "value": 9800001"},{}]"}
+    private String autenticarUsuarioRequestJson(String username, String userpassword ) {
+        //{"recource":"usuario", "action":"get", "parametrers":"[{"name": "id", "value": 9800001"},{}]"}
         Protocol protocol = new Protocol();
-        protocol.setResource("customer");
+        protocol.setResource("Usuario");
         protocol.setAction("aut");
         protocol.addParameter("userName", username);
         protocol.addParameter("userPassword", userpassword);
@@ -204,23 +202,22 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
      * Crea la solicitud json de creación del customer para ser enviado por el
      * socket
      *
-     * @param customer objeto customer
+     * @param usuario objeto usuario
      * @return devulve algo como:
-     * {"resource":"customer","action":"post","parameters":[{"name":"id","value":"980000012"},{"name":"fistName","value":"Juan"},...}]}
+     * {"resource":"usuario","action":"post","parameters":[{"name":"id","value":"980000012"},{"name":"fistName","value":"Juan"},...}]}
      */
-    private String createCustomerRequestJson(Customer customer) {
+    private String createUsuarioRequestJson(Usuario usuario) {
 
         Protocol protocol = new Protocol();
-        protocol.setResource("customer");
+        protocol.setResource("Usuario");
         protocol.setAction("post");
-        /*        protocol.addParameter("id", customer.getId());
-        protocol.addParameter("fistName", customer.getFirstName());
-        protocol.addParameter("lastName", customer.getLastName());
-        protocol.addParameter("address", customer.getAddress());
-        protocol.addParameter("email", customer.getEmail());
-        protocol.addParameter("gender", customer.getGender());
-        protocol.addParameter("mobile", customer.getMobile());
-         */
+        protocol.addParameter("userId", usuario.getUserId());
+        protocol.addParameter("userName", usuario.getUserName());
+        protocol.addParameter("userPassword", usuario.getUserPassword());
+        protocol.addParameter("userNombre", usuario.getUserNombre());
+        protocol.addParameter("userApellido", usuario.getUserApellido());
+        protocol.addParameter("userCelular", usuario.getUserCelular());
+        protocol.addParameter("userEmail", usuario.getUserEmail());
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
         System.out.println("json: " + requestJson);
@@ -229,17 +226,17 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
     }
 
     /**
-     * Convierte jsonCustomer, proveniente del server socket, de json a un
+     * Convierte jsonUsuario, proveniente del server socket, de json a un
      * objeto Customer
      *
-     * @param jsonCustomer objeto cliente en formato json
+     * @param jsonUsuario objeto usuario en formato json
      */
-    private Customer jsonToCustomer(String jsonCustomer) {
+    private Usuario jsonToUsuario(String jsonUsuario) {
 
         Gson gson = new Gson();
-        Customer customer = gson.fromJson(jsonCustomer, Customer.class);
+        Usuario usuario= gson.fromJson(jsonUsuario, Usuario.class);
 
-        return customer;
+        return usuario;
 
     }
 

@@ -7,8 +7,9 @@ import java.util.Date;
  *
  * @author Libardo, Julio
  */
-public class Customer {
+public class Usuario {
 
+    private String userId;
     private String userName;
     /**
      * Nombre Cliente
@@ -33,13 +34,14 @@ public class Customer {
     /**
      * Nombre Cliente
      */
-    private int userCelular;
+    private String userCelular;
     /**
      * Email
      */
     private String userEmail;
 
-    public Customer(String userName, String userPassword, String userNombre, String userApellido, Date userFechaNac, String userGenero, int userCelular, String userEmail) {
+    public Usuario(String userId, String userName, String userPassword, String userNombre, String userApellido, Date userFechaNac, String userGenero, String userCelular, String userEmail) {
+        this.userId = userId;
         this.userName = userName;
         this.userPassword = userPassword;
         this.userNombre = userNombre;
@@ -50,9 +52,18 @@ public class Customer {
         this.userEmail = userEmail;
     }
     //CONSTRUCTOR POR DEFECTO
-    public Customer() {
-
+    public Usuario() {
     }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+    
+    
     public String getUserName() {
         return userName;
     }
@@ -77,7 +88,7 @@ public class Customer {
         return userGenero;
     }
 
-    public int getUserCelular() {
+    public String getUserCelular() {
         return userCelular;
     }
 
@@ -109,7 +120,7 @@ public class Customer {
         this.userGenero = userGenero;
     }
 
-    public void setUserCelular(int userCelular) {
+    public void setUserCelular(String userCelular) {
         this.userCelular = userCelular;
     }
 
