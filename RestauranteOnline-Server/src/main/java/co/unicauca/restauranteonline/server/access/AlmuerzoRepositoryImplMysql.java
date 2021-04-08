@@ -46,9 +46,7 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
                 
                 almuerzo = new Almuerzo();
                 almuerzo.setIdAlmuerzo(res.getString("ALMUID"));
-                almuerzo.setEntradaAlm(res.getString("ALMUENTRADA"));
-                almuerzo.setPrincipioAlm(res.getString("ALMUPRINCIPIO"));
-                almuerzo.setBebidaAlm(res.getString("ALMUBEBIDA"));
+                almuerzo.setRestId(res.getString("RESTID"));
                 almuerzo.setCostoAlm(res.getInt("ALMUCOSTO"));
 
             } else {
@@ -106,10 +104,9 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
-                objAlmuerzo.setEntradaAlm(res.getString("ALMUENTRADA"));
-                objAlmuerzo.setPrincipioAlm(res.getString("ALMUPRINCIPIO"));
-                objAlmuerzo.setProteinaAlm(res.getString("ALMUPROTEINA"));
-                objAlmuerzo.setBebidaAlm(res.getString("ALMUBEBIDA"));
+                objAlmuerzo.setIdAlmuerzo(res.getString("ALMUID"));
+                objAlmuerzo.setRestId(res.getString("RESTID"));
+                objAlmuerzo.setCostoAlm(Integer.parseInt(res.getString("ALMUCOSTO")));
                 objList.add(objAlmuerzo);
                 objAlmuerzo = new Almuerzo();
             }

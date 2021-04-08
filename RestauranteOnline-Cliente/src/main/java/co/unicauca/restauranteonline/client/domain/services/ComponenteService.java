@@ -32,4 +32,13 @@ public class ComponenteService {
     public List<Componente> listComponentes() throws Exception {
         return service.ListComponentes();
     }
+    
+    /**
+     * Obtiene una lista de componentes de un almuerzo donde se encuentran todas las listas del servidor
+     * @return lista de componentes 
+     * @throws Exception 
+     */
+    public List<Componente> listComponentesAlmuerzo(String almuId) throws Exception {
+        return service.ListComponentesAlmuerzo(almuId);
+    }
 }

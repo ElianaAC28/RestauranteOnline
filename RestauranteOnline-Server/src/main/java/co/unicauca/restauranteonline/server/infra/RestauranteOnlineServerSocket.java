@@ -201,8 +201,12 @@ public class RestauranteOnlineServerSocket implements Runnable {
                     processPostComponente(protocolRequest);
                 }
                 if (protocolRequest.getAction().equals("gets")) {
-                    // Consultar todos los componenetes
+                    // Consultar todos los componentes
                     processGetListComponentes();
+                }
+                if (protocolRequest.getAction().equals("getsA")){
+                    // Consultar todos los componentes de un almuerzo
+                    proccessGetListComponentesAlmuerzo(protocolRequest);
                 }
                 break;
             case "Almuerzo":
@@ -416,6 +420,17 @@ public class RestauranteOnlineServerSocket implements Runnable {
         Gson gson = new Gson();
         String strObject = gson.toJson(parLista);
         return strObject;    
+    }
+
+    private void proccessGetListComponentesAlmuerzo(Protocol protocolRequest) {
+        String almuId = protocolRequest.getParameters().get(0).getValue();
+        List<Componente> listaComponentes = serviceComponente.ListComponentesAlmuerzo(almuId);
+        if (!listaComponentes.isEmpty()) {
+            output.println(ArrayToJSON(listaComponentes));
+        } else {
+            String errorJson = generateNotFoundErrorJson();
+            output.println(errorJson);
+        }
     }
 
 }

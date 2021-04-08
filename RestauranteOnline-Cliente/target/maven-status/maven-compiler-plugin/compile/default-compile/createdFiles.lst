@@ -7,6 +7,7 @@ co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo$1.class
 co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante$6.class
 co\unicauca\restauranteonline\presentacion\GUIRestaurantesDisponibles$2.class
 co\unicauca\restauranteonline\client\access\AlmuerzoAccessImplSockets$1.class
+co\unicauca\restauranteonline\client\domain\services\RestauranteService.class
 co\unicauca\restauranteonline\client\access\ICustomerAccess.class
 co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo$4.class
 co\unicauca\restauranteonline\presentacion\GUIListaComponentes$1.class
@@ -16,6 +17,7 @@ co\unicauca\restauranteonline\presentacion\GUIAdmin$1.class
 co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo.class
 co\unicauca\restauranteonline\presentacion\GUIRestaurantesDisponibles$3.class
 co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante$7.class
+co\unicauca\restauranteonline\client\access\IRestauranteAccess.class
 co\unicauca\restauranteonline\presentacion\GUIListaComponentes$4.class
 co\unicauca\restauranteonline\presentacion\GUIAdmin$4.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarComponente.class
@@ -29,6 +31,7 @@ co\unicauca\restauranteonline\presentacion\GUILogin$4.class
 co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante$1.class
 co\unicauca\restauranteonline\presentacion\GUIListaComponentes$2.class
 co\unicauca\restauranteonline\presentacion\GUIAdmin.class
+co\unicauca\restauranteonline\client\access\RestauranteAccessImplSockets.class
 co\unicauca\restauranteonline\presentacion\GUIAdmin$2.class
 co\unicauca\restauranteonline\client\access\CustomerAccessImplSockets.class
 co\unicauca\resturanteonline\client\domain\User.class
@@ -55,3 +58,4 @@ co\unicauca\restauranteonline\client\access\IComponentesAccess.class
 co\unicauca\restauranteonline\client\infra\Messages.class
 co\unicauca\restauranteonline\presentacion\Main.class
 co\unicauca\restauranteonline\client\access\Factory.class
+co\unicauca\restauranteonline\client\infra\RestauranteSocket.class
