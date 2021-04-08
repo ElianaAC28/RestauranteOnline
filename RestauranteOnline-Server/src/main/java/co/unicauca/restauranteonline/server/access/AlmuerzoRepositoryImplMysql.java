@@ -35,7 +35,7 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
         this.connect();
         try {
 
-            String sql = "SELECT * from Almuerzo;";
+            String sql = "SELECT * FROM Almuerzo;";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
             pstmt.setString(1, idAlmuerzo);
@@ -98,7 +98,7 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
             String sql = "UPDATE ALMUERZO SET ALMUENTRADA='" + almuerzo.getEntradaAlm() + "',ALMUPRINCIPIO='" 
                     + almuerzo.getPrincipioAlm()+"',ALMUPROTEINA='"
                     +almuerzo.getProteinaAlm()+"',ALMUBEBIDA='"
-                    +almuerzo.getBebidaAlm()+"' WHERE ALMUIDE = '"+almuerzo.getIdAlmuerzo()+"';'";
+                    +almuerzo.getBebidaAlm()+"' WHERE ALMUID = '"+almuerzo.getIdAlmuerzo()+"';'";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
             pstmt.setString(1, idAlmuerzo);
@@ -138,17 +138,9 @@ public List<Almuerzo> findAllAlmuerzos() {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
-<<<<<<< HEAD
-
-                objAlmuerzo.setEntradaAlm(res.getString("ALMUENTRADA"));
-                objAlmuerzo.setPrincipioAlm(res.getString("ALMUPRINCIPIO"));
-                objAlmuerzo.setProteinaAlm(res.getString("ALMUPROTEINA"));
-                objAlmuerzo.setBebidaAlm(res.getString("ALMUBEBIDA"));
-=======
                 objAlmuerzo.setIdAlmuerzo(res.getString("ALMUID"));
                 objAlmuerzo.setRestId(res.getString("RESTID"));
                 objAlmuerzo.setCostoAlm(Integer.parseInt(res.getString("ALMUCOSTO")));
->>>>>>> 23c24fed3407ff6c7333d99de02878b1cfe597c9
                 objList.add(objAlmuerzo);
                 objAlmuerzo = new Almuerzo();
 
