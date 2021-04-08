@@ -3,7 +3,7 @@ package co.unicauca.restauranteonline.server.access;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
 import co.unicauca.restauranteonline.server.access.ComponenteRepositoryImplMysql;
 import co.unicauca.restauranteonline.server.access.IComponenteRepository;
-import co.unicauca.restauranteonline.server.access.UsuarioRepositoryImplMysql;
+import co.unicauca.restauranteonline.server.access.CustomerRepositoryImplMysql;
 /**
  * Fabrica que se encarga de instanciar un repositorio concreto
  *
@@ -36,16 +36,19 @@ public class Factory {
      *
      * @return una clase hija de la abstracción IRepositorioClientes
      */
-    public IUsuarioRepository getRepository() {
+    public ICustomerRepository getRepository() {
         String type = Utilities.loadProperty("customer.repository");
         if (type.isEmpty()) {
             type = "default";
         }
-        IUsuarioRepository result = null;
+        ICustomerRepository result = null;
 
         switch (type) {
+//            case "default":
+//    //            result = new CustomerRepositoryImplArrays();
+//                break;
             case "mysql":
-                result = new UsuarioRepositoryImplMysql();
+                result = new CustomerRepositoryImplMysql();
                 break;
         }
 
@@ -72,11 +75,13 @@ public class Factory {
         return result;
     }
     
-    /**
-     * Método que crea una instancia concreta de la jerarquia IAlmuerzorepository.
+     /**
+     * Método que crea una instancia concreta de la jerarquia IComponenterepository.
      *
-     * @return una clase hija de la abstracción IAlmuerzorepository.
-    */
+     * @return una clase hija de la abstracción IComponenterepository.
+     */
+    
+    
     public IAlmuerzoRepository getRepositoryAlmuerzo() {
        String type = Utilities.loadProperty("customer.repository");
         if (type.isEmpty()) {
@@ -88,28 +93,6 @@ public class Factory {
          
             case "mysql":
                 result = new AlmuerzoRepositoryImplMysql();
-                break;
-        }
-
-        return result;
-    }
-    
-    /**
-     * Método que crea una instancia concreta de la jerarquia IRestauranterepository.
-     *
-     * @return una clase hija de la abstracción IRestauranterepository.
-    */
-    public IRestauranteRepository getRepositoryRestaurante() {
-       String type = Utilities.loadProperty("customer.repository");
-        if (type.isEmpty()) {
-            type = "default";
-        }
-        IRestauranteRepository result = null;
-
-        switch (type) {
-         
-            case "mysql":
-                result = new RestauranteRepositoryImplMysql();
                 break;
         }
 

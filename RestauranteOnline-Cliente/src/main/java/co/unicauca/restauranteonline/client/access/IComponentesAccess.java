@@ -15,7 +15,7 @@ public interface IComponentesAccess {
     /**
      * Buscar un Plato utlizando un socket
      *
-     * @param id Id del componente
+     * @param id Id del restaurante
      * @return Objeto restaurant
      * @throws Exception
      */
@@ -37,12 +37,4 @@ public interface IComponentesAccess {
      * @throws Exception
      */
     public List<Componente> ListComponentes() throws Exception;
-    
-    /**
-     * Retorna una lista con los componentes relacionados con un almuerzo.
-     *
-     * @return List<Componente> Lista de componentes
-     * @throws Exception
-     */
-    public List<Componente> ListComponentesAlmuerzo(String almuId) throws Exception;
 }

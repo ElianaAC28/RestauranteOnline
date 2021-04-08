@@ -34,14 +34,14 @@ public class Factory {
      *
      * @return una clase hija de la abstracción IRepositorioClientes
      */
-    public IUsuarioAccess getUsuarioService() {
+    public ICustomerAccess getCustomerService() {
 
-        IUsuarioAccess result = null;
+        ICustomerAccess result = null;
         String type = Utilities.loadProperty("customer.service");
 
         switch (type) {
             case "default":
-                result = new UsuarioAccessImplSockets();
+                result = new CustomerAccessImplSockets();
                 break;
         }
 
@@ -73,20 +73,6 @@ public class Factory {
         switch (type) {
             case "default":
                 result = new AlmuerzoAccessImplSockets();
-                break;
-        }
-
-        return result;
-    }
-    
-    public IRestauranteAccess getRestauranteService() {
-
-        IRestauranteAccess result = null;
-        String type = Utilities.loadProperty("customer.service");
-
-        switch (type) {
-            case "default":
-                result = new RestauranteAccessImplSockets();
                 break;
         }
 

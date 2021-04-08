@@ -222,26 +222,6 @@ public class ComponenteAccessImplSockets implements IComponentesAccess{
     }
     
     /**
-     * Crea una solicitud json para ser enviada por el socket
-     *
-     *
-     * @return solicitud de consulta de restaurantes en formato Json, algo como:
-     * {"resource":"Componentes","action":"gets","parameters":[]}
-     */
-    private String findAllComponentesAlmRequestJson(String almuId) {
-
-        Protocol protocol = new Protocol();
-        protocol.setResource("Componente");
-        protocol.setAction("getsA");
-        protocol.addParameter("almuId", almuId);
-        Gson gson = new Gson();
-        String requestJson = gson.toJson(protocol);
-        System.out.println("json: " + requestJson);
-
-        return requestJson;
-    }
-    
-    /**
      * Busca todos los Componentes. Utiliza socket para pedir el servicio al
      * servidor
      *
@@ -273,42 +253,6 @@ public class ComponenteAccessImplSockets implements IComponentesAccess{
                 List<Componente> componente = jsonToListComponentes(jsonResponse);
                 return componente;
             }
-        }    
-    }
-
-    /**
-     * Busca todos los Componentes. Utiliza socket para pedir el servicio al
-     * servidor
-     *
-     * @return Lista de Componentes de un almuerzo.
-     * @throws Exception cuando no pueda conectarse con el servidor
-     */
-    @Override
-    public List<Componente> ListComponentesAlmuerzo(String almuId) throws Exception {
-        String jsonResponse = null;
-        String requestJson = findAllComponentesAlmRequestJson(almuId);
-
-        try {
-            mySocket.connect();
-            jsonResponse = mySocket.sendStream(requestJson);
-            mySocket.closeStream();
-            mySocket.disconnect();
-        } catch (IOException ex) {
-            Logger.getLogger(ComponenteAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
-        }
-        if (jsonResponse == null) {
-            throw new Exception("No se pudo conectar con el servidor. Revise la red o que el servidor este escuchando");
-        } else {
-            if (jsonResponse.contains("error")) {
-                //Devolvio algun error
-                Logger.getLogger(ComponenteAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
-                throw new Exception(extractMessages(jsonResponse));
-            } else {
-                //Encontro el Componente
-                List<Componente> componente = jsonToListComponentes(jsonResponse);
-                return componente;
-            }
-        } 
-    }
+        }    }
 
 }

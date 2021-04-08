@@ -7,6 +7,7 @@ import co.unicauca.restauranteonline.client.access.IAlmuerzoAccess;
 import co.unicauca.restauranteonline.client.access.IComponentesAccess;
 import co.unicauca.restauranteonline.commons.domain.Componente;
 import co.unicauca.restauranteonline.commons.infra.JsonError;
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +46,22 @@ public Almuerzo updateAlmuerzo(String idAlmuerzo) throws Exception {
             }
         }
         return repositoryAlm.findAllAlmuerzos();
+    }
+    
+     public String CreateAlmuerzo(Almuerzo parAlmuerzo) {
+        List<JsonError> errors = new ArrayList<>();
+        if (parAlmuerzo.getIdAlmuerzo().isEmpty() || parAlmuerzo.getEntradaAlm().isEmpty() || parAlmuerzo.getPrincipioAlm().isEmpty()
+                || parAlmuerzo.getProteinaAlm().isEmpty() || parAlmuerzo.getBebidaAlm().isEmpty() || parAlmuerzo.getCostoAlm()==null || parAlmuerzo. getRestId().isEmpty())
+        
+        {
+            errors.add(new JsonError("400", "BAD_REQUEST", "LA INFORMACION X ES OBLIGATORIA "));
+        }
+        if (!errors.isEmpty()) {
+            Gson gson = new Gson();
+            String errorJson = gson.toJson(errors);
+            return errorJson;
+        }
+        return repositoryAlm.createAlmuerzo(parAlmuerzo);
     }
     
 

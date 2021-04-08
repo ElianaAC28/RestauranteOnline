@@ -5,9 +5,6 @@
  */
 package co.unicauca.restauranteonline.presentacion;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author SoftwareTeam
@@ -176,12 +173,7 @@ public class GUIAdmin extends javax.swing.JFrame {
 
     private void btnListarCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarCompActionPerformed
         // TODO add your handling code here:
-        GUIListaComponentes lista = null;
-        try {
-            lista = new GUIListaComponentes();
-        } catch (Exception ex) {
-            Logger.getLogger(GUIAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        GUIListaComponentes lista = new GUIListaComponentes();
         lista.setVisible(true);
         this.dispose();
          

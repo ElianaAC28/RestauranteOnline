@@ -133,7 +133,17 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
         return requestJson;
     }
 
-  
+    private String updateAlmuerzosRequestJson(String idAlmuerzo) {
+
+        Protocol protocol = new Protocol();
+        protocol.setResource("Almuerzo");
+        protocol.setAction("post");
+        Gson gson = new Gson();
+        String requestJson = gson.toJson(protocol);
+        System.out.println("json: " + requestJson);
+
+        return requestJson;
+    }
 
     /**
      * Busca todos los Componentes. Utiliza socket para pedir el servicio al
@@ -173,7 +183,81 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
 
     @Override
     public Almuerzo updateAlmuerzo(String idAlmuerzo) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String jsonResponse = null;
+        String requestJson = updateAlmuerzosRequestJson(idAlmuerzo);
+        try {
+            mySocket.connect();
+            jsonResponse = mySocket.sendStream(requestJson);
+            mySocket.closeStream();
+            mySocket.disconnect();
+
+        } catch (IOException ex) {
+            Logger.getLogger(AlmuerzoAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+        }
+        if (jsonResponse == null) {
+            throw new Exception("No se pudo conectar con el servidor. Revise la red o que el servidor esté escuchando. ");
+        } else {
+            if (jsonResponse.contains("error")) {
+                //Devolvió algún error
+                Logger.getLogger(AlmuerzoAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                throw new Exception(extractMessages(jsonResponse));
+            } else {
+                //Encontró el customer
+                Almuerzo alm = jsonToAlmuerzo(jsonResponse);
+                return alm;
+            }
+        }
+
+    }
+
+    private String createAlmuerzoRequestJson(Almuerzo parAlmuerzo) {
+
+        Protocol protocol = new Protocol();
+        protocol.setResource("Almuerzo");
+        protocol.setAction("add");
+        protocol.addParameter("idAlmuerzo", parAlmuerzo.getIdAlmuerzo());
+        protocol.addParameter("entradaAlm", parAlmuerzo.getEntradaAlm());
+        protocol.addParameter("principioAlm", parAlmuerzo.getPrincipioAlm());
+        protocol.addParameter("proteinaAlm", parAlmuerzo.getProteinaAlm());
+        protocol.addParameter("bebidaAlm", parAlmuerzo.getBebidaAlm());  
+        protocol.addParameter("restId", parAlmuerzo.getRestId());  
+        protocol.addParameter("costoAlm", parAlmuerzo.getCostoAlm()+"");
+        Gson gson = new Gson();
+        String requestJson = gson.toJson(protocol);
+        System.out.println("json: " + requestJson);
+
+        return requestJson;
+    }
+
+    @Override
+    public String createAlmuerzo(Almuerzo almuerzo) throws Exception {
+        String jsonResponse = null;
+        String requestJson = createAlmuerzoRequestJson(almuerzo);
+        try {
+            mySocket.connect();
+            jsonResponse = mySocket.sendStream(requestJson);
+            mySocket.closeStream();
+            mySocket.disconnect();
+
+        } catch (IOException ex) {
+            Logger.getLogger(AlmuerzoAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+        }
+        if (jsonResponse == null) {
+            throw new Exception("No se pudo conectar con el servidor");
+        } else {
+
+            if (jsonResponse.contains("error")) {
+                //Devolvió algún error                
+                Logger.getLogger(AlmuerzoAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                throw new Exception(extractMessages(jsonResponse));
+            } else {
+
+                return almuerzo.getIdAlmuerzo();
+                //    customer.getId();
+            }
+
+        }
+
     }
 
 }

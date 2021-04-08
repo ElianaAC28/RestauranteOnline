@@ -289,7 +289,6 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
         // TODO add your handling code here:
         GUIAdmin admin = new GUIAdmin();
         admin.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

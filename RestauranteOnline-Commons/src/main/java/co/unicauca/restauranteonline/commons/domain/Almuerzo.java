@@ -10,13 +10,14 @@ package co.unicauca.restauranteonline.commons.domain;
  * @author AC
  */
 public class Almuerzo {
+
     String idAlmuerzo;
-    String restId;
     String entradaAlm;
     String principioAlm;
     String proteinaAlm;
     String bebidaAlm;
-    int costoAlm;
+    String restId;
+    Integer costoAlm;
 
     /**
      *
@@ -24,13 +25,13 @@ public class Almuerzo {
     public Almuerzo() {
     }
 
-    public Almuerzo(String idAlmuerzo, String restId, String entradaAlm, String principioAlm, String proteinaAlm, String bebidaAlm, int costoAlm) {
+    public Almuerzo(String idAlmuerzo, String entradaAlm, String principioAlm, String proteinaAlm, String bebidaAlm, String restId, Integer costoAlm) {
         this.idAlmuerzo = idAlmuerzo;
-        this.restId = restId;
         this.entradaAlm = entradaAlm;
         this.principioAlm = principioAlm;
         this.proteinaAlm = proteinaAlm;
         this.bebidaAlm = bebidaAlm;
+        this.restId = restId;
         this.costoAlm = costoAlm;
     }
 
@@ -41,16 +42,6 @@ public class Almuerzo {
     public void setIdAlmuerzo(String idAlmuerzo) {
         this.idAlmuerzo = idAlmuerzo;
     }
-
-    public String getRestId() {
-        return restId;
-    }
-
-    public void setRestId(String restId) {
-        this.restId = restId;
-    }
-    
-    
 
     public String getEntradaAlm() {
         return entradaAlm;
@@ -84,27 +75,22 @@ public class Almuerzo {
         this.bebidaAlm = bebidaAlm;
     }
 
-    public int getCostoAlm() {
+    public String getRestId() {
+        return restId;
+    }
+
+    public void setRestId(String restId) {
+        this.restId = restId;
+    }
+
+    public Integer getCostoAlm() {
         return costoAlm;
     }
 
-    public void setCostoAlm(int costoAlm) {
+    public void setCostoAlm(Integer costoAlm) {
         this.costoAlm = costoAlm;
     }
 
-    /**
-     *
-     * @param idAlmuerzo
-     * @param entradaAlm
-     * @param principioAlm
-     * @param proteinaAlm
-     * @param bebidaAlm
-     * @param costoAlm
-     */
-   
-
-   
-
     
-    
+
 }

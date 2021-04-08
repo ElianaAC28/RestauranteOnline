@@ -25,6 +25,4 @@ public interface IComponenteRepository {
     public String findComponente();
     
     public List<Componente> findAllComponentes();
-    
-    public List<Componente> findAllComponentesAlmuerzo(String almuId);
 }

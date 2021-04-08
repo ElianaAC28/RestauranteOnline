@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 public interface IAlmuerzoAccess {
+    public String createAlmuerzo(Almuerzo almuerzo) throws Exception;
 
    public Almuerzo updateAlmuerzo(String idAlmuerzo)throws Exception;
 

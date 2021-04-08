@@ -61,20 +61,4 @@ public class ComponenteService {
         }
         return repoComponente.findAllComponentes();
     }
-    
-    /**
-     * Metodo encargado de obtener una lista de todos los componentes de un almuerzo
-     * existentes.
-     *
-     * @return llamado a metodo findAllComponentes.
-     */
-    public List<Componente> ListComponentesAlmuerzo(String almuId) {
-        List<JsonError> errors = new ArrayList<>();
-        if (!repoComponente.findAllComponentesAlmuerzo(almuId).isEmpty()) {
-            if (!errors.isEmpty()) {
-                errors.add(new JsonError("400", "BAD_REQUEST", "ERROR AL GENERAR PEDIDO SQL"));
-            }
-        }
-        return repoComponente.findAllComponentesAlmuerzo(almuId);
-    }
 }

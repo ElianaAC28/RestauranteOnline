@@ -10,189 +10,211 @@ import java.util.Date;
 public class Restaurante {
 
     /**
-     * id
+     * NIT
      */
-    private String restId;
+    private String nit;
     /**
      * Nombre del restaurante
      */
-    private String restNombre;
+    private String nombreRestaurante;
     /**
      * Eslogan
      */
-    private String restEslogan;
+    private String eslogan;
     /**
      * Propietario
      */
-    private String restPropietario;
+    private String propietario;
     /**
      * Dirección
      */
-    private String restDireccion;
+    private String direccion;
     /**
      * Telefono
      */
-    private String restTelefono;
+    private String telefono;
     /**
      * Ciudad
      */
-    private String restCiudad;
+    private String ciudad;
     /**
      * Administrador
      */
-    private String restAdmin;
-
+    private String administrador;
+    /**
+     * Fotografía
+     */
+    private String fotografía;
    
 
     /**
      * Constructor parametrizado
      *
-     * @param restId
-     * @param restEslogan
-     * @param restNombre
-     * @param restPropietario
-     * @param restTelefono
-     * @param restDireccion
-     * @param restAdmin
-     * @param restCiudad
+     * @param nit
+     * @param eslogan
+     * @param nombreRestaurante
+     * @param propietario
+     * @param telefono
+     * @param direccion
+     * @param administrador
+     * @param ciudad
+     * @param fotografía
      */
-    public Restaurante(String restId, String restNombre, String restEslogan, String restPropietario, String restDireccion, String restTelefono, String restCiudad, String restAdmin) {    
-        this.restId = restId;
-        this.restNombre = restNombre;
-        this.restEslogan = restEslogan;
-        this.restPropietario = restPropietario;
-        this.restDireccion = restDireccion;
-        this.restTelefono = restTelefono;
-        this.restCiudad = restCiudad;
-        this.restAdmin = restAdmin;
+    public Restaurante(String nit, String nombreRestaurante, String eslogan, String propietario, String direccion, String telefono, String ciudad, String administrador, String fotografía) {    
+        this.nit = nit;
+        this.nombreRestaurante = nombreRestaurante;
+        this.eslogan = eslogan;
+        this.propietario = propietario;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.ciudad = ciudad;
+        this.administrador = administrador;
+        this.fotografía = fotografía;
+
     }
 
     /**
      *
      * @return
      */
-    public String getRestId() {
-        return restId;
+    public String getNit() {
+        return nit;
     }
 
     /**
      *
-     * @param restId
+     * @param nit
      */
-    public void setRestId(String restId) {
-        this.restId = restId;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getRestNombre() {
-        return restNombre;
-    }
-
-    /**
-     *
-     * @param restNombre
-     */
-    public void setRestNombre(String restNombre) {
-        this.restNombre = restNombre;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
     /**
      *
      * @return
      */
-    public String getRestEslogan() {
-        return restEslogan;
+    public String getNombreRestaurante() {
+        return nombreRestaurante;
     }
 
     /**
      *
-     * @param restEslogan
+     * @param nombreRestaurante
      */
-    public void setRestEslogan(String restEslogan) {
-        this.restEslogan = restEslogan;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getRestPropietario() {
-        return restPropietario;
-    }
-
-    /**
-     *
-     * @param restPropietario
-     */
-    public void setRestPropietario(String restPropietario) {
-        this.restPropietario = restPropietario;
+    public void setNombreRestaurante(String nombreRestaurante) {
+        this.nombreRestaurante = nombreRestaurante;
     }
 
     /**
      *
      * @return
      */
-    public String getRestDireccion() {
-        return restDireccion;
+    public String getEslogan() {
+        return eslogan;
     }
 
     /**
      *
-     * @param restDireccion
+     * @param eslogan
      */
-    public void setRestDireccion(String restDireccion) {
-        this.restDireccion = restDireccion;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getRestTelefono() {
-        return restTelefono;
-    }
-
-    /**
-     *
-     * @param restTelefono
-     */
-    public void setRestTelefono(String restTelefono) {
-        this.restTelefono = restTelefono;
+    public void setEslogan(String eslogan) {
+        this.eslogan = eslogan;
     }
 
     /**
      *
      * @return
      */
-    public String getRestCiudad() {
-        return restCiudad;
+    public String getPropietario() {
+        return propietario;
     }
 
     /**
      *
-     * @param restCiudad
+     * @param propietario
      */
-    public void setRestCiudad(String restCiudad) {
-        this.restCiudad = restCiudad;
+    public void setPropietario(String propietario) {
+        this.propietario = propietario;
     }
 
     /**
      *
      * @return
      */
-    public String getRestAdmin() {
-        return restAdmin;
+    public String getDireccion() {
+        return direccion;
     }
 
     /**
      *
-     * @param restAdmin
+     * @param direccion
      */
-    public void setRestAdmin(String restAdmin) {
-        this.restAdmin = restAdmin;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getTelefono() {
+        return telefono;
+    }
+
+    /**
+     *
+     * @param telefono
+     */
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    /**
+     *
+     * @param ciudad
+     */
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getAdministrador() {
+        return administrador;
+    }
+
+    /**
+     *
+     * @param administrador
+     */
+    public void setAdministrador(String administrador) {
+        this.administrador = administrador;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getFotografía() {
+        return fotografía;
+    }
+
+    /**
+     *
+     * @param fotografía
+     */
+    public void setFotografía(String fotografía) {
+        this.fotografía = fotografía;
     }
     
 
