@@ -15,6 +15,7 @@ co\unicauca\restauranteonline\client\infra\Security.class
 co\unicauca\restauranteonline\presentacion\GUIAdmin$1.class
 co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo.class
 co\unicauca\restauranteonline\presentacion\GUIRestaurantesDisponibles$3.class
+co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo$7.class
 co\unicauca\restauranteonline\client\access\UsuarioAccessImplSockets.class
 co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante$7.class
 co\unicauca\restauranteonline\client\access\IRestauranteAccess.class
@@ -31,6 +32,7 @@ co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante$1.class
 co\unicauca\restauranteonline\presentacion\GUIListaComponentes$2.class
 co\unicauca\restauranteonline\presentacion\GUIAdmin.class
 co\unicauca\restauranteonline\client\access\RestauranteAccessImplSockets.class
+co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo$6.class
 co\unicauca\restauranteonline\presentacion\GUIAdmin$2.class
 co\unicauca\resturanteonline\client\domain\User.class
 co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo$2.class
@@ -43,6 +45,7 @@ co\unicauca\restauranteonline\client\access\ComponenteAccessImplSockets.class
 co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante$2.class
 co\unicauca\restauranteonline\client\domain\services\ComponenteService.class
 co\unicauca\restauranteonline\client\infra\UsuarioSocket.class
+co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo$5.class
 co\unicauca\restauranteonline\client\access\IUsuarioAccess.class
 co\unicauca\restauranteonline\client\access\ComponenteAccessImplSockets$1.class
 co\unicauca\restauranteonline\client\domain\services\AlmuerzoService.class

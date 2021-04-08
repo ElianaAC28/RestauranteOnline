@@ -17,6 +17,9 @@ public class AlmuerzoService {
     public AlmuerzoService(IAlmuerzoAccess service) {
         this.service = service;
     }
+     public Almuerzo updateAlmuerzo(String idAlmuerzo) throws Exception {
+        return service.updateAlmuerzo(idAlmuerzo);
+    }
 
     public Almuerzo findAlmuerzo(String idAlmuerzo) throws Exception {
         return service.findAlmuerzo(idAlmuerzo);

@@ -22,7 +22,7 @@ public interface IAlmuerzoRepository {
      */
    
 
-    public String uptadeAlmuerzo();
+    public Almuerzo updateAlmuerzo(String idAlmuerzo);
 
     public Almuerzo findAlmuerzo(String idAlmuerzo);
       public List<Almuerzo> findAllAlmuerzos();

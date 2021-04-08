@@ -46,7 +46,6 @@ public class GUILogin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jpnLogin = new javax.swing.JPanel();
-        lblImg = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         lblContra = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
@@ -56,9 +55,6 @@ public class GUILogin extends javax.swing.JFrame {
         btnContinuar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblImg.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        lblImg.setText("[Inser imagen]");
 
         lblUsuario.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblUsuario.setText("Usuario: ");
@@ -77,6 +73,7 @@ public class GUILogin extends javax.swing.JFrame {
         });
 
         lbnIniciarSesion1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        lbnIniciarSesion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo_restaurante .png"))); // NOI18N
         lbnIniciarSesion1.setText("Iniciar Sesión");
 
         btnContinuar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -92,6 +89,10 @@ public class GUILogin extends javax.swing.JFrame {
         jpnLogin.setLayout(jpnLoginLayout);
         jpnLoginLayout.setHorizontalGroup(
             jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLoginLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
             .addGroup(jpnLoginLayout.createSequentialGroup()
                 .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnLoginLayout.createSequentialGroup()
@@ -107,28 +108,19 @@ public class GUILogin extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jpnLoginLayout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(lblImg))
-                    .addGroup(jpnLoginLayout.createSequentialGroup()
                         .addGap(179, 179, 179)
-                        .addComponent(btnIniciarSesion)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLoginLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-            .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLoginLayout.createSequentialGroup()
-                    .addContainerGap(261, Short.MAX_VALUE)
-                    .addComponent(lbnIniciarSesion1)
-                    .addGap(246, 246, 246)))
+                        .addComponent(btnIniciarSesion))
+                    .addGroup(jpnLoginLayout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addComponent(lbnIniciarSesion1)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jpnLoginLayout.setVerticalGroup(
             jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblImg)
-                .addGap(128, 128, 128)
+                .addGap(130, 130, 130)
+                .addComponent(lbnIniciarSesion1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsuario)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -141,11 +133,6 @@ public class GUILogin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnContinuar)
                 .addGap(42, 42, 42))
-            .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jpnLoginLayout.createSequentialGroup()
-                    .addGap(30, 30, 30)
-                    .addComponent(lbnIniciarSesion1)
-                    .addContainerGap(482, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -162,7 +149,7 @@ public class GUILogin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jpnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(743, Short.MAX_VALUE))
+                .addContainerGap(602, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -262,7 +249,6 @@ public class GUILogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jpnLogin;
     private javax.swing.JLabel lblContra;
-    private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lbnIniciarSesion1;
     private javax.swing.JTextField txtUsuario;

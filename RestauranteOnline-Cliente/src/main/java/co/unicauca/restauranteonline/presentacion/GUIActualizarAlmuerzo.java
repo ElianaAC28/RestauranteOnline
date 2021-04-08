@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,21 +51,30 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
 
         pnlActualizar = new javax.swing.JPanel();
         jLabelActualizarAlmuerzo = new javax.swing.JLabel();
-        btnActualizar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtIdAlmuerzo = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblActualizar = new javax.swing.JTable();
+        btnEditar = new javax.swing.JButton();
+        lblEntrada = new javax.swing.JLabel();
+        lblPrincipio = new javax.swing.JLabel();
+        lblProteina = new javax.swing.JLabel();
+        lblCosto = new javax.swing.JLabel();
+        txtPrincipioAct = new javax.swing.JTextField();
+        txtEntradaAct = new javax.swing.JTextField();
+        txtProteinaAct = new javax.swing.JTextField();
+        txtBebidaAct = new javax.swing.JTextField();
+        btnLimpiar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlActualizar.setPreferredSize(new java.awt.Dimension(600, 600));
 
         jLabelActualizarAlmuerzo.setFont(new java.awt.Font("Verdana", 0, 20)); // NOI18N
         jLabelActualizarAlmuerzo.setText("ACTUALIZAR ALMUERZO");
-
-        btnActualizar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btnActualizar.setText("Actualizar");
 
         btnAtras.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnAtras.setText("Atras");
@@ -85,6 +95,7 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
             }
         });
 
+        tblActualizar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         tblActualizar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -107,55 +118,98 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tblActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane2.setViewportView(tblActualizar);
+
+        btnEditar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlActualizarLayout = new javax.swing.GroupLayout(pnlActualizar);
         pnlActualizar.setLayout(pnlActualizarLayout);
         pnlActualizarLayout.setHorizontalGroup(
             pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlActualizarLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlActualizarLayout.createSequentialGroup()
-                        .addComponent(jLabelActualizarAlmuerzo)
-                        .addGap(0, 185, Short.MAX_VALUE))
-                    .addGroup(pnlActualizarLayout.createSequentialGroup()
-                        .addComponent(txtIdAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBuscar)
-                        .addGap(93, 93, 93))))
+                .addGap(164, 164, 164)
+                .addComponent(jLabelActualizarAlmuerzo)
+                .addGap(0, 185, Short.MAX_VALUE))
             .addGroup(pnlActualizarLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlActualizarLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlActualizarLayout.createSequentialGroup()
-                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlActualizarLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+            .addGroup(pnlActualizarLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(txtIdAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(btnBuscar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlActualizarLayout.setVerticalGroup(
             pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlActualizarLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jLabelActualizarAlmuerzo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
                 .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIdAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
+                    .addComponent(txtIdAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addGap(94, 94, 94)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(pnlActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(178, 178, 178))
         );
+
+        lblEntrada.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEntrada.setText("Entrada");
+
+        lblPrincipio.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblPrincipio.setText("Principio");
+
+        lblProteina.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblProteina.setText("Proteina");
+
+        lblCosto.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblCosto.setText("Costo");
+
+        txtPrincipioAct.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        txtEntradaAct.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        txtProteinaAct.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        txtBebidaAct.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtBebidaAct.setToolTipText("");
+
+        btnLimpiar.setText("limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        btnActualizar.setText("Actualzar");
+        btnActualizar.setActionCommand("");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,11 +218,56 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblEntrada)
+                                    .addComponent(lblPrincipio)
+                                    .addComponent(lblProteina)
+                                    .addComponent(lblCosto))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEntradaAct, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                    .addComponent(txtPrincipioAct)
+                                    .addComponent(txtProteinaAct)
+                                    .addComponent(txtBebidaAct)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(140, 140, 140)
+                                .addComponent(btnLimpiar)))
+                        .addGap(205, 205, 205))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(btnActualizar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEntrada)
+                    .addComponent(txtEntradaAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPrincipio)
+                    .addComponent(txtPrincipioAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblProteina)
+                    .addComponent(txtProteinaAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCosto)
+                    .addComponent(txtBebidaAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(75, 75, 75)
+                .addComponent(btnLimpiar)
+                .addGap(57, 57, 57)
+                .addComponent(btnActualizar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -176,6 +275,7 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
     
+       
          try {
             llenarTabla();
         } catch (Exception ex) {
@@ -191,6 +291,28 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
         admin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        int fila = tblActualizar.getSelectedRow();
+        if(fila>=0){
+            txtEntradaAct.setText (tblActualizar.getValueAt(fila, 1).toString());
+            txtPrincipioAct.setText (tblActualizar.getValueAt(fila, 2).toString());
+            txtProteinaAct.setText (tblActualizar.getValueAt(fila, 3).toString());
+            txtBebidaAct.setText (tblActualizar.getValueAt(fila, 4).toString());
+        }else
+            
+           JOptionPane.showMessageDialog(null, "fila no selecciona");
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,17 +374,32 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
                 }
         ));
     }
-
+    void limpiar(){
+        txtEntradaAct.setText("");
+        txtPrincipioAct.setText("");
+        txtBebidaAct.setText("");
+        txtProteinaAct.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelActualizarAlmuerzo;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblCosto;
+    private javax.swing.JLabel lblEntrada;
+    private javax.swing.JLabel lblPrincipio;
+    private javax.swing.JLabel lblProteina;
     private javax.swing.JPanel pnlActualizar;
     private javax.swing.JTable tblActualizar;
+    private javax.swing.JTextField txtBebidaAct;
+    private javax.swing.JTextField txtEntradaAct;
     private javax.swing.JTextField txtIdAlmuerzo;
+    private javax.swing.JTextField txtPrincipioAct;
+    private javax.swing.JTextField txtProteinaAct;
     // End of variables declaration//GEN-END:variables
 
 }

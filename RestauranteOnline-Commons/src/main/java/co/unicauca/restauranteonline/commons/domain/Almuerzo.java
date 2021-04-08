@@ -24,7 +24,7 @@ public class Almuerzo {
     public Almuerzo() {
     }
 
-    public Almuerzo(String idAlmuerzo, String restId,String entradaAlm, String principioAlm, String proteinaAlm, String bebidaAlm, int costoAlm) {
+    public Almuerzo(String idAlmuerzo, String restId, String entradaAlm, String principioAlm, String proteinaAlm, String bebidaAlm, int costoAlm) {
         this.idAlmuerzo = idAlmuerzo;
         this.restId = restId;
         this.entradaAlm = entradaAlm;

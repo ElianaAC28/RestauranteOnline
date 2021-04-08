@@ -210,7 +210,11 @@ public class RestauranteOnlineServerSocket implements Runnable {
                 }
                 break;
             case "Almuerzo":
-                 if (protocolRequest.getAction().equals("gets")) {
+                if (protocolRequest.getAction().equals("gets")) {
+                    // Consultar todos los almuerzos
+                    processGetListAlmuerzo();
+                }
+                if (protocolRequest.getAction().equals("post")) {
                     // Consultar todos los almuerzos
                     processGetListAlmuerzo();
                 }

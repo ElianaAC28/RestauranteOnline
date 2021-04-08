@@ -35,15 +35,16 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
         this.connect();
         try {
 
-            String sql = "SELECT * from Almuerzo where ALMUID =? ";
+            String sql = "SELECT * FROM Almuerzo;";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, idAlmuerzo);
-
             ResultSet res = pstmt.executeQuery();
+            pstmt.setString(1, idAlmuerzo);
+            
             if (res.next()) {
 
                 
                 almuerzo = new Almuerzo();
+
                 almuerzo.setIdAlmuerzo(res.getString("ALMUID"));
                 almuerzo.setRestId(res.getString("RESTID"));
                 almuerzo.setCostoAlm(res.getInt("ALMUCOSTO"));
@@ -58,7 +59,7 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
         }
         return almuerzo;
     }
-    
+
     
 
     public int connect() {
@@ -87,19 +88,53 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
             Logger.getLogger(AlmuerzoRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);
         }
     }
+@Override
+    public Almuerzo updateAlmuerzo(String idAlmuerzo) {
+        Almuerzo almuerzo = null;
 
-    @Override
-    public String uptadeAlmuerzo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.connect();
+        try {
+
+            String sql = "UPDATE ALMUERZO SET ALMUENTRADA='" + almuerzo.getEntradaAlm() + "',ALMUPRINCIPIO='" 
+                    + almuerzo.getPrincipioAlm()+"',ALMUPROTEINA='"
+                    +almuerzo.getProteinaAlm()+"',ALMUBEBIDA='"
+                    +almuerzo.getBebidaAlm()+"' WHERE ALMUID = '"+almuerzo.getIdAlmuerzo()+"';'";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet res = pstmt.executeQuery();
+            pstmt.setString(1, idAlmuerzo);
+
+            if (res.next()) {
+
+                almuerzo = new Almuerzo();
+
+                almuerzo.setIdAlmuerzo(res.getString("ALMUID"));
+                almuerzo.setEntradaAlm(res.getString("ALMUENTRADA"));
+                almuerzo.setPrincipioAlm(res.getString("ALMUPRINCIPIO"));
+                almuerzo.setBebidaAlm(res.getString("ALMUBEBIDA"));
+                almuerzo.setCostoAlm(res.getInt("ALMUCOSTO"));
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe un almuerzo con ese Id");
+            }
+            pstmt.close();
+   
+            this.disconnect();
+        } catch (SQLException ex) {
+         Logger.getLogger(AlmuerzoRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar el restaurante de la base de datos", ex);
+        }
+        return almuerzo;
     }
+    
 
-    @Override
-    public List<Almuerzo> findAllAlmuerzos() {
+
+public List<Almuerzo> findAllAlmuerzos() {
         List<Almuerzo> objList = new ArrayList<Almuerzo>();
         this.connect();
         Almuerzo objAlmuerzo = new Almuerzo();
         try {
-            String sql = "SELECT * FROM ALMUERZO;";
+
+            String sql = "SELECT * FROM ALMUERZO ;";
+
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
@@ -108,9 +143,11 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
                 objAlmuerzo.setCostoAlm(Integer.parseInt(res.getString("ALMUCOSTO")));
                 objList.add(objAlmuerzo);
                 objAlmuerzo = new Almuerzo();
+
             }
             this.disconnect();
-        } catch (SQLException ex) {
+
+} catch (SQLException ex) {
             Logger.getLogger(AlmuerzoRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar el restaurante de la base de datos", ex);
         }
         return objList;
