@@ -121,7 +121,6 @@ public class ComponenteRepositoryImplMysql implements IComponenteRepository {
     private void disconnect() {
         try {
             conn.close();
-            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(ComponenteRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);
         }

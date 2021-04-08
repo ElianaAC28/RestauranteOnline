@@ -75,13 +75,11 @@ public class Factory {
         return result;
     }
     
-     /**
-     * Método que crea una instancia concreta de la jerarquia IComponenterepository.
+    /**
+     * Método que crea una instancia concreta de la jerarquia IAlmuerzorepository.
      *
-     * @return una clase hija de la abstracción IComponenterepository.
-     */
-    
-    
+     * @return una clase hija de la abstracción IAlmuerzorepository.
+    */
     public IAlmuerzoRepository getRepositoryAlmuerzo() {
        String type = Utilities.loadProperty("customer.repository");
         if (type.isEmpty()) {
@@ -93,6 +91,28 @@ public class Factory {
          
             case "mysql":
                 result = new AlmuerzoRepositoryImplMysql();
+                break;
+        }
+
+        return result;
+    }
+    
+    /**
+     * Método que crea una instancia concreta de la jerarquia IRestauranterepository.
+     *
+     * @return una clase hija de la abstracción IRestauranterepository.
+    */
+    public IRestauranteRepository getRepositoryRestaurante() {
+       String type = Utilities.loadProperty("customer.repository");
+        if (type.isEmpty()) {
+            type = "default";
+        }
+        IRestauranteRepository result = null;
+
+        switch (type) {
+         
+            case "mysql":
+                result = new RestauranteRepositoryImplMysql();
                 break;
         }
 
