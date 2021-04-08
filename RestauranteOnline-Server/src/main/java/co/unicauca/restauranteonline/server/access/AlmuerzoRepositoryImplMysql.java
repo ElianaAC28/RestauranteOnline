@@ -2,7 +2,6 @@ package co.unicauca.restauranteonline.server.access;
 
 import co.unicauca.restauranteonline.commons.domain.Almuerzo;
 import co.unicauca.restauranteonline.commons.domain.Componente;
-import co.unicauca.restauranteonline.commons.domain.Customer;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
 import co.unicauca.restauranteonline.presentacion.GUIActualizarAlmuerzo;
 import java.sql.Connection;
@@ -55,7 +54,7 @@ public class AlmuerzoRepositoryImplMysql implements IAlmuerzoRepository {
             pstmt.close();
             this.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar almuerzo de la base de datos", ex);
+            Logger.getLogger(AlmuerzoRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar almuerzo de la base de datos", ex);
         }
         return almuerzo;
     }

@@ -6,8 +6,8 @@
 package co.unicauca.restauranteonline.presentacion;
 
 import co.unicauca.restauranteonline.client.access.Factory;
-import co.unicauca.restauranteonline.client.access.ICustomerAccess;
-import co.unicauca.restauranteonline.client.domain.services.CustomerService;
+import co.unicauca.restauranteonline.client.access.IUsuarioAccess;
+import co.unicauca.restauranteonline.client.domain.services.UsuarioService;
 import static co.unicauca.restauranteonline.client.infra.Messages.successMessage;
 import static co.unicauca.restauranteonline.client.infra.Messages.warningMessage;
 import java.awt.Graphics;
@@ -182,14 +182,14 @@ public class GUILogin extends javax.swing.JFrame {
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
 // TODO add your handling code here:
         //co.unicauca.restauranteonline.client.infra.Security.usuario = new User(txtUsuario.getText(), Password.getText(), "");
-        ICustomerAccess repo = Factory.getInstance().getCustomerService();
-        CustomerService customerService = new CustomerService(repo);
+        IUsuarioAccess repo = Factory.getInstance().getUsuarioService();
+        UsuarioService customerService = new UsuarioService(repo);
         //Aqui vendria el analizar si el usuario existe en el sistema
         try {
             if(txtUsuario.getText().isEmpty() || Password.getText().isEmpty()){
                 warningMessage("CAMPOS VACIOS", "Atención");
             }
-            boolean login = customerService.autenticarCustomer(txtUsuario.getText(), Password.getText());
+            boolean login = customerService.autenticarUsuario(txtUsuario.getText(), Password.getText());
             if (login) {
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {

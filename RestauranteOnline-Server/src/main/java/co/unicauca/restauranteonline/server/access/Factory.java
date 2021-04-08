@@ -3,7 +3,7 @@ package co.unicauca.restauranteonline.server.access;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
 import co.unicauca.restauranteonline.server.access.ComponenteRepositoryImplMysql;
 import co.unicauca.restauranteonline.server.access.IComponenteRepository;
-import co.unicauca.restauranteonline.server.access.CustomerRepositoryImplMysql;
+import co.unicauca.restauranteonline.server.access.UsuarioRepositoryImplMysql;
 /**
  * Fabrica que se encarga de instanciar un repositorio concreto
  *
@@ -36,19 +36,16 @@ public class Factory {
      *
      * @return una clase hija de la abstracción IRepositorioClientes
      */
-    public ICustomerRepository getRepository() {
+    public IUsuarioRepository getRepository() {
         String type = Utilities.loadProperty("customer.repository");
         if (type.isEmpty()) {
             type = "default";
         }
-        ICustomerRepository result = null;
+        IUsuarioRepository result = null;
 
         switch (type) {
-//            case "default":
-//    //            result = new CustomerRepositoryImplArrays();
-//                break;
             case "mysql":
-                result = new CustomerRepositoryImplMysql();
+                result = new UsuarioRepositoryImplMysql();
                 break;
         }
 
