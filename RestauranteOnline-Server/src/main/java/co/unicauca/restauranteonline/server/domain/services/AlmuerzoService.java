@@ -28,6 +28,9 @@ public class AlmuerzoService {
 public Almuerzo findAlmuerzo(String idAlmuerzo) throws Exception {
         return repositoryAlm.findAlmuerzo(idAlmuerzo);
     }
+public Almuerzo updateAlmuerzo(String idAlmuerzo) throws Exception {
+        return repositoryAlm.updateAlmuerzo(idAlmuerzo);
+    }
   /**
      * Metodo encargado de obtener una lista de todos los componentes
      * existentes.

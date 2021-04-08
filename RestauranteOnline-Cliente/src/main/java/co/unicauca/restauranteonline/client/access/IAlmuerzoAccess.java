@@ -16,7 +16,7 @@ import java.util.List;
 
 public interface IAlmuerzoAccess {
 
-   public String uptadeAlmuerzo()throws Exception;
+   public Almuerzo updateAlmuerzo(String idAlmuerzo)throws Exception;
 
     public Almuerzo findAlmuerzo(String idAlmuerzo)throws Exception;
     

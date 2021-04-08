@@ -133,10 +133,7 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
         return requestJson;
     }
 
-    @Override
-    public String uptadeAlmuerzo() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
 
     /**
      * Busca todos los Componentes. Utiliza socket para pedir el servicio al
@@ -172,6 +169,11 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
             }
         }
 
+    }
+
+    @Override
+    public Almuerzo updateAlmuerzo(String idAlmuerzo) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

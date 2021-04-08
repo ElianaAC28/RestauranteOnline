@@ -203,6 +203,10 @@ public class RestauranteOnlineServerSocket implements Runnable {
                     // Consultar todos los almuerzos
                     processGetListAlmuerzo();
                 }
+                 if (protocolRequest.getAction().equals("post")) {
+                    // Consultar todos los almuerzos
+                    processGetListAlmuerzo();
+                }
         }
 
     }
