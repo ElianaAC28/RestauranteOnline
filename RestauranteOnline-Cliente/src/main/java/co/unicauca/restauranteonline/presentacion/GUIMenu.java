@@ -13,18 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author SoftwareTeam
  * 
  */
-public class GUICiudadRestaurante extends javax.swing.JFrame 
+public class GUIMenu extends javax.swing.JFrame 
 {
 
     /**
      * Creates new form NewJFrame
      */
-    public GUICiudadRestaurante() 
+    public GUIMenu() 
     {
         initComponents();
         setLocationRelativeTo(null);
@@ -61,8 +62,7 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
         jLabel8 = new javax.swing.JLabel();
         cbxProteina = new javax.swing.JComboBox<>();
         cbxBebida = new javax.swing.JComboBox<>();
-        lblIDescr = new javax.swing.JLabel();
-        btnCargarDeNuevo = new javax.swing.JButton();
+        btnRealizarPedido = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -88,7 +88,7 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
         });
 
         lblImagen.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        lblImagen.setText("[Inserte aquí imagen de almuerzo ejecutivo]");
+        lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo_restaurante .png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel4.setText("Entrada:");
@@ -126,18 +126,16 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
             }
         });
 
-        lblIDescr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        lblIDescr.setText("[Retornar descripción del almuerzo ejecutivo]");
-
-        btnCargarDeNuevo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btnCargarDeNuevo.setText("Cargar de nuevo");
-        btnCargarDeNuevo.addActionListener(new java.awt.event.ActionListener() {
+        btnRealizarPedido.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnRealizarPedido.setText("Realizar pedido");
+        btnRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarDeNuevoActionPerformed(evt);
+                btnRealizarPedidoActionPerformed(evt);
             }
         });
 
         btnAtras.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atras3.png"))); // NOI18N
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,9 +153,6 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
                     .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
                         .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                                .addGap(216, 216, 216)
-                                .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
                                 .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,7 +165,12 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
                                     .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
                                         .addComponent(cbxPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
+                                .addGap(180, 180, 180)
+                                .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblImagen)
+                                    .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbxProteina, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,14 +178,8 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
                     .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
                         .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(253, 253, 253)
-                        .addComponent(btnCargarDeNuevo)))
+                        .addComponent(btnRealizarPedido)))
                 .addGap(0, 43, Short.MAX_VALUE))
-            .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblIDescr, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlPlatoEjecutivoLayout.setVerticalGroup(
             pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,10 +187,8 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
                 .addGap(38, 38, 38)
                 .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addGap(90, 90, 90)
-                .addComponent(lblIDescr, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addGap(39, 39, 39)
+                .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(164, 164, 164)
                 .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,7 +202,7 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(79, 79, 79)
                 .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCargarDeNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRealizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -271,15 +263,9 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
-    private void btnCargarDeNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDeNuevoActionPerformed
-        try {
-            limpiar();
-            mostrar();
-        } catch (Exception ex) 
-        {
-            Logger.getLogger(GUIListaComponentes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnCargarDeNuevoActionPerformed
+    private void btnRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarPedidoActionPerformed
+      JOptionPane.showMessageDialog(null, "Su pedido se ha realizado con éxito");
+    }//GEN-LAST:event_btnRealizarPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,14 +284,46 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICiudadRestaurante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICiudadRestaurante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICiudadRestaurante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICiudadRestaurante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -342,14 +360,14 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUICiudadRestaurante().setVisible(true);
+                new GUIMenu().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnCargarDeNuevo;
+    private javax.swing.JButton btnRealizarPedido;
     private javax.swing.JComboBox<String> cbxBebida;
     private javax.swing.JComboBox<String> cbxEntrada;
     private javax.swing.JComboBox<String> cbxPrincipio;
@@ -361,7 +379,6 @@ public class GUICiudadRestaurante extends javax.swing.JFrame
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblIDescr;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JPanel pnlPlatoEjecutivo;
     private javax.swing.JLabel ss;
