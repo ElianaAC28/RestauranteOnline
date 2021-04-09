@@ -17,7 +17,7 @@ public class Almuerzo {
     String proteinaAlm;
     String bebidaAlm;
     String restId;
-    Integer costoAlm;
+    String costoAlm;
 
     /**
      *
@@ -25,7 +25,7 @@ public class Almuerzo {
     public Almuerzo() {
     }
 
-    public Almuerzo(String idAlmuerzo, String entradaAlm, String principioAlm, String proteinaAlm, String bebidaAlm, String restId, Integer costoAlm) {
+    public Almuerzo(String idAlmuerzo, String entradaAlm, String principioAlm, String proteinaAlm, String bebidaAlm, String restId, String costoAlm) {
         this.idAlmuerzo = idAlmuerzo;
         this.entradaAlm = entradaAlm;
         this.principioAlm = principioAlm;
@@ -83,11 +83,11 @@ public class Almuerzo {
         this.restId = restId;
     }
 
-    public Integer getCostoAlm() {
+    public String getCostoAlm() {
         return costoAlm;
     }
 
-    public void setCostoAlm(Integer costoAlm) {
+    public void setCostoAlm(String costoAlm) {
         this.costoAlm = costoAlm;
     }
 

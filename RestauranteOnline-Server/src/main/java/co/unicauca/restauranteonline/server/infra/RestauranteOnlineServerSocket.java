@@ -291,7 +291,8 @@ public class RestauranteOnlineServerSocket implements Runnable {
         objAlm.setPrincipioAlm(protocolRequest.getParameters().get(2).getValue());
         objAlm.setProteinaAlm(protocolRequest.getParameters().get(3).getValue());
         objAlm.setBebidaAlm(protocolRequest.getParameters().get(4).getValue());
-        objAlm.setCostoAlm (Integer.parseInt(protocolRequest.getParameters().get(5).getValue()));
+        objAlm.setCostoAlm ((protocolRequest.getParameters().get(5).getValue()));
+        objAlm.setRestId((protocolRequest.getParameters().get(6).getValue()));
         String response = serviceAlm.CreateAlmuerzo(objAlm);
         output.println(response);
     }

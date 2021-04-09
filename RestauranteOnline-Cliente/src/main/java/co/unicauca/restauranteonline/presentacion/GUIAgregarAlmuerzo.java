@@ -228,7 +228,6 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
                             .addComponent(lblNombreCom))
                         .addGap(16, 16, 16))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblTipoCom3)
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -307,13 +306,15 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
 
         objAlm.setIdAlmuerzo(txtIdAlm.getText());
 
-        objAlm.setEntradaAlm(cbxEntrada.getSelectedItem().toString());
-        objAlm.setPrincipioAlm(cbxPrincipio.getSelectedItem().toString());
-        objAlm.setProteinaAlm(cbxProteina.getSelectedItem().toString());
-        objAlm.setBebidaAlm(cbxBebida.getSelectedItem().toString());
-        componente.setIdRestaurante(1);
+        objAlm.setEntradaAlm(buscarIdCom(cbxEntrada.getSelectedItem().toString()));
+        objAlm.setPrincipioAlm(buscarIdCom(cbxPrincipio.getSelectedItem().toString()));
+        objAlm.setProteinaAlm(buscarIdCom(cbxProteina.getSelectedItem().toString()));
+        objAlm.setBebidaAlm(buscarIdCom(cbxBebida.getSelectedItem().toString()));
+        objAlm.setRestId("1");
+        objAlm.setCostoAlm((txtCosto.getText()));
+        
 
-        objAlm.setCostoAlm(Integer.parseInt(txtCosto.getText()));
+        
         try {
             String response = almService.createAlmuerzo(objAlm);
             successMessage("Almuerzo " + response + " agregado con exito.", "Atención");
@@ -402,14 +403,14 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
         });
     }
 
-    public int buscarIdCom(String parItem) {
+    public String buscarIdCom(String parItem) {
 
         for (int i = 0; i < objListComponentes.size(); i++) {
-            if (parItem == objListComponentes.get(i).getNombreComponente()) {
-                return objListComponentes.get(i).getIdComponente();
+            if (parItem.equals( objListComponentes.get(i).getNombreComponente())) {
+                return objListComponentes.get(i).getIdComponente()+"";
             }
         }
-        return 0;
+        return "";
 
     }
 

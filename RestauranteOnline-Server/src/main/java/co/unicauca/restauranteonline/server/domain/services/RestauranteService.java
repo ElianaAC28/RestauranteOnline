@@ -29,10 +29,10 @@ public class RestauranteService {
     
     public String CreateRestaurante(Restaurante parRestaurante) {
         List<JsonError> errors = new ArrayList<>();
-        if (parRestaurante.getRestId().isEmpty() || parRestaurante.getRestNombre().isEmpty() || parRestaurante.getRestEslogan().isEmpty() 
-            || parRestaurante.getRestPropietario().isEmpty() || parRestaurante.getRestDireccion().isEmpty()
-            || parRestaurante.getRestTelefono().isEmpty() || parRestaurante.getRestCiudad().isEmpty()
-            || parRestaurante.getRestAdmin().isEmpty()) {
+        if (parRestaurante.getNit().isEmpty() || parRestaurante.getNombreRestaurante().isEmpty() || parRestaurante.getEslogan().isEmpty() 
+            || parRestaurante.getPropietario().isEmpty() || parRestaurante.getDireccion().isEmpty()
+            || parRestaurante.getDireccion().isEmpty() || parRestaurante.getCiudad().isEmpty()
+            || parRestaurante.getAdministrador().isEmpty()) {
             errors.add(new JsonError("400", "BAD_REQUEST", "LA INFORMACION  ES OBLIGATORIA "));
         }
         if (!errors.isEmpty()) {

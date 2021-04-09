@@ -70,7 +70,7 @@ public class RestauranteAccessImplSockets implements IRestauranteAccess{
                 throw new Exception(extractMessages(jsonResponse));
             } else {
                 
-                return restaurante.getRestNombre();
+                return restaurante.getNombreRestaurante();
             }
         }
         
@@ -120,14 +120,14 @@ public class RestauranteAccessImplSockets implements IRestauranteAccess{
         Protocol protocol = new Protocol();
         protocol.setResource("Restaurante");
         protocol.setAction("post");
-        protocol.addParameter("restId", restaurante.getRestId());
-        protocol.addParameter("restNombre", restaurante.getRestNombre());
-        protocol.addParameter("restEslogan", restaurante.getRestEslogan());
-        protocol.addParameter("restPropietario", restaurante.getRestPropietario());
-        protocol.addParameter("restDireccion", restaurante.getRestDireccion());
-        protocol.addParameter("restTelefono", restaurante.getRestTelefono());
-        protocol.addParameter("restCiudad", restaurante.getRestCiudad());
-        protocol.addParameter("restAdmin", restaurante.getRestAdmin());
+        protocol.addParameter("restId", restaurante.getNit());
+        protocol.addParameter("restNombre", restaurante.getNombreRestaurante());
+        protocol.addParameter("restEslogan", restaurante.getEslogan());
+        protocol.addParameter("restPropietario", restaurante.getPropietario());
+        protocol.addParameter("restDireccion", restaurante.getDireccion());
+        protocol.addParameter("restTelefono", restaurante.getTelefono());
+        protocol.addParameter("restCiudad", restaurante.getCiudad());
+        protocol.addParameter("restAdmin", restaurante.getAdministrador());
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
         System.out.println("json: " + requestJson);

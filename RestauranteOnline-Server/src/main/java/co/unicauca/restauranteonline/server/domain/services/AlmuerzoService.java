@@ -51,9 +51,8 @@ public Almuerzo updateAlmuerzo(String idAlmuerzo) throws Exception {
      public String CreateAlmuerzo(Almuerzo parAlmuerzo) {
         List<JsonError> errors = new ArrayList<>();
         if (parAlmuerzo.getIdAlmuerzo().isEmpty() || parAlmuerzo.getEntradaAlm().isEmpty() || parAlmuerzo.getPrincipioAlm().isEmpty()
-                || parAlmuerzo.getProteinaAlm().isEmpty() || parAlmuerzo.getBebidaAlm().isEmpty() || parAlmuerzo.getCostoAlm()==null || parAlmuerzo. getRestId().isEmpty())
-        
-        {
+                || parAlmuerzo.getProteinaAlm().isEmpty() || parAlmuerzo.getBebidaAlm().isEmpty() || parAlmuerzo.getCostoAlm().isEmpty() || parAlmuerzo. getRestId().isEmpty())
+                {
             errors.add(new JsonError("400", "BAD_REQUEST", "LA INFORMACION X ES OBLIGATORIA "));
         }
         if (!errors.isEmpty()) {
