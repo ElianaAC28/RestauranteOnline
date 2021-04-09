@@ -1,9 +1,11 @@
+package co.unicauca.restauranteonline.presentacion;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.unicauca.restauranteonline.presentacion;
+
 
 import co.unicauca.restauranteonline.client.access.Factory;
 
@@ -359,12 +361,12 @@ public class GUIActualizarAlmuerzo extends javax.swing.JFrame {
 
         String matriz[][] = new String[objListAlmuerzo.size()][4];
 
-        for (int i = 0; i < objListAlmuerzo.size(); i++) {
+        /*for (int i = 0; i < objListAlmuerzo.size(); i++) {
             matriz[i][0] = objListAlmuerzo.get(i).getEntradaAlm();
             matriz[i][1] = objListAlmuerzo.get(i).getPrincipioAlm();
             matriz[i][2] = objListAlmuerzo.get(i).getProteinaAlm();
             matriz[i][3] = objListAlmuerzo.get(i).getBebidaAlm();
-        }
+        }*/
 
         tblActualizar.setModel(new javax.swing.table.DefaultTableModel(
                 matriz,

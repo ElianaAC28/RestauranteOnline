@@ -156,8 +156,8 @@ public class GUIAdmin extends javax.swing.JFrame {
 
     private void btnActualizarAlmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAlmActionPerformed
         // TODO add your handling code here:
-         GUIActualizarAlmuerzo update = new GUIActualizarAlmuerzo();
-         update.setVisible(true);
+         //GUIActualizarAlmuerzo update = new GUIActualizarAlmuerzo();
+         //update.setVisible(true);
          this.dispose();
         
     }//GEN-LAST:event_btnActualizarAlmActionPerformed

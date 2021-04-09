@@ -212,6 +212,10 @@ public class RestauranteOnlineServerSocket implements Runnable {
                     // Consultar todos los almuerzos
                     processGetListAlmuerzo();
                 }
+                 if (protocolRequest.getAction().equals("adds")) {
+                    // Consultar todos los almuerzos
+                   processPostAlmuerzoID(protocolRequest);
+                }
         }
 
     }
@@ -287,13 +291,19 @@ public class RestauranteOnlineServerSocket implements Runnable {
         Almuerzo objAlm = new Almuerzo();
 
         objAlm.setIdAlmuerzo(protocolRequest.getParameters().get(0).getValue());
-        objAlm.setEntradaAlm(protocolRequest.getParameters().get(1).getValue());
-        objAlm.setPrincipioAlm(protocolRequest.getParameters().get(2).getValue());
-        objAlm.setProteinaAlm(protocolRequest.getParameters().get(3).getValue());
-        objAlm.setBebidaAlm(protocolRequest.getParameters().get(4).getValue());
-        objAlm.setCostoAlm ((protocolRequest.getParameters().get(5).getValue()));
-        objAlm.setRestId((protocolRequest.getParameters().get(6).getValue()));
+        objAlm.setComp(protocolRequest.getParameters().get(1).getValue());
+        objAlm.setIdComp(protocolRequest.getParameters().get(2).getValue());
         String response = serviceAlm.CreateAlmuerzo(objAlm);
+        output.println(response);
+    }
+    
+    private void processPostAlmuerzoID(Protocol protocolRequest) {
+        Almuerzo objAlm = new Almuerzo();
+
+        objAlm.setIdAlmuerzo(protocolRequest.getParameters().get(0).getValue());
+        objAlm.setRestId(protocolRequest.getParameters().get(1).getValue());
+        objAlm.setCostoAlm(protocolRequest.getParameters().get(2).getValue());
+        String response = serviceAlm.CreateAlmuerzoID(objAlm);
         output.println(response);
     }
 
@@ -410,5 +420,6 @@ public class RestauranteOnlineServerSocket implements Runnable {
         String strObject = gson.toJson(parLista);
         return strObject;
     }
+
 
 }

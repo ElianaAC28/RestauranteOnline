@@ -26,4 +26,5 @@ public interface IAlmuerzoRepository {
 
     public Almuerzo findAlmuerzo(String idAlmuerzo);
       public List<Almuerzo> findAllAlmuerzos();
+      public String createAlmuerzoID(Almuerzo parAlmuerzo);
 }

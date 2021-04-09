@@ -1,5 +1,6 @@
 co\unicauca\restauranteonline\presentacion\GUILogin.class
 co\unicauca\restauranteonline\client\access\IAlmuerzoAccess.class
+co\unicauca\restauranteonline\presentacion\GUIAgregarAlmuerzo$11.class
 co\unicauca\restauranteonline\client\access\AlmuerzoAccessImplSockets.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarAlmuerzo$1.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarComponente$3.class
@@ -23,6 +24,7 @@ co\unicauca\restauranteonline\presentacion\GUIAgregarAlmuerzo$7.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarAlmuerzo.class
 co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo$7.class
 co\unicauca\restauranteonline\client\access\UsuarioAccessImplSockets.class
+co\unicauca\restauranteonline\presentacion\GUIAgregarAlmuerzo$10.class
 co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante$7.class
 co\unicauca\restauranteonline\client\access\IRestauranteAccess.class
 co\unicauca\restauranteonline\presentacion\GUIListaComponentes$4.class

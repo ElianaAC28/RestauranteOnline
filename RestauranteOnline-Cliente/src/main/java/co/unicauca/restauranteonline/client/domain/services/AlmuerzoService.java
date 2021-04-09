@@ -20,6 +20,9 @@ public class AlmuerzoService {
  public String createAlmuerzo(Almuerzo almuerzo) throws Exception {
         return service.createAlmuerzo(almuerzo);
  }
+ public String createAlmuerzoID(Almuerzo almuerzo) throws Exception {
+        return service.createAlmuerzoID(almuerzo);
+ }
     public Almuerzo findAlmuerzo(String idAlmuerzo) throws Exception {
         return service.findAlmuerzo(idAlmuerzo);
     }

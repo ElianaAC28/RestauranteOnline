@@ -32,14 +32,82 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
      * Creates new form GUAGREGARCOMPONENTE1
      */
     List<Componente> objListComponentes = new ArrayList<Componente>();
-
+    String tipoid;
     public GUIAgregarAlmuerzo() {
         initComponents();
         setLocationRelativeTo(null); //centrar la ventana
         setTitle("Agregar componente");
-
+        esconder();
+        llenarcbx();
+    }
+    private void mostrarOpc(){
+        if(cbxSelectTipo.getSelectedItem().toString().isEmpty()){
+            esconder();
+        }
+        if(cbxSelectTipo.getSelectedItem().toString() == "Entrada"){
+            lblNombreCom.setVisible(true);
+            cbxEntrada.setVisible(true);
+            tipoid = "1";
+        }
+        if(cbxSelectTipo.getSelectedItem().toString() == "Principio"){
+            lblTipoCom.setVisible(true);
+            cbxPrincipio.setVisible(true);
+            tipoid = "2";
+        }
+        if(cbxSelectTipo.getSelectedItem().toString() == "Proteina"){
+            lblTipoCom1.setVisible(true);
+            cbxProteina.setVisible(true);
+            tipoid = "3";
+        }
+        if(cbxSelectTipo.getSelectedItem().toString() == "Bebida"){
+            lblTipoCom2.setVisible(true);
+            cbxBebida.setVisible(true);
+            tipoid = "4";
+        }
     }
 
+    private void llenarcbx(){
+        cbxSelectTipo.addItem("");
+        cbxSelectTipo.addItem("Entrada");
+        cbxSelectTipo.addItem("Principio");
+        cbxSelectTipo.addItem("Proteina");
+        cbxSelectTipo.addItem("Bebida");
+    }
+    private void esconder(){
+        lblNombreCom.setVisible(false);
+        cbxEntrada.setVisible(false);
+        lblTipoCom.setVisible(false);
+        cbxPrincipio.setVisible(false);
+        lblTipoCom1.setVisible(false);
+        cbxProteina.setVisible(false);
+        lblTipoCom2.setVisible(false);
+        cbxBebida.setVisible(false);
+        btnAgregar2.setVisible(false);
+        lblTipoCom3.setVisible(false);
+        jTextArea1.setVisible(false);
+        lblTipoCom3.setVisible(false);
+        jScrollPane1.setVisible(false);
+        
+    }
+    private String sacarIdComp(){
+        switch (Integer.parseInt(tipoid)) 
+        {
+            case 1:
+                    return buscarIdCom(cbxEntrada.getSelectedItem().toString());
+                    
+            case 2: 
+                    return buscarIdCom(cbxPrincipio.getSelectedItem().toString());
+                    
+            case 3: 
+                    return buscarIdCom(cbxProteina.getSelectedItem().toString());
+                    
+            case 4: 
+                    return buscarIdCom(cbxBebida.getSelectedItem().toString());
+                    
+
+        }
+        return null;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,6 +138,8 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
         cbxBebida = new javax.swing.JComboBox<>();
         cbxPrincipio = new javax.swing.JComboBox<>();
         btnCargarAlm = new javax.swing.JButton();
+        btnCrearAlmu = new javax.swing.JToggleButton();
+        cbxSelectTipo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -166,34 +236,63 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
             }
         });
 
+        btnCrearAlmu.setText("Crear");
+        btnCrearAlmu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearAlmuActionPerformed(evt);
+            }
+        });
+
+        cbxSelectTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxSelectTipoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblId)
-                    .addComponent(lblNombreCom)
-                    .addComponent(lblTipoCom)
-                    .addComponent(lblTipoCom1)
-                    .addComponent(lblTipoCom2)
-                    .addComponent(lblId1))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCosto)
-                    .addComponent(cbxProteina, 0, 213, Short.MAX_VALUE)
-                    .addComponent(cbxBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbxPrincipio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbxEntrada, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtIdAlm))
-                .addGap(90, 90, 90)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTipoCom3)
-                    .addComponent(btnCargarAlm)
-                    .addComponent(btnAgregar2))
-                .addGap(74, 74, 74))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblNombreCom)
+                            .addComponent(lblTipoCom)
+                            .addComponent(lblTipoCom1)
+                            .addComponent(lblTipoCom2)
+                            .addComponent(lblId1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCosto)
+                            .addComponent(cbxProteina, 0, 213, Short.MAX_VALUE)
+                            .addComponent(cbxBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxPrincipio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxEntrada, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbxSelectTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtIdAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCargarAlm))
+                        .addGap(74, 74, 74))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(btnCrearAlmu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTipoCom3)
+                            .addComponent(btnAgregar2))
+                        .addGap(93, 93, 93))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -214,51 +313,55 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addComponent(lblAgregarCom)
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIdAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblId)
-                    .addComponent(btnAgregar2))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIdAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblId)
+                            .addComponent(btnCrearAlmu))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbxSelectTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNombreCom))
-                        .addGap(16, 16, 16))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTipoCom3)
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cbxPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblTipoCom)
-                                .addGap(29, 29, 29)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(cbxPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblTipoCom)
+                                        .addGap(29, 29, 29)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbxProteina, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTipoCom1)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxProteina, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTipoCom1)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTipoCom2))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTipoCom2))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCargarAlm))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblId1))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addComponent(btnAtras)
+                        .addGap(47, 47, 47))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCargarAlm))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblId1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(btnAtras)
-                .addGap(47, 47, 47))
+                        .addGap(50, 50, 50)
+                        .addComponent(btnAgregar2)
+                        .addGap(10, 10, 10)
+                        .addComponent(lblTipoCom3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(461, Short.MAX_VALUE)
@@ -305,16 +408,9 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
         Componente componente = new Componente();
 
         objAlm.setIdAlmuerzo(txtIdAlm.getText());
+        objAlm.setComp(sacarIdComp());
+        objAlm.setIdComp(tipoid);
 
-        objAlm.setEntradaAlm(buscarIdCom(cbxEntrada.getSelectedItem().toString()));
-        objAlm.setPrincipioAlm(buscarIdCom(cbxPrincipio.getSelectedItem().toString()));
-        objAlm.setProteinaAlm(buscarIdCom(cbxProteina.getSelectedItem().toString()));
-        objAlm.setBebidaAlm(buscarIdCom(cbxBebida.getSelectedItem().toString()));
-        objAlm.setRestId("1");
-        objAlm.setCostoAlm((txtCosto.getText()));
-        
-
-        
         try {
             String response = almService.createAlmuerzo(objAlm);
             successMessage("Almuerzo " + response + " agregado con exito.", "Atención");
@@ -356,6 +452,35 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
     private void cbxEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEntradaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxEntradaActionPerformed
+
+    private void btnCrearAlmuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAlmuActionPerformed
+        // TODO add your handling code here:
+        IAlmuerzoAccess service = Factory.getInstance().getAlmuerzoService();
+
+        AlmuerzoService almService = new AlmuerzoService(service);
+
+        Almuerzo objAlm = new Almuerzo();
+
+        objAlm.setIdAlmuerzo(txtIdAlm.getText());      
+        objAlm.setRestId("1");
+        objAlm.setCostoAlm("10000");     
+        try {
+            String response = almService.createAlmuerzoID(objAlm);
+            successMessage("Almuerzo " + response + " agregado con exito.", "Atención");
+            clearCotronls();
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+            successMessage(ex.getMessage() + "Error", "Atención");
+        }
+        
+    }//GEN-LAST:event_btnCrearAlmuActionPerformed
+
+    private void cbxSelectTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSelectTipoActionPerformed
+        // TODO add your handling code here:
+        esconder();
+        mostrarOpc();
+    }//GEN-LAST:event_cbxSelectTipoActionPerformed
     private void clearCotronls() {
         txtCosto.setText("");
         txtIdAlm.setText("");
@@ -457,10 +582,12 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar2;
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnCargarAlm;
+    private javax.swing.JToggleButton btnCrearAlmu;
     private javax.swing.JComboBox<String> cbxBebida;
     private javax.swing.JComboBox<String> cbxEntrada;
     private javax.swing.JComboBox<String> cbxPrincipio;
     private javax.swing.JComboBox<String> cbxProteina;
+    private javax.swing.JComboBox<String> cbxSelectTipo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;

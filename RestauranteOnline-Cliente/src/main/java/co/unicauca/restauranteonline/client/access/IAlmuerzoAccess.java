@@ -23,4 +23,6 @@ public interface IAlmuerzoAccess {
     
     public List<Almuerzo> ListAlmuerzos() throws Exception;
 
+    public String createAlmuerzoID(Almuerzo almuerzo) throws Exception;
+
 }
