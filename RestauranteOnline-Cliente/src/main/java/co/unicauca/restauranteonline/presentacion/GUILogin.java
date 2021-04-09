@@ -24,14 +24,9 @@ import javax.swing.JPanel;
  */
 public class GUILogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUIALogin
-     */
-    //  FondoPanel fondo = new FondoPanel();
+   
     public GUILogin() {
-        //lblImg = new JLabel(new ImageIcon("Logo_restaurante.png"));
-        //pnlLogin.add(lblImg);
-        //this.setContentPane(fondo);
+       
         initComponents();
     }
 
@@ -183,11 +178,10 @@ public class GUILogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-// TODO add your handling code here:
-        //co.unicauca.restauranteonline.client.infra.Security.usuario = new User(txtUsuario.getText(), Password.getText(), "");
+
         ICustomerAccess repo = Factory.getInstance().getCustomerService();
         CustomerService customerService = new CustomerService(repo);
-        //Aqui vendria el analizar si el usuario existe en el sistema
+        //Analizar si el usuario existe en el sistema
         try {
             if(txtUsuario.getText().isEmpty() || Password.getText().isEmpty()){
                 warningMessage("CAMPOS VACIOS", "Atención");
@@ -197,7 +191,7 @@ public class GUILogin extends javax.swing.JFrame {
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
                         GUIAdmin ins = new GUIAdmin();
-                        //ins.setExtendedState(MAXIMIZED_BOTH);
+                       
                         ins.setVisible(true);
                         
                         warningMessage("Autenticacion exitosa!","BIENVENIDO");
@@ -205,9 +199,7 @@ public class GUILogin extends javax.swing.JFrame {
                 });
                 this.dispose();
             } 
-//            else {
-//                warningMessage("Contraseña incorrecta", "Atención");
-//            }
+
         } catch (Exception ex) {
             System.out.println(ex);
             successMessage(ex.getMessage() + "", "");
@@ -271,17 +263,4 @@ public class GUILogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-    /*  class FondoPanel extends JPanel {
-
-        private Image imagen;
-
-        @Override
-        public void paint(Graphics g) {
-            imagen = new ImageIcon(getClass().getResource("/imagenes/fondo.png")).getImage();
-            
-            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-            setOpaque(false);
-            super.paint(g);
-        }
-    } intento de colocar una imagen de fondo*/
 }

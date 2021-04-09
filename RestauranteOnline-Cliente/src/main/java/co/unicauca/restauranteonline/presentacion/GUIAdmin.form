@@ -105,7 +105,7 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="btnAgregarComp" pref="465" max="32767" attributes="0"/>
                               <Component id="btnListarComp" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnActualizarAlm" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnAddAlm" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -137,7 +137,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnListarComp" min="-2" pref="62" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnActualizarAlm" min="-2" pref="62" max="-2" attributes="0"/>
+                      <Component id="btnAddAlm" min="-2" pref="62" max="-2" attributes="0"/>
                       <EmptySpace pref="84" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -174,7 +174,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarCompActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnActualizarAlm">
+            <Component class="javax.swing.JButton" name="btnAddAlm">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="12" style="0"/>
@@ -182,7 +182,7 @@
                 <Property name="text" type="java.lang.String" value="Agregar Almuerzo"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarAlmActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddAlmActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">

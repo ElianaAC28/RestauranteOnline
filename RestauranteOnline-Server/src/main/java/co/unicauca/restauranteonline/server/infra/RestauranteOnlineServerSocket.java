@@ -1,5 +1,4 @@
 package co.unicauca.restauranteonline.server.infra;
-
 import co.unicauca.restauranteonline.commons.domain.Almuerzo;
 import co.unicauca.restauranteonline.commons.domain.Customer;
 import co.unicauca.restauranteonline.commons.domain.Componente;
@@ -10,7 +9,6 @@ import co.unicauca.restauranteonline.server.access.Factory;
 import co.unicauca.restauranteonline.server.access.IAlmuerzoRepository;
 import co.unicauca.restauranteonline.server.access.IComponenteRepository;
 import co.unicauca.restauranteonline.server.domain.services.ComponenteService;
-
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -26,22 +24,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Servidor Socket que está escuchando permanentemente solicitudes de los
- * clientes. Cada solicitud la atiende en un hilo de ejecución
  *
- * @author Libardo, Julio
+ * @author SoftwareTeam
+ * 
  */
-public class RestauranteOnlineServerSocket implements Runnable {
+public class RestauranteOnlineServerSocket implements Runnable 
+{
 
     /**
+     * 
      * Servicio de clientes
+     * 
      */
     private final CustomerService service;
-
     private final ComponenteService serviceComponente;
     private final AlmuerzoService serviceAlm;
     /**
-     * Server Socket, la orejita
+     * Server Socket
      */
     private static ServerSocket ssock;
     /**
@@ -49,7 +48,7 @@ public class RestauranteOnlineServerSocket implements Runnable {
      */
     private static Socket socket;
     /**
-     * Permite leer un flujo de datos del socket
+     * Permite leer el flujo de datos del socket
      */
     private Scanner input;
     /**
@@ -96,7 +95,10 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
 
     /**
-     * Instancia el server socket y abre el puerto respectivo
+     * 
+     * Instancia el server socket
+     * Abre el puerto respectivo
+     * 
      */
     private static void openPort() {
         try {
@@ -108,7 +110,10 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
 
     /**
-     * Espera que el cliente se conecta y le devuelve un socket
+     * 
+     * Espera que el cliente se conecta 
+     * Le devuelve un socket
+     * 
      */
     private static void waitToClient() {
         try {
@@ -120,7 +125,7 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
 
     /**
-     * Cuerpo del hilo
+     * Inicio de Hilo
      */
     @Override
     public void run() {
@@ -135,9 +140,9 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
 
     /**
+     * 
      * Crea los flujos con el socket
      *
-     * @throws IOException
      */
     private void createStreams() throws IOException {
         output = new PrintStream(socket.getOutputStream());
@@ -161,14 +166,12 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
 
     /**
-     * Procesar la solicitud que proviene de la aplicación cliente
-     *
-     * @param requestJson petición que proviene del cliente socket en formato
-     * json que viene de esta manera:
-     * "{"resource":"customer","action":"get","parameters":[{"name":"id","value":"98000001"}]}"
+     * 
+     * Procesa la solicitud que se realice en la aplicación
      *
      */
-    private void processRequest(String requestJson) {
+    private void processRequest(String requestJson) 
+    {
         // Convertir la solicitud a objeto Protocol para poderlo procesar
         Gson gson = new Gson();
         Protocol protocolRequest = gson.fromJson(requestJson, Protocol.class);
@@ -176,16 +179,16 @@ public class RestauranteOnlineServerSocket implements Runnable {
         switch (protocolRequest.getResource()) {
             case "customer":
                 if (protocolRequest.getAction().equals("get")) {
-                    // Consultar un customer
+                    // Consultar un usuario
                     processGetCustomer(protocolRequest);
                 }
 
                 if (protocolRequest.getAction().equals("post")) {
-                    // Agregar un customer    
+                    // Agregar un usuario    
                     processPostCustomer(protocolRequest);
                 }
                 if (protocolRequest.getAction().equals("aut")) {
-                    // Agregar un customer    
+                    // Agregar un usuario    
                     processAutCustomer(protocolRequest);
                 }
                 break;
@@ -219,16 +222,15 @@ public class RestauranteOnlineServerSocket implements Runnable {
         }
 
     }
- /**
+    /**
+     * 
      * Procesa la solicitud de consultar un customer
-     *
-     * @param protocolRequest Protocolo de la solicitud
      */
  
     /**
+     * 
      * Procesa la solicitud de consultar un customer
-     *
-     * @param protocolRequest Protocolo de la solicitud
+     * 
      */
     private void processGetCustomer(Protocol protocolRequest) {
         // Extraer la cedula del primer parámetro
@@ -272,9 +274,9 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
 
     /**
+     * 
      * Procesa la solicitud de agregar un customer
-     *
-     * @param protocolRequest Protocolo de la solicitud
+     * 
      */
     private void processPostCustomer(Protocol protocolRequest) {
         Customer customer = new Customer();
@@ -310,8 +312,7 @@ public class RestauranteOnlineServerSocket implements Runnable {
 
     /**
      * Genera un ErrorJson de cliente no encontrado
-     *
-     * @return error en formato json
+     * 
      */
     private String generateNotFoundErrorJson() {
         List<JsonError> errors = new ArrayList<>();
@@ -328,9 +329,9 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
 
     /**
+     * 
      * Genera un ErrorJson genérico
-     *
-     * @return error en formato json
+     * 
      */
     private String generateErrorJson() {
         List<JsonError> errors = new ArrayList<>();
@@ -347,9 +348,9 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
 
     /**
+     * 
      * Cierra los flujos de entrada y salida
-     *
-     * @throws IOException
+     * 
      */
     private void closeStream() throws IOException {
         output.close();
@@ -358,11 +359,10 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
 
     /**
+     * 
      * Convierte el objeto Customer a json para que el servidor lo envie como
      * respuesta por el socket
-     *
-     * @param customer cliente
-     * @return customer en formato json
+     * 
      */
     private String objectToJSON(Customer customer) {
         Gson gson = new Gson();
@@ -371,9 +371,9 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
 
     /**
+     * 
      * Procesa la solicitud para consultar todos los componentes.
-     *
-     * @param protocolRequest
+     * 
      */
     private void processGetListComponentes() {
         List<Componente> listaComponentes = serviceComponente.ListComponentes();
@@ -387,9 +387,9 @@ public class RestauranteOnlineServerSocket implements Runnable {
     }
     
      /**
+      * 
      * Procesa la solicitud para consultar todos los componentes.
-     *
-     * @param protocolRequest
+     * 
      */
     private void processGetListAlmuerzo() {
         List<Almuerzo> listaAlmuerzos = serviceAlm.ListAlmuerzos();
@@ -404,11 +404,10 @@ public class RestauranteOnlineServerSocket implements Runnable {
 
 
     /**
+     * 
      * Convierte Una lista de Componentes a json para que el servidor lo envie
      * como respuesta al socket.
-     *
-     * @param parLista Lista de tipo Componentes.
-     * @return Lista de componentes en formato json (String).
+     * 
      */
     private String ArrayToJSON(List<Componente> parLista) {
         Gson gson = new Gson();
@@ -420,6 +419,4 @@ public class RestauranteOnlineServerSocket implements Runnable {
         String strObject = gson.toJson(parLista);
         return strObject;
     }
-
-
 }

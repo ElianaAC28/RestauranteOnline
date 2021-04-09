@@ -38,7 +38,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         lblRestDisponibles = new javax.swing.JLabel();
         btnAgregarComp = new javax.swing.JButton();
         btnListarComp = new javax.swing.JButton();
-        btnActualizarAlm = new javax.swing.JButton();
+        btnAddAlm = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -78,11 +78,11 @@ public class GUIAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnActualizarAlm.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btnActualizarAlm.setText("Agregar Almuerzo");
-        btnActualizarAlm.addActionListener(new java.awt.event.ActionListener() {
+        btnAddAlm.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnAddAlm.setText("Agregar Almuerzo");
+        btnAddAlm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarAlmActionPerformed(evt);
+                btnAddAlmActionPerformed(evt);
             }
         });
 
@@ -102,7 +102,7 @@ public class GUIAdmin extends javax.swing.JFrame {
                     .addGroup(pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnAgregarComp, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
                         .addComponent(btnListarComp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnActualizarAlm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnAddAlm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCiuResLayout.createSequentialGroup()
                 .addContainerGap(204, Short.MAX_VALUE)
@@ -126,7 +126,7 @@ public class GUIAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnListarComp, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnActualizarAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(84, Short.MAX_VALUE))
         );
 
@@ -165,13 +165,13 @@ public class GUIAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnActualizarAlmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAlmActionPerformed
+    private void btnAddAlmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAlmActionPerformed
         // TODO add your handling code here:
          GUIMenu update = new GUIMenu();
          update.setVisible(true);
          this.dispose();
         
-    }//GEN-LAST:event_btnActualizarAlmActionPerformed
+    }//GEN-LAST:event_btnAddAlmActionPerformed
 
     private void btnAgregarCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCompActionPerformed
         // TODO add your handling code here:
@@ -257,7 +257,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizarAlm;
+    private javax.swing.JButton btnAddAlm;
     private javax.swing.JButton btnAgregarComp;
     private javax.swing.JButton btnListarComp;
     private javax.swing.JLabel jLabel1;

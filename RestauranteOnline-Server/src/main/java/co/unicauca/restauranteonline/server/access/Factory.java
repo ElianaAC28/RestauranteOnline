@@ -7,7 +7,7 @@ import co.unicauca.restauranteonline.server.access.CustomerRepositoryImplMysql;
 /**
  * Fabrica que se encarga de instanciar un repositorio concreto
  *
- * @author Libardo, Julio
+ * @author SoftwareTeam
  */
 public class Factory {
 
