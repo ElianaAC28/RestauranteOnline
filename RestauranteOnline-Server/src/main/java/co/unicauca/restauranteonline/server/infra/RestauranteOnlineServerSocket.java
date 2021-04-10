@@ -228,9 +228,9 @@ public class RestauranteOnlineServerSocket implements Runnable
                 break;
             case "Restaurante":
                 
-                if(protocolRequest.getAction().equals(""))
+                if(protocolRequest.getAction().equals(""));
         }
-
+    
     }
     /**
      * 

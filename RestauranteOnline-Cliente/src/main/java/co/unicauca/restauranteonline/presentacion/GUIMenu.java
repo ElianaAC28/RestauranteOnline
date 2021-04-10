@@ -258,7 +258,7 @@ public class GUIMenu extends javax.swing.JFrame
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
-        GUIAdmin rest = new GUIAdmin();
+        GUILogin rest = new GUILogin();
         rest.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
