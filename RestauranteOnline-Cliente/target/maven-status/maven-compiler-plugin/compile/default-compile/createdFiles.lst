@@ -44,6 +44,7 @@ co\unicauca\resturanteonline\client\domain\User.class
 co\unicauca\restauranteonline\presentacion\GUIMenu$1.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarAlmuerzo$6.class
 co\unicauca\restauranteonline\client\infra\AlmuerzoSocket.class
+co\unicauca\restauranteonline\presentacion\GUIAdmin$5.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarComponente$2.class
 co\unicauca\restauranteonline\presentacion\GUILogin$3.class
 co\unicauca\restauranteonline\presentacion\GUIListaComponentes.class

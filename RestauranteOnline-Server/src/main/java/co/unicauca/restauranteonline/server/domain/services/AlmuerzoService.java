@@ -38,7 +38,7 @@ public Almuerzo updateAlmuerzo(String idAlmuerzo) throws Exception {
      *
      * @return llamado a metodo findAllComponentes.
      */
-    public List<Almuerzo> ListAlmuerzos() {
+public List<Almuerzo> ListAlmuerzos() {
         List<JsonError> errors = new ArrayList<>();
         if (!repositoryAlm.findAllAlmuerzos().isEmpty()) {
             if (!errors.isEmpty()) {
@@ -46,7 +46,7 @@ public Almuerzo updateAlmuerzo(String idAlmuerzo) throws Exception {
             }
         }
         return repositoryAlm.findAllAlmuerzos();
-    }
+}
     
      public String CreateAlmuerzoID(Almuerzo parAlmuerzo) {
         List<JsonError> errors = new ArrayList<>();

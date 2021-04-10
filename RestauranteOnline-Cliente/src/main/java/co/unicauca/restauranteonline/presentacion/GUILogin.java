@@ -219,6 +219,7 @@ public class GUILogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         GUIRestaurantesDisponibles rest = new GUIRestaurantesDisponibles();
         rest.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     /**

@@ -37,16 +37,18 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
      */
     List<Componente> objListComponentes = new ArrayList<Componente>();
     String tipoid;
-
-    public GUIAgregarAlmuerzo() throws Exception {
+    
+    public GUIAgregarAlmuerzo() throws Exception  {
         initComponents();
         setLocationRelativeTo(null); //centrar la ventana
         setTitle("Agregar componente");
+        iniciar();
+    }
+    private void iniciar() throws Exception{
         mostrar();
         esconder();
         llenarcbx();
     }
-
     private void mostrarOpc() {
         if (cbxSelectTipo.getSelectedItem().toString().isEmpty()) {
             esconder();
@@ -363,6 +365,7 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
         // TODO add your handling code here:
         GUIAdmin admin = new GUIAdmin();
         admin.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
@@ -520,7 +523,7 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
 
     }
 
-    public void mostrar() throws Exception {
+    public void mostrar() throws Exception  {
         IComponentesAccess service = Factory.getInstance().getComponenteService();
         ComponenteService componenteService = new ComponenteService(service);
 

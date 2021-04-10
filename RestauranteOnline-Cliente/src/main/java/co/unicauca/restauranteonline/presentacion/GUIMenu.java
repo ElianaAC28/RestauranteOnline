@@ -21,18 +21,20 @@ import javax.swing.JOptionPane;
  */
 public class GUIMenu extends javax.swing.JFrame 
 {
-
+    
     /**
      * Creates new form NewJFrame
      */
     public GUIMenu() 
     {
+        
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Menu ");
         try {
             limpiar();
             mostrar();
+            Imagen.setVisible(false);
         } catch (Exception ex) 
         {
             Logger.getLogger(GUIListaComponentes.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,6 +66,7 @@ public class GUIMenu extends javax.swing.JFrame
         cbxBebida = new javax.swing.JComboBox<>();
         btnRealizarPedido = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
+        Imagen = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,16 +146,22 @@ public class GUIMenu extends javax.swing.JFrame
             }
         });
 
+        Imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ALMUERZO.jpeg"))); // NOI18N
+
         javax.swing.GroupLayout pnlPlatoEjecutivoLayout = new javax.swing.GroupLayout(pnlPlatoEjecutivo);
         pnlPlatoEjecutivo.setLayout(pnlPlatoEjecutivoLayout);
         pnlPlatoEjecutivoLayout.setHorizontalGroup(
             pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPlatoEjecutivoLayout.createSequentialGroup()
+            .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                        .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPlatoEjecutivoLayout.createSequentialGroup()
+                        .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlPlatoEjecutivoLayout.createSequentialGroup()
+                                .addGap(216, 216, 216)
+                                .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 9, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlPlatoEjecutivoLayout.createSequentialGroup()
                                 .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,30 +174,37 @@ public class GUIMenu extends javax.swing.JFrame
                                     .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
                                         .addComponent(cbxPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                                .addGap(180, 180, 180)
-                                .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblImagen)
-                                    .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbxProteina, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbxBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(253, 253, 253)
-                        .addComponent(btnRealizarPedido)))
-                .addGap(0, 43, Short.MAX_VALUE))
+                        .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
+                                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(253, 253, 253)
+                                .addComponent(btnRealizarPedido))
+                            .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 258, Short.MAX_VALUE))
+            .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
+                .addGap(201, 201, 201)
+                .addComponent(lblImagen)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlPlatoEjecutivoLayout.setVerticalGroup(
             pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPlatoEjecutivoLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(164, 164, 164)
+                .addGap(18, 18, 18)
+                .addComponent(Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(pnlPlatoEjecutivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,7 +280,8 @@ public class GUIMenu extends javax.swing.JFrame
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarPedidoActionPerformed
-      JOptionPane.showMessageDialog(null, "Su pedido se ha realizado con éxito");
+        Imagen.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Su pedido se ha realizado con éxito");
     }//GEN-LAST:event_btnRealizarPedidoActionPerformed
 
     /**
@@ -366,6 +383,7 @@ public class GUIMenu extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Imagen;
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnRealizarPedido;
     private javax.swing.JComboBox<String> cbxBebida;
