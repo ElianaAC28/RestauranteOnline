@@ -14,10 +14,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Servicio de Cliente. Permite hacer el CRUD de clientes solicitando los
+ * Servicio de Almuerzo. Permite hacer el almuerzo  de clientes solicitando los
  * servicios con la aplicación server. Maneja los errores devueltos
  *
- * @author Libardo Pantoja, Julio A. Hurtado
+ * @author SoftwareTeam
  */
 public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
 
@@ -29,10 +29,16 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
     public AlmuerzoAccessImplSockets() {
         mySocket = new AlmuerzoSocket();
     }
-
+  /**
+     * Busca un Almuerzo. Utiliza socket para pedir el servicio al servidor
+     *
+     * @param id identificador de almuerzo
+     * @return Objeto Almuerzo
+     * @throws Exception cuando no pueda conectarse con el servidor
+     */
     @Override
     public Almuerzo findAlmuerzo(String idAlmuerzo) throws Exception {
-        //{"id"="9800001", "nombres":"juan", "apellidos":"perez", "direcciones":"[{}, {}, {}]"}
+        
         String jsonResponse = null;
         String requestJson = findAlmuerzoRequestJson(idAlmuerzo);
         try {
@@ -76,7 +82,7 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
     }
 
     private String findAlmuerzoRequestJson(String idAlmuerzo) {
-        //{"recource":"customer", "action":"get", "parametrers":"[{"name": "id", "value": 9800001"},{}]"}
+      
         Protocol protocol = new Protocol();
         protocol.setResource("almuerzo");
         protocol.setAction("get");
@@ -146,10 +152,10 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
     }
 
     /**
-     * Busca todos los Componentes. Utiliza socket para pedir el servicio al
+     * Busca todos los Almuerzos. Utiliza socket para pedir el servicio al
      * servidor
      *
-     * @return Lista de Componentes.
+     * @return Lista de Almuerzos.
      * @throws Exception cuando no pueda conectarse con el servidor
      */
     @Override
@@ -173,7 +179,7 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
                 Logger.getLogger(AlmuerzoAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
                 throw new Exception(extractMessages(jsonResponse));
             } else {
-                //Encontro el Componente
+                //Encontro el Almuerzo
                 List<Almuerzo> almuerzo = jsonToListAlmuerzos(jsonResponse);
                 return almuerzo;
             }
@@ -249,7 +255,7 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
             } else {
 
                 return almuerzo.getIdAlmuerzo();
-                //    customer.getId();
+              
             }
 
         }
@@ -295,7 +301,7 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
             } else {
 
                 return almuerzo.getIdAlmuerzo();
-                //    customer.getId();
+            
             }
 
         }

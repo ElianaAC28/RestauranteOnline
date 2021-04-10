@@ -131,11 +131,11 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
         cbxEntrada = new javax.swing.JComboBox<>();
         lblTipoCom = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
-        btnAgregar1 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         lblTipoCom1 = new javax.swing.JLabel();
         lblTipoCom2 = new javax.swing.JLabel();
         txtIdAlm = new javax.swing.JTextField();
-        btnAgregar2 = new javax.swing.JButton();
+        btnSeleccionarImg = new javax.swing.JButton();
         cbxProteina = new javax.swing.JComboBox<>();
         cbxBebida = new javax.swing.JComboBox<>();
         cbxPrincipio = new javax.swing.JComboBox<>();
@@ -175,11 +175,11 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
             }
         });
 
-        btnAgregar1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        btnAgregar1.setText("Agregar");
-        btnAgregar1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar1ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -192,11 +192,11 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
         txtIdAlm.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtIdAlm.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        btnAgregar2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        btnAgregar2.setText("Seleccionar imagen");
-        btnAgregar2.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionarImg.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnSeleccionarImg.setText("Seleccionar imagen");
+        btnSeleccionarImg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar2ActionPerformed(evt);
+                btnSeleccionarImgActionPerformed(evt);
             }
         });
 
@@ -257,7 +257,7 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(394, 394, 394)
-                        .addComponent(btnAgregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpnAlmLayout.createSequentialGroup()
                         .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnAlmLayout.createSequentialGroup()
@@ -283,7 +283,7 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
                         .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpnAlmLayout.createSequentialGroup()
                                 .addGap(149, 149, 149)
-                                .addComponent(btnAgregar2))
+                                .addComponent(btnSeleccionarImg))
                             .addGroup(jpnAlmLayout.createSequentialGroup()
                                 .addGap(120, 120, 120)
                                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -332,12 +332,12 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
                             .addComponent(cbxBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpnAlmLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(btnAgregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSeleccionarImg, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(40, 40, 40)
                 .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69))
         );
@@ -368,7 +368,7 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnAtrasActionPerformed
 
-    private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
 
         IAlmuerzoAccess service = Factory.getInstance().getAlmuerzoService();
 
@@ -395,9 +395,9 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_btnAgregar1ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void btnAgregar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar2ActionPerformed
+    private void btnSeleccionarImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarImgActionPerformed
         // TODO add your handling code here:
 
         String Ruta = "";
@@ -415,7 +415,7 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
             lblImagen.setIcon(mIcono); 
             
         }
-    }//GEN-LAST:event_btnAgregar2ActionPerformed
+    }//GEN-LAST:event_btnSeleccionarImgActionPerformed
 
     private void cbxPrincipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPrincipioActionPerformed
         // TODO add your handling code here:
@@ -556,10 +556,10 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar1;
-    private javax.swing.JButton btnAgregar2;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnAtras;
     private javax.swing.JToggleButton btnCrearAlmu;
+    private javax.swing.JButton btnSeleccionarImg;
     private javax.swing.JComboBox<String> cbxBebida;
     private javax.swing.JComboBox<String> cbxEntrada;
     private javax.swing.JComboBox<String> cbxPrincipio;

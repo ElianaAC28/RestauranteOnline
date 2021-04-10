@@ -6,9 +6,9 @@ import co.unicauca.restauranteonline.commons.domain.Componente;
 import java.util.List;
 
 /**
- * Servicio de usuarios del sistema ESTA BIEN Y ESTA EN CLIENTE
+ * Servicio de Almuerzos del sistema 
  *
- * @author Libardo, Julio
+ * @author SoftwareTeam
  */
 public class AlmuerzoService {
 

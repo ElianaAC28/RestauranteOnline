@@ -9,6 +9,7 @@ co\unicauca\restauranteonline\client\domain\services\RestauranteService.class
 co\unicauca\restauranteonline\presentacion\GUIMenu$6.class
 co\unicauca\restauranteonline\client\access\ICustomerAccess.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarAlmuerzo$4.class
+co\unicauca\restauranteonline\presentacion\GUIRestaurantesDisponibles$5.class
 co\unicauca\restauranteonline\presentacion\GUIListaComponentes$1.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarAlmuerzo$9.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarComponente$4.class
@@ -25,10 +26,10 @@ co\unicauca\restauranteonline\presentacion\GUIListaComponentes$4.class
 co\unicauca\restauranteonline\presentacion\GUIMenu$7.class
 co\unicauca\restauranteonline\presentacion\GUIAdmin$4.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarComponente.class
-co\unicauca\restauranteonline\client\domain\services\UserService.class
 co\unicauca\restauranteonline\presentacion\GUIAgregarComponente$1.class
 co\unicauca\restauranteonline\presentacion\GUILogin$1.class
 co\unicauca\restauranteonline\client\domain\services\CustomerService.class
+co\unicauca\restauranteonline\presentacion\GUIRestaurantesDisponibles$6.class
 co\unicauca\restauranteonline\client\infra\restauranteOnlineSocket.class
 co\unicauca\restauranteonline\presentacion\GUILogin$4.class
 co\unicauca\restauranteonline\presentacion\GUIMenu$4.class

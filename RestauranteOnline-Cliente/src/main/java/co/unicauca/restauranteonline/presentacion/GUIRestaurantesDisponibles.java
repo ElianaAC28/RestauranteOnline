@@ -5,6 +5,8 @@
  */
 package co.unicauca.restauranteonline.presentacion;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SoftwareTeam
@@ -70,9 +72,19 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
 
         bntRest2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         bntRest2.setText("Restaurante 2");
+        bntRest2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntRest2ActionPerformed(evt);
+            }
+        });
 
         btnRest4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnRest4.setText("Restaurante 4");
+        btnRest4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRest4ActionPerformed(evt);
+            }
+        });
 
         btnRest3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnRest3.setText("Restaurante 3");
@@ -171,6 +183,7 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
 
     private void btnRest3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRest3ActionPerformed
         // TODO add your handling code here:
+           JOptionPane.showMessageDialog(null, "En construcción...");
     }//GEN-LAST:event_btnRest3ActionPerformed
 
     private void btnRest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRest1ActionPerformed
@@ -186,6 +199,16 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void bntRest2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRest2ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "En construcción...");
+    }//GEN-LAST:event_bntRest2ActionPerformed
+
+    private void btnRest4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRest4ActionPerformed
+        // TODO add your handling code here:
+           JOptionPane.showMessageDialog(null, "En construcción...");
+    }//GEN-LAST:event_btnRest4ActionPerformed
 
     /**
      * @param args the command line arguments

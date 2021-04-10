@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Servicio de usuarios del sistema
- * @author Libardo, Julio
+ * @author SoftwareTeam
  */
 public class AlmuerzoService {
     IAlmuerzoRepository repositoryAlm;
@@ -36,7 +36,6 @@ public Almuerzo updateAlmuerzo(String idAlmuerzo) throws Exception {
      * Metodo encargado de obtener una lista de todos los componentes
      * existentes.
      *
-     * @return llamado a metodo findAllComponentes.
      */
 public List<Almuerzo> ListAlmuerzos() {
         List<JsonError> errors = new ArrayList<>();
@@ -48,6 +47,12 @@ public List<Almuerzo> ListAlmuerzos() {
         return repositoryAlm.findAllAlmuerzos();
 }
     
+    
+    
+     /**
+      *Crea el identificador de Almuerzo 
+      * 
+      **/
      public String CreateAlmuerzoID(Almuerzo parAlmuerzo) {
         List<JsonError> errors = new ArrayList<>();
         if (parAlmuerzo.getIdAlmuerzo().isEmpty() || parAlmuerzo.getRestId().isEmpty() || parAlmuerzo.getCostoAlm().isEmpty()){
@@ -61,6 +66,10 @@ public List<Almuerzo> ListAlmuerzos() {
         return repositoryAlm.createAlmuerzoID(parAlmuerzo);
     }
      
+     /**
+      *Crea Almuerzo 
+      * 
+      **/
      public String CreateAlmuerzo(Almuerzo parAlmuerzo) {
         List<JsonError> errors = new ArrayList<>();
         if (parAlmuerzo.getIdAlmuerzo().isEmpty() || parAlmuerzo.getComp().isEmpty() || parAlmuerzo.getIdComp().isEmpty()){
@@ -73,9 +82,5 @@ public List<Almuerzo> ListAlmuerzos() {
         }
         return repositoryAlm.createAlmuerzo(parAlmuerzo);
     }
-    
-
-   
-   
    
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author GRUPO 5
+ * @author SotfwareTeam
  */
 public interface IRestauranteAccess {
     

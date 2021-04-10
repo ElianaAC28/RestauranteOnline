@@ -41,7 +41,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         lblRestDisponibles = new javax.swing.JLabel();
         btnAgregarComp = new javax.swing.JButton();
         btnListarComp = new javax.swing.JButton();
-        btnActualizarAlm = new javax.swing.JButton();
+        btnAddAlm = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
@@ -82,11 +82,11 @@ public class GUIAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnActualizarAlm.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btnActualizarAlm.setText("Agregar Almuerzo");
-        btnActualizarAlm.addActionListener(new java.awt.event.ActionListener() {
+        btnAddAlm.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnAddAlm.setText("Agregar Almuerzo");
+        btnAddAlm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarAlmActionPerformed(evt);
+                btnAddAlmActionPerformed(evt);
             }
         });
 
@@ -105,6 +105,21 @@ public class GUIAdmin extends javax.swing.JFrame {
         pnlCiuRes.setLayout(pnlCiuResLayout);
         pnlCiuResLayout.setHorizontalGroup(
             pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
+=======
+            .addGroup(pnlCiuResLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addGroup(pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlCiuResLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel2))
+                    .addGroup(pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnAgregarComp, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                        .addComponent(btnListarComp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddAlm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 5ba0cdd9f85028266ebafec6db11f935b284ae0c
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCiuResLayout.createSequentialGroup()
                 .addContainerGap(204, Short.MAX_VALUE)
                 .addComponent(lblRestDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,10 +159,15 @@ public class GUIAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnListarComp, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+<<<<<<< HEAD
                 .addComponent(btnActualizarAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
+=======
+                .addComponent(btnAddAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
+>>>>>>> 5ba0cdd9f85028266ebafec6db11f935b284ae0c
         );
 
         javax.swing.GroupLayout pnlRestDisponLayout = new javax.swing.GroupLayout(pnlRestDispon);
@@ -185,6 +205,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void btnActualizarAlmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAlmActionPerformed
         try {
             // TODO add your handling code here:
@@ -194,8 +215,15 @@ public class GUIAdmin extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(GUIAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
+=======
+    private void btnAddAlmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAlmActionPerformed
+        // TODO add your handling code here:
+         GUIMenu update = new GUIMenu();
+         update.setVisible(true);
+         this.dispose();
+>>>>>>> 5ba0cdd9f85028266ebafec6db11f935b284ae0c
         
-    }//GEN-LAST:event_btnActualizarAlmActionPerformed
+    }//GEN-LAST:event_btnAddAlmActionPerformed
 
     private void btnAgregarCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCompActionPerformed
         // TODO add your handling code here:
@@ -288,7 +316,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizarAlm;
+    private javax.swing.JButton btnAddAlm;
     private javax.swing.JButton btnAgregarComp;
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnListarComp;

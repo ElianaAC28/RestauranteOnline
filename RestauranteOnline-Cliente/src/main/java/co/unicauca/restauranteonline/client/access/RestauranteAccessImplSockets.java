@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package co.unicauca.restauranteonline.client.access;
 
@@ -18,7 +14,7 @@ import java.util.logging.Logger;
 
 /**
  * 
- * @author GRUPO 5
+ * @author SoftwareTeam
  */
 public class RestauranteAccessImplSockets implements IRestauranteAccess{
     
@@ -108,7 +104,7 @@ public class RestauranteAccessImplSockets implements IRestauranteAccess{
     }
     
     /**
-     * Crea la solicitud json de creación del customer para ser enviado por el
+     * Crea la solicitud json de creación del Restaurante para ser enviado por el
      * socket
      *
      * @param restaurante objeto restaurante

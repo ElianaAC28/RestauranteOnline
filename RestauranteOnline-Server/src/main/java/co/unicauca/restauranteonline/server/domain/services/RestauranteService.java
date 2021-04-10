@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package co.unicauca.restauranteonline.server.domain.services;
 
 import co.unicauca.restauranteonline.commons.domain.Restaurante;
@@ -15,10 +9,11 @@ import java.util.List;
 
 /**
  * 
- * @author GRUPO 5
+ * @author SoftwareTeam
+ * 
  */
-public class RestauranteService {
-    
+public class RestauranteService 
+{ 
     IRestauranteRepository repoRestaurante;
     
     /**
@@ -27,6 +22,9 @@ public class RestauranteService {
     public RestauranteService() {
     }
     
+    /**
+     * Crear restaurante.
+     */
     public String CreateRestaurante(Restaurante parRestaurante) {
         List<JsonError> errors = new ArrayList<>();
         if (parRestaurante.getNit().isEmpty() || parRestaurante.getNombreRestaurante().isEmpty() || parRestaurante.getEslogan().isEmpty() 
@@ -45,9 +43,8 @@ public class RestauranteService {
     
     /**
      * Metodo encargado de obtener una lista de todos los restaurantes
-     * existentes.
-     *
-     * @return llamado a metodo findAllRestaurantes.
+     * existentes
+     * 
      */
     public List<Restaurante> ListRestaurantes() {
         List<JsonError> errors = new ArrayList<>();
