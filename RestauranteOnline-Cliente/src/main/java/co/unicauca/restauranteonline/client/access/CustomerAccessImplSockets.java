@@ -10,10 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Servicio de Usuario. Permite hacer el crear y buscar usuarios solicitando los
+ * Servicio de Cliente. Permite hacer el CRUD de clientes solicitando los
  * servicios con la aplicación server. Maneja los errores devueltos
  *
- * @author SoftwareTeam
+ * @author Libardo Pantoja, Julio A. Hurtado
  */
 public class CustomerAccessImplSockets implements ICustomerAccess {
 
@@ -27,15 +27,15 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
     }
 
     /**
-     * Busca un Usuario. Utiliza socket para pedir el servicio al servidor
+     * Busca un Customer. Utiliza socket para pedir el servicio al servidor
      *
-     * @param id identificador de usuario
-     * @return Objeto Usuario
+     * @param id cedula del cliente
+     * @return Objeto Customer
      * @throws Exception cuando no pueda conectarse con el servidor
      */
     @Override
     public Customer findCustomer(String id) throws Exception {
-       
+        //{"id"="9800001", "nombres":"juan", "apellidos":"perez", "direcciones":"[{}, {}, {}]"}
         String jsonResponse = null;
         String requestJson = findCustomerRequestJson(id);
         try {
@@ -67,13 +67,13 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
      *
      * @param username
      * @param userpassword
-     * @return true cuando se autentica exitosamente
+     * @return
      * @throws Exception
      */
     @Override
     public boolean autenticarCustomer(String username, String userpassword) throws Exception {
         String jsonResponse = null;
-        String requestJson = autenticarCustomerRequestJson(username, userpassword);
+        String requestJson = autenticarCustomerRequestJson(username,userpassword);
         try {
             mySocket.connect();
             jsonResponse = mySocket.sendStream(requestJson);
@@ -92,10 +92,10 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
                 Logger.getLogger(CustomerAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
                 throw new Exception(extractMessages(jsonResponse));
             } else {
-
-                //Agregó correctamente
+                
+                //Agregó correctamente, devuelve la cedula del customer 
                 return true;
-                //   
+                //    customer.getId();
             }
 
         }
@@ -103,11 +103,11 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
     }
 
     /**
-     * Crea un Usuario. Utiliza socket para pedir el servicio al servidor
+     * Crea un Customer. Utiliza socket para pedir el servicio al servidor
      *
-     * @param customer usuario de OnlineRestaurant
-     * @return devuelve e
-     * @throws Exception error crear usuario
+     * @param customer cliente de la agencia de viajes
+     * @return devuelve la cedula del cliente creado
+     * @throws Exception error crear el cliente
      */
     @Override
     public String createCustomer(Customer customer) throws Exception {
@@ -132,9 +132,9 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
                 throw new Exception(extractMessages(jsonResponse));
             } else {
                 String e = null;
-                //Agregó correctamente
+                //Agregó correctamente, devuelve la cedula del customer 
                 return e;
-                
+                //    customer.getId();
             }
 
         }
@@ -172,11 +172,12 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
      * Crea una solicitud json para ser enviada por el socket
      *
      *
-     * @param idCustomer identificación del usuario
-     * @return solicitud de consulta del usuario en formato json
-     *
+     * @param idCustomer identificación del cliente
+     * @return solicitud de consulta del cliente en formato Json, algo como:
+     * {"resource":"customer","action":"get","parameters":[{"name":"id","value":"98000001"}]}
      */
     private String findCustomerRequestJson(String idCustomer) {
+        //{"recource":"customer", "action":"get", "parametrers":"[{"name": "id", "value": 9800001"},{}]"}
         Protocol protocol = new Protocol();
         protocol.setResource("customer");
         protocol.setAction("get");
@@ -187,8 +188,8 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
 
         return requestJson;
     }
-
-    private String autenticarCustomerRequestJson(String username, String userpassword) {
+    private String autenticarCustomerRequestJson(String username, String userpassword ) {
+        //{"recource":"customer", "action":"get", "parametrers":"[{"name": "id", "value": 9800001"},{}]"}
         Protocol protocol = new Protocol();
         protocol.setResource("customer");
         protocol.setAction("aut");
@@ -199,20 +200,27 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
 
         return requestJson;
     }
-
     /**
      * Crea la solicitud json de creación del customer para ser enviado por el
      * socket
      *
      * @param customer objeto customer
-     * @return devulve formato json
-     * 
+     * @return devulve algo como:
+     * {"resource":"customer","action":"post","parameters":[{"name":"id","value":"980000012"},{"name":"fistName","value":"Juan"},...}]}
      */
     private String createCustomerRequestJson(Customer customer) {
 
         Protocol protocol = new Protocol();
         protocol.setResource("customer");
         protocol.setAction("post");
+        /*        protocol.addParameter("id", customer.getId());
+        protocol.addParameter("fistName", customer.getFirstName());
+        protocol.addParameter("lastName", customer.getLastName());
+        protocol.addParameter("address", customer.getAddress());
+        protocol.addParameter("email", customer.getEmail());
+        protocol.addParameter("gender", customer.getGender());
+        protocol.addParameter("mobile", customer.getMobile());
+         */
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
         System.out.println("json: " + requestJson);
@@ -224,7 +232,7 @@ public class CustomerAccessImplSockets implements ICustomerAccess {
      * Convierte jsonCustomer, proveniente del server socket, de json a un
      * objeto Customer
      *
-     * @param jsonCustomer objeto usuario en formato json
+     * @param jsonCustomer objeto cliente en formato json
      */
     private Customer jsonToCustomer(String jsonCustomer) {
 

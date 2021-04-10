@@ -11,11 +11,9 @@ import java.util.List;
 /**
  * Servicio de Usuarios. Da acceso a la lógica de negocio
  *
- * @author SoftwareTeam
- * 
+ * @author Libardo, Julio
  */
-public class UsuarioService 
-{
+public class UsuarioService {
 
     /**
      * Repositorio de usuarios
@@ -24,24 +22,23 @@ public class UsuarioService
 
     /**
      * Constructor parametrizado. Hace inyeccion de dependencias
-     * 
+     *
+     * @param repo repositorio de tipo IUsuarioRepository
      */
-    public UsuarioService(IUsuarioRepository repo) 
-    {
+    public UsuarioService(IUsuarioRepository repo) {
         this.repo = repo;
     }
 
     /**
-     * Busca un usuario
+     * Buscar un usuario
+     *
+     * @param userId id
+     * @return objeto tipo Customer
      */
-    public Usuario findUsuario(String userId) 
-    {
+    public Usuario findUsuario(String userId) {
         return repo.findUsuario(userId);
     }
-    
-    /**
-     * Autentica usuario
-     */
+
     public boolean autenticarUsuario(String username, String userpassword){
         List<JsonError> errors = new ArrayList<>();
         if (username.isEmpty() || userpassword.isEmpty()) {
@@ -52,7 +49,9 @@ public class UsuarioService
     }
     /**
      * Crea un nuevo usuario. Aplica validaciones de negocio
-     * 
+     *
+     * @param usuario usuario
+     * @return devuelve la cedula del customer creado
      */
     public String createUsuario(Usuario usuario) {
         List<JsonError> errors = new ArrayList<>();
@@ -73,7 +72,7 @@ public class UsuarioService
         if (!usuario.getUserEmail().contains("@")){
             errors.add(new JsonError("400", "BAD_REQUEST","Email debe tener una @. "));
         }    
-        // Verifica que no se encuentre repetido repetido
+        // Que no esté repetido
         
         Usuario customerSearched = this.findUsuario(usuario.getUserId());
         if (customerSearched != null){

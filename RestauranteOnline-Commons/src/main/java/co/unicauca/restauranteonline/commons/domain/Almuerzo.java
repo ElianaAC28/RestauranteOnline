@@ -12,9 +12,11 @@ package co.unicauca.restauranteonline.commons.domain;
 public class Almuerzo {
 
     String idAlmuerzo;
+    String entradaAlm;
+    String principioAlm;
+    String proteinaAlm;
+    String bebidaAlm;
     String restId;
-    String comp;
-    String idComp;
     String costoAlm;
 
     /**
@@ -23,11 +25,13 @@ public class Almuerzo {
     public Almuerzo() {
     }
 
-    public Almuerzo(String idAlmuerzo, String restId, String comp, String idComp, String costoAlm) {
+    public Almuerzo(String idAlmuerzo, String entradaAlm, String principioAlm, String proteinaAlm, String bebidaAlm, String restId, String costoAlm) {
         this.idAlmuerzo = idAlmuerzo;
+        this.entradaAlm = entradaAlm;
+        this.principioAlm = principioAlm;
+        this.proteinaAlm = proteinaAlm;
+        this.bebidaAlm = bebidaAlm;
         this.restId = restId;
-        this.comp = comp;
-        this.idComp = idComp;
         this.costoAlm = costoAlm;
     }
 
@@ -39,28 +43,44 @@ public class Almuerzo {
         this.idAlmuerzo = idAlmuerzo;
     }
 
+    public String getEntradaAlm() {
+        return entradaAlm;
+    }
+
+    public void setEntradaAlm(String entradaAlm) {
+        this.entradaAlm = entradaAlm;
+    }
+
+    public String getPrincipioAlm() {
+        return principioAlm;
+    }
+
+    public void setPrincipioAlm(String principioAlm) {
+        this.principioAlm = principioAlm;
+    }
+
+    public String getProteinaAlm() {
+        return proteinaAlm;
+    }
+
+    public void setProteinaAlm(String proteinaAlm) {
+        this.proteinaAlm = proteinaAlm;
+    }
+
+    public String getBebidaAlm() {
+        return bebidaAlm;
+    }
+
+    public void setBebidaAlm(String bebidaAlm) {
+        this.bebidaAlm = bebidaAlm;
+    }
+
     public String getRestId() {
         return restId;
     }
 
     public void setRestId(String restId) {
         this.restId = restId;
-    }
-
-    public String getComp() {
-        return comp;
-    }
-
-    public void setComp(String comp) {
-        this.comp = comp;
-    }
-
-    public String getIdComp() {
-        return idComp;
-    }
-
-    public void setIdComp(String idComp) {
-        this.idComp = idComp;
     }
 
     public String getCostoAlm() {
@@ -72,4 +92,5 @@ public class Almuerzo {
     }
 
     
+
 }

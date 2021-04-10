@@ -10,11 +10,10 @@ import java.util.List;
 
 /**
  * Servicio de clientes. Da acceso a la lógica de negocio
- * @author SoftwareTeam
- * 
+ *
+ * @author Libardo, Julio
  */
-public class CustomerService 
-{
+public class CustomerService {
 
     /**
      * Repositorio de clientes
@@ -24,20 +23,22 @@ public class CustomerService
     /**
      * Constructor parametrizado. Hace inyeccion de dependencias
      *
+     * @param repo repositorio de tipo ICustomerRepository
      */
     public CustomerService(ICustomerRepository repo) {
         this.repo = repo;
     }
 
     /**
-     * Buscar un usuario
+     * Buscar un cliente
+     *
+     * @param id cedula
+     * @return objeto tipo Customer
      */
     public Customer findCustomer(String id) {
         return repo.findCustomer(id);
     }
-    /**
-     * Verifica usuario
-     */
+
     public boolean autenticarCustomer(String username, String userpassword){
         List<JsonError> errors = new ArrayList<>();
         if (username.isEmpty() || userpassword.isEmpty()) {
@@ -47,8 +48,10 @@ public class CustomerService
         return repo.autenticarCustomer(username,userpassword);
     }
     /**
-     * Crea un nuevo usuario y aplica validaciones de negocio
+     * Crea un nuevo customer. Aplica validaciones de negocio
      *
+     * @param customer cliente
+     * @return devuelve la cedula del customer creado
      */
     public String createCustomer(Customer customer) {
 //        List<JsonError> errors = new ArrayList<>();

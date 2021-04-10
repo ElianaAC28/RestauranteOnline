@@ -6,9 +6,9 @@ import co.unicauca.restauranteonline.commons.domain.Componente;
 import java.util.List;
 
 /**
- * Servicio de Almuerzos del sistema 
+ * Servicio de usuarios del sistema ESTA BIEN Y ESTA EN CLIENTE
  *
- * @author SoftwareTeam
+ * @author Libardo, Julio
  */
 public class AlmuerzoService {
 
@@ -19,9 +19,6 @@ public class AlmuerzoService {
     }
  public String createAlmuerzo(Almuerzo almuerzo) throws Exception {
         return service.createAlmuerzo(almuerzo);
- }
- public String createAlmuerzoID(Almuerzo almuerzo) throws Exception {
-        return service.createAlmuerzoID(almuerzo);
  }
     public Almuerzo findAlmuerzo(String idAlmuerzo) throws Exception {
         return service.findAlmuerzo(idAlmuerzo);

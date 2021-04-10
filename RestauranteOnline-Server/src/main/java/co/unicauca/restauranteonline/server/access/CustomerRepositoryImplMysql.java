@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 /**
  * Repositorio de Clientes en MySWL
  *
- * @author SoftwareTeam
+ * @author Libardo, Julio
  */
 public class CustomerRepositoryImplMysql implements ICustomerRepository {
 
@@ -28,8 +28,6 @@ public class CustomerRepositoryImplMysql implements ICustomerRepository {
     }
 
     /**
-     * Busca cliente en la base de datos
-     *
      * @param id
      * @return
      */
@@ -60,12 +58,7 @@ public class CustomerRepositoryImplMysql implements ICustomerRepository {
         }
         return customer;
     }
-    /**
-     * Autentica al usuario
-     * @param username
-     * @param userpassword
-     * @return
-     */
+
     public boolean autenticarCustomer(String username, String userpassword) {
         Customer customer = null;
         boolean ingreso = false;
@@ -87,11 +80,7 @@ public class CustomerRepositoryImplMysql implements ICustomerRepository {
         }
         return ingreso;
     }
-    /**
-     * Crea un usuario 
-     * @param customer
-     * @return
-     */
+
     @Override
     public String createCustomer(Customer customer) {
 

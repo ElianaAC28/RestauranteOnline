@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Servicio de Usuario. Permite hacer el CRUD de clientes solicitando los
+ * Servicio de Cliente. Permite hacer el CRUD de clientes solicitando los
  * servicios con la aplicación server. Maneja los errores devueltos
  *
  * @author Libardo Pantoja, Julio A. Hurtado

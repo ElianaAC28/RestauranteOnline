@@ -6,26 +6,16 @@ import co.unicauca.restauranteonline.client.access.IComponentesAccess;
 import java.util.List;
 
 /**
- * Servicio de Componentes del sistema
- * @author SoftwareTeam
+ * Servicio de usuarios del sistema
+ * @author Libardo, Julio
  */
 public class ComponenteService {
     private final IComponentesAccess service;
-    /**
-     * Constructor privado que evita que otros objetos instancien
-     * @param service implementacion de tipo IComponenteService
-     */
+   
     public ComponenteService(IComponentesAccess service) {
         this.service = service;
     }
-      /**
-     * Busca un componente en el servidor remoto
-     *
-     * @param id identificador del componente
-     * @return Objeto tipo Componente
-     * @throws java.lang.Exception la excepcio se lanza cuando no logra conexión
-     * con el servidor
-     */
+     
     public Componente findComponente(String id) throws Exception {
         return service.findComponente(id);
     }

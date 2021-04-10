@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author SoftwareTeam
+ * @author usuario
  */
 public interface IComponentesAccess {
     /**

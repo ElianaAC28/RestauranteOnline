@@ -22,10 +22,10 @@ public class CustomerService {
     }
 
     /**
-     * Busca un Customer en el servidor remoto
+     * Busca un cliente en el servidor remoto
      *
-     * @param id identificador del customer
-     * @return 
+     * @param id identificador del cliente
+     * @return Objeto tipo Cliente, null si no lo encuentra
      * @throws java.lang.Exception la excepcio se lanza cuando no logra conexión
      * con el servidor
      */
@@ -33,29 +33,11 @@ public class CustomerService {
         return service.findCustomer(id);
 
     }
-     /**
-     * Crea un componente en el servidor remoto
-     *
-     * @param id identificador del componente
-     * @return Objeto tipo componente
-     * @throws java.lang.Exception la excepcio se lanza cuando no logra conexión
-     * con el servidor
-     */
     
     public String createCustomer(Customer customer) throws Exception {
         return service.createCustomer(customer);
 
     }    
-    
-     /**
-     * Autenticar un componente en el servidor remoto
-     *
-     * @param username
-     * @param userpassword 
-     * @return Objeto tipo componente
-     * @throws java.lang.Exception la excepcio se lanza cuando no logra conexión
-     * con el servidor
-     */
     public boolean autenticarCustomer(String username, String userpassword) throws Exception {
         return service.autenticarCustomer(username, userpassword);
 

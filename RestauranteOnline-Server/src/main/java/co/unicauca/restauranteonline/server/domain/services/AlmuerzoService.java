@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Servicio de usuarios del sistema
- * @author SoftwareTeam
+ * @author Libardo, Julio
  */
 public class AlmuerzoService {
     IAlmuerzoRepository repositoryAlm;
@@ -36,8 +36,9 @@ public Almuerzo updateAlmuerzo(String idAlmuerzo) throws Exception {
      * Metodo encargado de obtener una lista de todos los componentes
      * existentes.
      *
+     * @return llamado a metodo findAllComponentes.
      */
-public List<Almuerzo> ListAlmuerzos() {
+    public List<Almuerzo> ListAlmuerzos() {
         List<JsonError> errors = new ArrayList<>();
         if (!repositoryAlm.findAllAlmuerzos().isEmpty()) {
             if (!errors.isEmpty()) {
@@ -45,34 +46,13 @@ public List<Almuerzo> ListAlmuerzos() {
             }
         }
         return repositoryAlm.findAllAlmuerzos();
-}
-    
-    
-    
-     /**
-      *Crea el identificador de Almuerzo 
-      * 
-      **/
-     public String CreateAlmuerzoID(Almuerzo parAlmuerzo) {
-        List<JsonError> errors = new ArrayList<>();
-        if (parAlmuerzo.getIdAlmuerzo().isEmpty() || parAlmuerzo.getRestId().isEmpty() || parAlmuerzo.getCostoAlm().isEmpty()){
-            errors.add(new JsonError("400", "BAD_REQUEST", "LA INFORMACION X ES OBLIGATORIA "));
-        }
-        if (!errors.isEmpty()) {
-            Gson gson = new Gson();
-            String errorJson = gson.toJson(errors);
-            return errorJson;
-        }
-        return repositoryAlm.createAlmuerzoID(parAlmuerzo);
     }
-     
-     /**
-      *Crea Almuerzo 
-      * 
-      **/
+    
      public String CreateAlmuerzo(Almuerzo parAlmuerzo) {
         List<JsonError> errors = new ArrayList<>();
-        if (parAlmuerzo.getIdAlmuerzo().isEmpty() || parAlmuerzo.getComp().isEmpty() || parAlmuerzo.getIdComp().isEmpty()){
+        if (parAlmuerzo.getIdAlmuerzo().isEmpty() || parAlmuerzo.getEntradaAlm().isEmpty() || parAlmuerzo.getPrincipioAlm().isEmpty()
+                || parAlmuerzo.getProteinaAlm().isEmpty() || parAlmuerzo.getBebidaAlm().isEmpty() || parAlmuerzo.getCostoAlm().isEmpty() || parAlmuerzo. getRestId().isEmpty())
+                {
             errors.add(new JsonError("400", "BAD_REQUEST", "LA INFORMACION X ES OBLIGATORIA "));
         }
         if (!errors.isEmpty()) {
@@ -82,5 +62,9 @@ public List<Almuerzo> ListAlmuerzos() {
         }
         return repositoryAlm.createAlmuerzo(parAlmuerzo);
     }
+    
+
+   
+   
    
 }

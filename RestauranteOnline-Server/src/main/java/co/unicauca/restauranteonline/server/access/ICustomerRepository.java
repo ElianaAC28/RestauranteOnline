@@ -4,7 +4,7 @@ import co.unicauca.restauranteonline.commons.domain.Customer;
 
 /**
  * Interface del respositorio de clientes
- * @author SoftwareTeam
+ * @author Libardo Pantoja
  */
 public interface ICustomerRepository {
     /**
@@ -14,19 +14,8 @@ public interface ICustomerRepository {
      */
     public Customer findCustomer(String id);
     
-    /**
-     * Crea cliente
-     * @param customer
-     * @return
-     */
     public String createCustomer(Customer customer);
     
-    /**
-     * Autentica cliente
-     * @param username
-     * @param userpassword
-     * @return
-     */
     public boolean autenticarCustomer(String username, String userpassword);
 
 }

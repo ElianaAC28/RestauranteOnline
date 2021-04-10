@@ -6,7 +6,6 @@ D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\RestauranteAccessImplSockets.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\IRestauranteAccess.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\domain\services\UserService.java
-D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\presentacion\GUIMenu.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\domain\services\ComponenteService.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\domain\services\UsuarioService.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\presentacion\GUIListaComponentes.java
@@ -23,6 +22,7 @@ D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\infra\Security.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\UsuarioAccessImplSockets.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\CustomerAccessImplSockets.java
+D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\presentacion\GUIActualizarAlmuerzo.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\AlmuerzoAccessImplSockets.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\IAlmuerzoAccess.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\infra\AlmuerzoSocket.java
@@ -31,3 +31,4 @@ D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\presentacion\GUIRestaurantesDisponibles.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\access\ComponenteAccessImplSockets.java
 D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\client\domain\services\AlmuerzoService.java
+D:\Unicauca\Lab Ing Sw\Proyecto\RestauranteOnline\RestauranteOnline-Cliente\src\main\java\co\unicauca\restauranteonline\presentacion\GUICiudadRestaurante.java

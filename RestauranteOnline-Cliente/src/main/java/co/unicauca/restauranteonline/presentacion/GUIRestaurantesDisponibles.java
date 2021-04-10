@@ -5,8 +5,6 @@
  */
 package co.unicauca.restauranteonline.presentacion;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author SoftwareTeam
@@ -42,7 +40,6 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
         btnRest4 = new javax.swing.JButton();
         btnRest3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnAtras = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,19 +69,9 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
 
         bntRest2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         bntRest2.setText("Restaurante 2");
-        bntRest2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntRest2ActionPerformed(evt);
-            }
-        });
 
         btnRest4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnRest4.setText("Restaurante 4");
-        btnRest4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRest4ActionPerformed(evt);
-            }
-        });
 
         btnRest3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnRest3.setText("Restaurante 3");
@@ -94,37 +81,24 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
             }
         });
 
-        btnAtras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atras3.png"))); // NOI18N
-        btnAtras.setText("Atras");
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlCiuResLayout = new javax.swing.GroupLayout(pnlCiuRes);
         pnlCiuRes.setLayout(pnlCiuResLayout);
         pnlCiuResLayout.setHorizontalGroup(
             pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCiuResLayout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
-                .addGroup(pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRest4, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRest3, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntRest2, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRest1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRestDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66))
             .addGroup(pnlCiuResLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
                 .addGroup(pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCiuResLayout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(jLabel1))
-                    .addGroup(pnlCiuResLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnAtras)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(btnRest4, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnRest1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                        .addComponent(bntRest2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRest3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCiuResLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblRestDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
         pnlCiuResLayout.setVerticalGroup(
             pnlCiuResLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,15 +109,13 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(37, 37, 37)
                 .addComponent(btnRest1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addComponent(bntRest2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRest3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRest4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(btnAtras)
-                .addContainerGap())
+                .addComponent(btnRest4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
 
         javax.swing.GroupLayout pnlRestDisponLayout = new javax.swing.GroupLayout(pnlRestDispon);
@@ -151,16 +123,16 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
         pnlRestDisponLayout.setHorizontalGroup(
             pnlRestDisponLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRestDisponLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlCiuRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlRestDisponLayout.setVerticalGroup(
             pnlRestDisponLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRestDisponLayout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
-                .addComponent(pnlCiuRes, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(pnlCiuRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,13 +141,13 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlRestDispon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlRestDispon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnlRestDispon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
@@ -183,32 +155,14 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
 
     private void btnRest3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRest3ActionPerformed
         // TODO add your handling code here:
-           JOptionPane.showMessageDialog(null, "En construcción...");
     }//GEN-LAST:event_btnRest3ActionPerformed
 
     private void btnRest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRest1ActionPerformed
         // TODO add your handling code here:
-        GUIMenu rest = new GUIMenu();
+        GUICiudadRestaurante rest = new GUICiudadRestaurante();
         rest.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRest1ActionPerformed
-
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
-        GUILogin login = new GUILogin();
-        login.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnAtrasActionPerformed
-
-    private void bntRest2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRest2ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "En construcción...");
-    }//GEN-LAST:event_bntRest2ActionPerformed
-
-    private void btnRest4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRest4ActionPerformed
-        // TODO add your handling code here:
-           JOptionPane.showMessageDialog(null, "En construcción...");
-    }//GEN-LAST:event_btnRest4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,7 +216,6 @@ public class GUIRestaurantesDisponibles extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntRest2;
-    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnRest1;
     private javax.swing.JButton btnRest3;
     private javax.swing.JButton btnRest4;

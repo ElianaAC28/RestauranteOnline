@@ -22,7 +22,7 @@ public class UsuarioService {
     }
 
     /**
-     * Busca un usuario en el servidor remoto
+     * Busca un cliente en el servidor remoto
      *
      * @param userId id del usuario
      * @return Objeto tipo Usuario, null si no lo encuentra

@@ -13,14 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  *
- * @author SoftwareTeam
- * 
+ * @author usuario
  */
 public class ComponenteService {
     IComponenteRepository repoComponente;
 
     /**
      * Constructor parametrizado, Hace inyeccion de dependencias.
+     * @param repoComponente
      */
     public ComponenteService(IComponenteRepository repoComponente) {
         this.repoComponente = repoComponente;
@@ -32,9 +32,6 @@ public class ComponenteService {
     public ComponenteService() {
     }
     
-    /**
-     * Crea un nuevo componente
-     */
     public String CreateComponente(Componente parComponente) {
         List<JsonError> errors = new ArrayList<>();
         if (parComponente.getIdComponente()== null || parComponente.getIdRestaurante()==null || parComponente.getNombreComponente().isEmpty() 
@@ -52,7 +49,8 @@ public class ComponenteService {
     /**
      * Metodo encargado de obtener una lista de todos los componentes
      * existentes.
-     * 
+     *
+     * @return llamado a metodo findAllComponentes.
      */
     public List<Componente> ListComponentes() {
         List<JsonError> errors = new ArrayList<>();

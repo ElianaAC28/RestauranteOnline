@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 /**
  * Repositorio de Clientes en MySWL
  *
- * @author SoftwareTeam
+ * @author Libardo, Julio
  */
 public class UsuarioRepositoryImplMysql implements IUsuarioRepository {
 
@@ -28,8 +28,6 @@ public class UsuarioRepositoryImplMysql implements IUsuarioRepository {
     }
 
     /**
-     * Busca cliente en la base de datos
-     *
      * @param userId
      * @return
      */
@@ -51,7 +49,7 @@ public class UsuarioRepositoryImplMysql implements IUsuarioRepository {
                 usuario.setUserApellido(res.getString("userApellido"));
                 usuario.setUserCelular(res.getString("userCelular"));
                 usuario.setUserEmail(res.getString("userEmail"));
-
+                
             }
             pstmt.close();
             this.disconnect();
@@ -61,13 +59,6 @@ public class UsuarioRepositoryImplMysql implements IUsuarioRepository {
         return usuario;
     }
 
-    /**
-     * Autentica al usuario
-     *
-     * @param username
-     * @param userpassword
-     * @return
-     */
     public boolean autenticarUsuario(String username, String userpassword) {
         Usuario usuario = null;
         boolean ingreso = false;
@@ -90,12 +81,6 @@ public class UsuarioRepositoryImplMysql implements IUsuarioRepository {
         return ingreso;
     }
 
-    /**
-     * Crea un usuario
-     *
-     * @param customer
-     * @return
-     */
     @Override
     public String createUsuario(Usuario usuario) {
 

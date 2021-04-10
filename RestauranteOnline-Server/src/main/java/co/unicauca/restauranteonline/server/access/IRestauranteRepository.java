@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author SoftwareTeam
+ * @author GRUPO 5
  */
 public interface IRestauranteRepository {
     
@@ -22,28 +22,12 @@ public interface IRestauranteRepository {
      */
     public String createRestaurante(Restaurante parRestaurante);
 
-    /**
-     * Elimina un restaurante
-     * @return
-     */
     public String deleteRestaurante();
 
-    /**
-     * Actualiza un restaurante
-     * @return
-     */
     public String uptadeRestaurante();
 
-    /**
-     * Busca un restaurante
-     * @return
-     */
     public String findRestaurante();
     
-    /**
-     * Lista todos los restaurantes
-     * @return
-     */
     public List<Restaurante> findAllRestaurantes();
     
 }

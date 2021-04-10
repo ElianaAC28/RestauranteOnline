@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author SoftwareTeam
+ * @author 
  */
 public class ComponenteRepositoryImplMysql implements IComponenteRepository {
 

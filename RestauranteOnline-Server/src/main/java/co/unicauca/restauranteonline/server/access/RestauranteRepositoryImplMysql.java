@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 /**
  * 
- * @author SoftwareTeam
+ * @author GRUPO 5
  */
 public class RestauranteRepositoryImplMysql implements IRestauranteRepository {
     
@@ -57,38 +57,21 @@ public class RestauranteRepositoryImplMysql implements IRestauranteRepository {
         }
     }
 
-    /**
-     * Metodo encargado de crear restaurantes
-     * @param parRestaurante
-     * @return
-     */
     @Override
     public String createRestaurante(Restaurante parRestaurante) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * Metodo encargado de eliminar restaurantes
-     * @return
-     */
     @Override
     public String deleteRestaurante() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * Metodo encargado de actualizar restaurantes
-     * @return
-     */
     @Override
     public String uptadeRestaurante() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * Metodo encargado de buscar restaurantes
-     * @return
-     */
     @Override
     public String findRestaurante() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

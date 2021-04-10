@@ -27,13 +27,6 @@ public interface IUsuarioAccess {
      */
 
     public String createUsuario(Usuario usuario) throws Exception;
-     /**
-     * Autenticar un usuario
-     *
-     * @param ususario usuario de la base de datos
-     * @return devuelve la id del usuario
-     * @throws Exception error autenticar usuario
-     */
-
+    
     public boolean autenticarUsuario(String username, String userpassword) throws Exception;
 }
