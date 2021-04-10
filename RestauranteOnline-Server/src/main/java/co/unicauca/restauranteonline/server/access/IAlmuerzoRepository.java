@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author AC
+ * @author SoftwareTeam
  */
 public interface IAlmuerzoRepository {
       /**
@@ -22,8 +22,31 @@ public interface IAlmuerzoRepository {
      */
    
  public String createAlmuerzo(Almuerzo parAlmuerzo);
+
+    /**
+     *Actualiza almuerzo
+     * @param idAlmuerzo
+     * @return
+     */
     public Almuerzo updateAlmuerzo(String idAlmuerzo);
 
+    /**
+     *Busca un almuerzo
+     * @param idAlmuerzo
+     * @return
+     */
     public Almuerzo findAlmuerzo(String idAlmuerzo);
-      public List<Almuerzo> findAllAlmuerzos();
+
+    /**
+     *Busca todos los almuerzos
+     * @return
+     */
+    public List<Almuerzo> findAllAlmuerzos();
+
+    /**
+     *Crea un almuerzo
+     * @param parAlmuerzo
+     * @return
+     */
+    public String createAlmuerzoID(Almuerzo parAlmuerzo);
 }

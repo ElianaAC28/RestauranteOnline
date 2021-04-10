@@ -12,10 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Servicio de Cliente. Permite hacer el CRUD de clientes solicitando los
+ * Servicio de Componente. Permite crear y listar  los componentes solicitando los
  * servicios con la aplicación server. Maneja los errores devueltos
  *
- * @author Libardo Pantoja, Julio A. Hurtado
+ * @author SoftwareTeam
  */
 public class ComponenteAccessImplSockets implements IComponentesAccess{
 
@@ -29,15 +29,14 @@ public class ComponenteAccessImplSockets implements IComponentesAccess{
     }
 
     /**
-     * Busca un Customer. Utiliza socket para pedir el servicio al servidor
+     * Busca un Componente. Utiliza socket para pedir el servicio al servidor
      *
-     * @param id cedula del cliente
-     * @return Objeto Customer
+     * @param id identificación del componente
+     * @return Objeto Componente
      * @throws Exception cuando no pueda conectarse con el servidor
      */
     @Override
     public Componente findComponente(String id) throws Exception {
-        //{"id"="9800001", "nombres":"juan", "apellidos":"perez", "direcciones":"[{}, {}, {}]"}
         String jsonResponse = null;
         String requestJson = findComponenteRequestJson(id);
         try {
@@ -94,7 +93,7 @@ public class ComponenteAccessImplSockets implements IComponentesAccess{
             } else {
                 
                 return componente.getNombreComponente();
-                    //    customer.getId();
+                   
             }
 
         }
@@ -151,8 +150,8 @@ public class ComponenteAccessImplSockets implements IComponentesAccess{
      * socket
      *
      * @param Componente objeto componente
-     * @return devulve algo como:
-     * // actializar{"resource":"customer","action":"post","parameters":[{"name":"id","value":"980000012"},{"name":"fistName","value":"Juan"},...}]}
+     * @return devulve  formato json
+     * 
      */
     private String createComponenteRequestJson(Componente componente) {
 

@@ -14,10 +14,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Servicio de Cliente. Permite hacer el CRUD de clientes solicitando los
+ * Servicio de Almuerzo. Permite hacer el almuerzo  de clientes solicitando los
  * servicios con la aplicación server. Maneja los errores devueltos
  *
- * @author Libardo Pantoja, Julio A. Hurtado
+ * @author SoftwareTeam
  */
 public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
 
@@ -29,10 +29,16 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
     public AlmuerzoAccessImplSockets() {
         mySocket = new AlmuerzoSocket();
     }
-
+  /**
+     * Busca un Almuerzo. Utiliza socket para pedir el servicio al servidor
+     *
+     * @param id identificador de almuerzo
+     * @return Objeto Almuerzo
+     * @throws Exception cuando no pueda conectarse con el servidor
+     */
     @Override
     public Almuerzo findAlmuerzo(String idAlmuerzo) throws Exception {
-        //{"id"="9800001", "nombres":"juan", "apellidos":"perez", "direcciones":"[{}, {}, {}]"}
+        
         String jsonResponse = null;
         String requestJson = findAlmuerzoRequestJson(idAlmuerzo);
         try {
@@ -76,7 +82,7 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
     }
 
     private String findAlmuerzoRequestJson(String idAlmuerzo) {
-        //{"recource":"customer", "action":"get", "parametrers":"[{"name": "id", "value": 9800001"},{}]"}
+      
         Protocol protocol = new Protocol();
         protocol.setResource("almuerzo");
         protocol.setAction("get");
@@ -146,10 +152,10 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
     }
 
     /**
-     * Busca todos los Componentes. Utiliza socket para pedir el servicio al
+     * Busca todos los Almuerzos. Utiliza socket para pedir el servicio al
      * servidor
      *
-     * @return Lista de Componentes.
+     * @return Lista de Almuerzos.
      * @throws Exception cuando no pueda conectarse con el servidor
      */
     @Override
@@ -173,7 +179,7 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
                 Logger.getLogger(AlmuerzoAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
                 throw new Exception(extractMessages(jsonResponse));
             } else {
-                //Encontro el Componente
+                //Encontro el Almuerzo
                 List<Almuerzo> almuerzo = jsonToListAlmuerzos(jsonResponse);
                 return almuerzo;
             }
@@ -216,12 +222,8 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
         protocol.setResource("Almuerzo");
         protocol.setAction("add");
         protocol.addParameter("idAlmuerzo", parAlmuerzo.getIdAlmuerzo());
-        protocol.addParameter("entradaAlm", parAlmuerzo.getEntradaAlm());
-        protocol.addParameter("principioAlm", parAlmuerzo.getPrincipioAlm());
-        protocol.addParameter("proteinaAlm", parAlmuerzo.getProteinaAlm());
-        protocol.addParameter("bebidaAlm", parAlmuerzo.getBebidaAlm());  
-        protocol.addParameter("restId", parAlmuerzo.getRestId());  
-        protocol.addParameter("costoAlm", parAlmuerzo.getCostoAlm()+"");
+        protocol.addParameter("idComponente", parAlmuerzo.getComp());
+        protocol.addParameter("idTipoComp", parAlmuerzo.getIdComp());
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
         System.out.println("json: " + requestJson);
@@ -253,7 +255,53 @@ public class AlmuerzoAccessImplSockets implements IAlmuerzoAccess {
             } else {
 
                 return almuerzo.getIdAlmuerzo();
-                //    customer.getId();
+              
+            }
+
+        }
+
+    }
+    
+    private String createAlmuerzoIDRequestJson(Almuerzo parAlmuerzo) {
+
+        Protocol protocol = new Protocol();
+        protocol.setResource("Almuerzo");
+        protocol.setAction("adds");
+        protocol.addParameter("idAlmuerzo", parAlmuerzo.getIdAlmuerzo());
+        protocol.addParameter("idRestaurante", parAlmuerzo.getRestId());
+        protocol.addParameter("almuCosto", parAlmuerzo.getCostoAlm());
+        Gson gson = new Gson();
+        String requestJson = gson.toJson(protocol);
+        System.out.println("json: " + requestJson);
+
+        return requestJson;
+    }
+
+    @Override
+    public String createAlmuerzoID(Almuerzo almuerzo) throws Exception {
+        String jsonResponse = null;
+        String requestJson = createAlmuerzoIDRequestJson(almuerzo);
+        try {
+            mySocket.connect();
+            jsonResponse = mySocket.sendStream(requestJson);
+            mySocket.closeStream();
+            mySocket.disconnect();
+
+        } catch (IOException ex) {
+            Logger.getLogger(AlmuerzoAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+        }
+        if (jsonResponse == null) {
+            throw new Exception("No se pudo conectar con el servidor");
+        } else {
+
+            if (jsonResponse.contains("error")) {
+                //Devolvió algún error                
+                Logger.getLogger(AlmuerzoAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                throw new Exception(extractMessages(jsonResponse));
+            } else {
+
+                return almuerzo.getIdAlmuerzo();
+            
             }
 
         }

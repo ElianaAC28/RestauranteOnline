@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * 
- * @author GRUPO 5
+ * @author SoftwareTeam
  */
 public class RestauranteService {
     

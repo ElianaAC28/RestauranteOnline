@@ -6,8 +6,8 @@
 package co.unicauca.restauranteonline.presentacion;
 
 import co.unicauca.restauranteonline.client.access.Factory;
-import co.unicauca.restauranteonline.client.access.ICustomerAccess;
-import co.unicauca.restauranteonline.client.domain.services.CustomerService;
+import co.unicauca.restauranteonline.client.access.IUsuarioAccess;
+import co.unicauca.restauranteonline.client.domain.services.UsuarioService;
 import static co.unicauca.restauranteonline.client.infra.Messages.successMessage;
 import static co.unicauca.restauranteonline.client.infra.Messages.warningMessage;
 import java.awt.Graphics;
@@ -24,14 +24,9 @@ import javax.swing.JPanel;
  */
 public class GUILogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUIALogin
-     */
-    //  FondoPanel fondo = new FondoPanel();
+   
     public GUILogin() {
-        //lblImg = new JLabel(new ImageIcon("Logo_restaurante.png"));
-        //pnlLogin.add(lblImg);
-        //this.setContentPane(fondo);
+       
         initComponents();
     }
 
@@ -58,7 +53,7 @@ public class GUILogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblImg.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        lblImg.setText("[Inser imagen]");
+        lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo_restaurante .png"))); // NOI18N
 
         lblUsuario.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblUsuario.setText("Usuario: ");
@@ -92,31 +87,31 @@ public class GUILogin extends javax.swing.JFrame {
         jpnLogin.setLayout(jpnLoginLayout);
         jpnLoginLayout.setHorizontalGroup(
             jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnLoginLayout.createSequentialGroup()
-                .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpnLoginLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUsuario)
-                            .addComponent(lblContra))
-                        .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpnLoginLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpnLoginLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jpnLoginLayout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(lblImg))
-                    .addGroup(jpnLoginLayout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(btnIniciarSesion)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLoginLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
+            .addGroup(jpnLoginLayout.createSequentialGroup()
+                .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnLoginLayout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addComponent(lblImg))
+                    .addGroup(jpnLoginLayout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnIniciarSesion)
+                            .addGroup(jpnLoginLayout.createSequentialGroup()
+                                .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblUsuario)
+                                    .addComponent(lblContra))
+                                .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpnLoginLayout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jpnLoginLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(203, Short.MAX_VALUE))
             .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLoginLayout.createSequentialGroup()
                     .addContainerGap(261, Short.MAX_VALUE)
@@ -126,19 +121,22 @@ public class GUILogin extends javax.swing.JFrame {
         jpnLoginLayout.setVerticalGroup(
             jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(lblImg)
-                .addGap(128, 128, 128)
+                .addGap(60, 60, 60)
                 .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsuario)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
                 .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblContra)
-                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                    .addGroup(jpnLoginLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(lblContra))
+                    .addGroup(jpnLoginLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(48, 48, 48)
                 .addComponent(btnIniciarSesion)
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addComponent(btnContinuar)
                 .addGap(42, 42, 42))
             .addGroup(jpnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,21 +178,21 @@ public class GUILogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-// TODO add your handling code here:
-        //co.unicauca.restauranteonline.client.infra.Security.usuario = new User(txtUsuario.getText(), Password.getText(), "");
-        ICustomerAccess repo = Factory.getInstance().getCustomerService();
-        CustomerService customerService = new CustomerService(repo);
-        //Aqui vendria el analizar si el usuario existe en el sistema
+
+        IUsuarioAccess repo = Factory.getInstance().getUsuarioService();
+        UsuarioService customerService = new UsuarioService(repo);
+        //Analizar si el usuario existe en el sistema
         try {
             if(txtUsuario.getText().isEmpty() || Password.getText().isEmpty()){
                 warningMessage("CAMPOS VACIOS", "Atención");
             }
-            boolean login = customerService.autenticarCustomer(txtUsuario.getText(), Password.getText());
+            boolean login = customerService.autenticarUsuario(txtUsuario.getText(), Password.getText());
             if (login) {
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        GUIAdmin ins = new GUIAdmin();
-                        //ins.setExtendedState(MAXIMIZED_BOTH);
+                        String restId = "";
+                        GUIAdmin ins = new GUIAdmin(restId);
+                       
                         ins.setVisible(true);
                         
                         warningMessage("Autenticacion exitosa!","BIENVENIDO");
@@ -202,9 +200,7 @@ public class GUILogin extends javax.swing.JFrame {
                 });
                 this.dispose();
             } 
-//            else {
-//                warningMessage("Contraseña incorrecta", "Atención");
-//            }
+
         } catch (Exception ex) {
             System.out.println(ex);
             successMessage(ex.getMessage() + "", "");
@@ -268,17 +264,4 @@ public class GUILogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-    /*  class FondoPanel extends JPanel {
-
-        private Image imagen;
-
-        @Override
-        public void paint(Graphics g) {
-            imagen = new ImageIcon(getClass().getResource("/imagenes/fondo.png")).getImage();
-            
-            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-            setOpaque(false);
-            super.paint(g);
-        }
-    } intento de colocar una imagen de fondo*/
 }

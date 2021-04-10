@@ -9,12 +9,16 @@ import java.sql.PreparedStatement;
 import co.unicauca.restauranteonline.client.access.IComponentesAccess;
 import co.unicauca.restauranteonline.client.domain.services.AlmuerzoService;
 import co.unicauca.restauranteonline.commons.domain.Almuerzo;
+import java.awt.Image;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,26 +36,83 @@ public class GUIAgregarAlmuerzo extends javax.swing.JFrame {
      * Creates new form GUAGREGARCOMPONENTE1
      */
     List<Componente> objListComponentes = new ArrayList<Componente>();
+    String tipoid;
 
-    public GUIAgregarAlmuerzo() {
+    public GUIAgregarAlmuerzo() throws Exception {
         initComponents();
         setLocationRelativeTo(null); //centrar la ventana
         setTitle("Agregar componente");
-        Ocultar();
+        mostrar();
+        esconder();
+        llenarcbx();
+    }
+
+    private void mostrarOpc() {
+        if (cbxSelectTipo.getSelectedItem().toString().isEmpty()) {
+            esconder();
+        }
+        if (cbxSelectTipo.getSelectedItem().toString() == "Entrada") {
+            lblNombreCom.setVisible(true);
+            cbxEntrada.setVisible(true);
+            tipoid = "1";
+        }
+        if (cbxSelectTipo.getSelectedItem().toString() == "Principio") {
+            lblTipoCom.setVisible(true);
+            cbxPrincipio.setVisible(true);
+            tipoid = "2";
+        }
+        if (cbxSelectTipo.getSelectedItem().toString() == "Proteina") {
+            lblTipoCom1.setVisible(true);
+            cbxProteina.setVisible(true);
+            tipoid = "3";
+        }
+        if (cbxSelectTipo.getSelectedItem().toString() == "Bebida") {
+            lblTipoCom2.setVisible(true);
+            cbxBebida.setVisible(true);
+            tipoid = "4";
+        }
+    }
+
+    private void llenarcbx() {
+
+        cbxSelectTipo.addItem("Entrada");
+        cbxSelectTipo.addItem("Principio");
+        cbxSelectTipo.addItem("Proteina");
+        cbxSelectTipo.addItem("Bebida");
+    }
+
+    private void esconder() {
+        btnCrearAlmu.setVisible(false);
+        lblNombreCom.setVisible(false);
+        cbxEntrada.setVisible(false);
+        lblTipoCom.setVisible(false);
+        cbxPrincipio.setVisible(false);
+        lblTipoCom1.setVisible(false);
+        cbxProteina.setVisible(false);
+        lblTipoCom2.setVisible(false);
+        cbxBebida.setVisible(false);
+      
 
     }
-private void Ocultar(){
-        btnAgregar2.setVisible(false);
-        jScrollPane1.setVisible(false);
-        jTextArea1.setVisible(false);
-        lblTipoCom3.setVisible(false);
-        lblTipoCom.setVisible(false);
-        lblTipoCom1.setVisible(false);
-        lblTipoCom2.setVisible(false);
-        cbxPrincipio.setVisible(false);
-        cbxProteina.setVisible(false);
-        cbxBebida.setVisible(false);
-}
+
+    private String sacarIdComp() {
+        switch (Integer.parseInt(tipoid)) {
+            case 1:
+                return buscarIdCom(cbxEntrada.getSelectedItem().toString());
+
+            case 2:
+                return buscarIdCom(cbxPrincipio.getSelectedItem().toString());
+
+            case 3:
+                return buscarIdCom(cbxProteina.getSelectedItem().toString());
+
+            case 4:
+                return buscarIdCom(cbxBebida.getSelectedItem().toString());
+
+        }
+        return null;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,36 +122,31 @@ private void Ocultar(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jpnAlm = new javax.swing.JPanel();
         lblAgregarCom = new javax.swing.JLabel();
-        txtCosto = new javax.swing.JTextField();
         lblId = new javax.swing.JLabel();
         lblNombreCom = new javax.swing.JLabel();
         cbxEntrada = new javax.swing.JComboBox<>();
         lblTipoCom = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
-        btnAgregar1 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         lblTipoCom1 = new javax.swing.JLabel();
         lblTipoCom2 = new javax.swing.JLabel();
-        lblId1 = new javax.swing.JLabel();
-        btnAgregar2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        lblTipoCom3 = new javax.swing.JLabel();
+        txtIdAlm = new javax.swing.JTextField();
+        btnSeleccionarImg = new javax.swing.JButton();
         cbxProteina = new javax.swing.JComboBox<>();
         cbxBebida = new javax.swing.JComboBox<>();
         cbxPrincipio = new javax.swing.JComboBox<>();
-        btnCargarAlm = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        txtIdAlm = new javax.swing.JTextField();
+        btnCrearAlmu = new javax.swing.JToggleButton();
+        cbxSelectTipo = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        lblImagen = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblAgregarCom.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         lblAgregarCom.setText("AGREGAR ALMUERZO");
-
-        txtCosto.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        txtCosto.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         lblId.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblId.setText("Id Almuerzo");
@@ -109,6 +165,7 @@ private void Ocultar(){
         lblTipoCom.setText("Principio");
 
         btnAtras.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atras3.png"))); // NOI18N
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,11 +173,11 @@ private void Ocultar(){
             }
         });
 
-        btnAgregar1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        btnAgregar1.setText("Agregar");
-        btnAgregar1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar1ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -130,23 +187,16 @@ private void Ocultar(){
         lblTipoCom2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblTipoCom2.setText("Bebida");
 
-        lblId1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        lblId1.setText("Costo");
+        txtIdAlm.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtIdAlm.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        btnAgregar2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        btnAgregar2.setText("Seleccionar imagen");
-        btnAgregar2.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionarImg.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnSeleccionarImg.setText("Seleccionar imagen");
+        btnSeleccionarImg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar2ActionPerformed(evt);
+                btnSeleccionarImgActionPerformed(evt);
             }
         });
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        lblTipoCom3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        lblTipoCom3.setText("Descripción");
 
         cbxProteina.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cbxProteina.addActionListener(new java.awt.event.ActionListener() {
@@ -169,135 +219,141 @@ private void Ocultar(){
             }
         });
 
-        btnCargarAlm.setText("Cargas componentes");
-        btnCargarAlm.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearAlmu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnCrearAlmu.setText("Crear");
+        btnCrearAlmu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarAlmActionPerformed(evt);
+                btnCrearAlmuActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Principio", "Proteina", "Bebida", "Otro" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbxSelectTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbxSelectTipoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(lblId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIdAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel1.setText("Selecciona el tipo de componente");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo_restaurante .png"))); // NOI18N
+
+        javax.swing.GroupLayout jpnAlmLayout = new javax.swing.GroupLayout(jpnAlm);
+        jpnAlm.setLayout(jpnAlmLayout);
+        jpnAlmLayout.setHorizontalGroup(
+            jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnAlmLayout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addComponent(lblAgregarCom)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregar1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCargarAlm)
-                    .addComponent(btnAgregar2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(lblTipoCom3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(88, 88, 88))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(lblAgregarCom))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNombreCom)
-                            .addComponent(lblTipoCom)
-                            .addComponent(lblTipoCom1)
-                            .addComponent(lblTipoCom2)
-                            .addComponent(lblId1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxProteina, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(345, 351, Short.MAX_VALUE))
+                .addComponent(jLabel2)
+                .addGap(85, 85, 85))
+            .addGroup(jpnAlmLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnAlmLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(394, 394, 394)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnAlmLayout.createSequentialGroup()
+                        .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnAlmLayout.createSequentialGroup()
+                                .addComponent(lblId)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtIdAlm))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnAlmLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbxSelectTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnAlmLayout.createSequentialGroup()
+                                .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblNombreCom)
+                                    .addComponent(lblTipoCom)
+                                    .addComponent(lblTipoCom1)
+                                    .addComponent(lblTipoCom2))
+                                .addGap(18, 18, 18)
+                                .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbxEntrada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbxPrincipio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbxProteina, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbxBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpnAlmLayout.createSequentialGroup()
+                                .addGap(149, 149, 149)
+                                .addComponent(btnSeleccionarImg))
+                            .addGroup(jpnAlmLayout.createSequentialGroup()
+                                .addGap(120, 120, 120)
+                                .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpnAlmLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCrearAlmu, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(172, 172, 172)))))
+                .addGap(0, 69, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblId)
-                            .addComponent(txtIdAlm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jpnAlmLayout.setVerticalGroup(
+            jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnAlmLayout.createSequentialGroup()
+                .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnAlmLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(lblAgregarCom))
+                    .addGroup(jpnAlmLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2)))
+                .addGap(36, 36, 36)
+                .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIdAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblId)
+                    .addComponent(btnCrearAlmu, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnAlmLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxSelectTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbxEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNombreCom))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(14, 14, 14)
+                        .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTipoCom)
-                            .addComponent(cbxPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxPrincipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTipoCom1)
                             .addComponent(cbxProteina, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTipoCom2)
-                            .addComponent(cbxBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblId1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(lblAgregarCom)
-                        .addGap(132, 132, 132)
-                        .addComponent(btnAgregar2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTipoCom3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCargarAlm)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(btnAtras))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAgregar1)))
-                .addGap(47, 47, 47))
+                            .addComponent(cbxBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpnAlmLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(btnSeleccionarImg, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(40, 40, 40)
+                .addGroup(jpnAlmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(69, 69, 69))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 13, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jpnAlm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addComponent(jpnAlm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 49, Short.MAX_VALUE))
         );
 
         pack();
@@ -309,7 +365,7 @@ private void Ocultar(){
         admin.setVisible(true);
     }//GEN-LAST:event_btnAtrasActionPerformed
 
-    private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
 
         IAlmuerzoAccess service = Factory.getInstance().getAlmuerzoService();
 
@@ -322,16 +378,9 @@ private void Ocultar(){
         Componente componente = new Componente();
 
         objAlm.setIdAlmuerzo(txtIdAlm.getText());
+        objAlm.setComp(sacarIdComp());
+        objAlm.setIdComp(tipoid);
 
-        objAlm.setEntradaAlm(buscarIdCom(cbxEntrada.getSelectedItem().toString()));
-        objAlm.setPrincipioAlm(buscarIdCom(cbxPrincipio.getSelectedItem().toString()));
-        objAlm.setProteinaAlm(buscarIdCom(cbxProteina.getSelectedItem().toString()));
-        objAlm.setBebidaAlm(buscarIdCom(cbxBebida.getSelectedItem().toString()));
-        objAlm.setRestId("1");
-        objAlm.setCostoAlm((txtCosto.getText()));
-        
-
-        
         try {
             String response = almService.createAlmuerzo(objAlm);
             successMessage("Almuerzo " + response + " agregado con exito.", "Atención");
@@ -343,20 +392,27 @@ private void Ocultar(){
         }
 
 
-    }//GEN-LAST:event_btnAgregar1ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void btnAgregar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar2ActionPerformed
+    private void btnSeleccionarImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarImgActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregar2ActionPerformed
 
-    private void btnCargarAlmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarAlmActionPerformed
-        try {
-            // TODO add your handling code here:
-            mostrar();
-        } catch (Exception ex) {
-            Logger.getLogger(GUIAgregarAlmuerzo.class.getName()).log(Level.SEVERE, null, ex);
+        String Ruta = "";
+        JFileChooser jFileChooser = new JFileChooser();
+        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JGP, PNG & GIF", "jpg", "png", "gif");
+        jFileChooser.setFileFilter(filtrado);
+        
+        int respuesta = jFileChooser.showOpenDialog(this);
+        
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            Ruta = jFileChooser.getSelectedFile().getPath();
+            
+            Image mImagen = new ImageIcon(Ruta).getImage();
+            ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
+            lblImagen.setIcon(mIcono); 
+            
         }
-    }//GEN-LAST:event_btnCargarAlmActionPerformed
+    }//GEN-LAST:event_btnSeleccionarImgActionPerformed
 
     private void cbxPrincipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPrincipioActionPerformed
         // TODO add your handling code here:
@@ -374,48 +430,36 @@ private void Ocultar(){
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxEntradaActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void btnCrearAlmuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAlmuActionPerformed
         // TODO add your handling code here:
-        jScrollPane1.setVisible(false);
-        jTextArea1.setVisible(false);
-        lblNombreCom.setVisible(false);
-        cbxEntrada.setVisible(false);
-        lblTipoCom3.setVisible(false);
-        lblTipoCom.setVisible(false);
-        lblTipoCom1.setVisible(false);
-        lblTipoCom2.setVisible(false);
-        cbxPrincipio.setVisible(false);
-        cbxProteina.setVisible(false);
-        cbxBebida.setVisible(false);
-        mostrar1();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-    private void mostrar1(){
-        if (jComboBox1.getSelectedItem().toString().equals("Bebida")) {
-            cbxBebida.setVisible(true);
-            lblTipoCom2.setVisible(true);
+        IAlmuerzoAccess service = Factory.getInstance().getAlmuerzoService();
+
+        AlmuerzoService almService = new AlmuerzoService(service);
+
+        Almuerzo objAlm = new Almuerzo();
+
+        objAlm.setIdAlmuerzo(txtIdAlm.getText());
+        objAlm.setRestId("1");
+        objAlm.setCostoAlm("10000");
+        try {
+            String response = almService.createAlmuerzoID(objAlm);
+            successMessage("Almuerzo " + response + " agregado con exito.", "Atención");
+            clearCotronls();
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+            successMessage(ex.getMessage() + "Error", "Atención");
         }
-        if (jComboBox1.getSelectedItem().toString().equals("Entrada")) {
-            cbxEntrada.setVisible(true);
-            lblNombreCom.setVisible(true);
-        }
-        if (jComboBox1.getSelectedItem().toString().equals("Proteina")) {
-            cbxProteina.setVisible(true);
-            lblTipoCom1.setVisible(true);
-        }
-        if (jComboBox1.getSelectedItem().toString().equals("Principio")) {
-            cbxPrincipio.setVisible(true);
-            lblTipoCom.setVisible(true);
-        }
-        if (jComboBox1.getSelectedItem().toString().equals("Otro")) {
-            jScrollPane1.setVisible(true);
-            jTextArea1.setVisible(true);
-            lblTipoCom3.setVisible(true);
-        }
-        
-        
-    }
+
+    }//GEN-LAST:event_btnCrearAlmuActionPerformed
+
+    private void cbxSelectTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSelectTipoActionPerformed
+        // TODO add your handling code here:
+        esconder();
+        mostrarOpc();
+    }//GEN-LAST:event_cbxSelectTipoActionPerformed
     private void clearCotronls() {
-        txtCosto.setText("");
+
         txtIdAlm.setText("");
     }
 
@@ -456,7 +500,11 @@ private void Ocultar(){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIAgregarAlmuerzo().setVisible(true);
+                try {
+                    new GUIAgregarAlmuerzo().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(GUIAgregarAlmuerzo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -464,8 +512,8 @@ private void Ocultar(){
     public String buscarIdCom(String parItem) {
 
         for (int i = 0; i < objListComponentes.size(); i++) {
-            if (parItem.equals( objListComponentes.get(i).getNombreComponente())) {
-                return objListComponentes.get(i).getIdComponente()+"";
+            if (parItem.equals(objListComponentes.get(i).getNombreComponente())) {
+                return objListComponentes.get(i).getIdComponente() + "";
             }
         }
         return "";
@@ -479,15 +527,9 @@ private void Ocultar(){
         Componente objComponente = new Componente();
 
         objListComponentes = componenteService.listComponentes();
-        /* String sql = "SELECT COMPNOMBRE, COMPTIPO, RESTID\n"
-                + "FROM COMPONENTE\n"
-                + "WHERE RESTID ="+txtIdRes+";";*/
-        cbxEntrada.addItem(" ");
-        cbxPrincipio.addItem(" ");
-        cbxProteina.addItem(" ");
-        cbxBebida.addItem(" ");
+
         for (int i = 0; i < objListComponentes.size(); i++) {
-            
+
             if ("Entrada".equals(objListComponentes.get(i).getTipoComponente())) {
                 String componenteMenu = objListComponentes.get(i).getNombreComponente();
                 cbxEntrada.addItem(componenteMenu);
@@ -511,27 +553,25 @@ private void Ocultar(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar1;
-    private javax.swing.JButton btnAgregar2;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnCargarAlm;
+    private javax.swing.JToggleButton btnCrearAlmu;
+    private javax.swing.JButton btnSeleccionarImg;
     private javax.swing.JComboBox<String> cbxBebida;
     private javax.swing.JComboBox<String> cbxEntrada;
     private javax.swing.JComboBox<String> cbxPrincipio;
     private javax.swing.JComboBox<String> cbxProteina;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JComboBox<String> cbxSelectTipo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jpnAlm;
     private javax.swing.JLabel lblAgregarCom;
     private javax.swing.JLabel lblId;
-    private javax.swing.JLabel lblId1;
+    private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblNombreCom;
     private javax.swing.JLabel lblTipoCom;
     private javax.swing.JLabel lblTipoCom1;
     private javax.swing.JLabel lblTipoCom2;
-    private javax.swing.JLabel lblTipoCom3;
-    private javax.swing.JTextField txtCosto;
     private javax.swing.JTextField txtIdAlm;
     // End of variables declaration//GEN-END:variables
 }

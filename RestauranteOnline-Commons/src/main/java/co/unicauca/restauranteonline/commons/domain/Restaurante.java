@@ -45,6 +45,9 @@ public class Restaurante {
      * Fotografía
      */
     private String fotografía;
+
+    public Restaurante() {
+    }
    
 
     /**

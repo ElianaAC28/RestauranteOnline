@@ -10,18 +10,27 @@ import java.util.List;
 
 /**
  *
- * @author GRUPO 5
+ * @author SotfwareTeam
  */
 public interface IRestauranteAccess {
     
     /**
-     * Buscar un Plato utlizando un socket
+     * Buscar un Restaurante utlizando un socket
      *
      * @param restId Id del restaurante
      * @return Objeto restaurant
      * @throws Exception
      */
     public Restaurante findRestaurante(String restId) throws Exception;
+    
+    /**
+     * Buscar un Restaurante utlizando un socket
+     *
+     * @param userId id del administrador
+     * @return Objeto restaurant
+     * @throws Exception
+     */
+    public String findRestauranteUser(String userId) throws Exception;
 
     /**
      * Crea un Restaurante

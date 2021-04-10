@@ -3,11 +3,11 @@ package co.unicauca.restauranteonline.server.access;
 import co.unicauca.restauranteonline.commons.infra.Utilities;
 import co.unicauca.restauranteonline.server.access.ComponenteRepositoryImplMysql;
 import co.unicauca.restauranteonline.server.access.IComponenteRepository;
-import co.unicauca.restauranteonline.server.access.CustomerRepositoryImplMysql;
+import co.unicauca.restauranteonline.server.access.UsuarioRepositoryImplMysql;
 /**
  * Fabrica que se encarga de instanciar un repositorio concreto
  *
- * @author Libardo, Julio
+ * @author SoftwareTeam
  */
 public class Factory {
 
@@ -36,19 +36,19 @@ public class Factory {
      *
      * @return una clase hija de la abstracción IRepositorioClientes
      */
-    public ICustomerRepository getRepository() {
+    public IUsuarioRepository getRepository() {
         String type = Utilities.loadProperty("customer.repository");
         if (type.isEmpty()) {
-            type = "default";
+            type = "mysql";
         }
-        ICustomerRepository result = null;
+        IUsuarioRepository result = null;
 
         switch (type) {
-//            case "default":
-//    //            result = new CustomerRepositoryImplArrays();
-//                break;
+            case "default":
+                //result = new UsuarioRepositoryImplArrays();
+                break;
             case "mysql":
-                result = new CustomerRepositoryImplMysql();
+                result = new UsuarioRepositoryImplMysql();
                 break;
         }
 
@@ -93,6 +93,23 @@ public class Factory {
          
             case "mysql":
                 result = new AlmuerzoRepositoryImplMysql();
+                break;
+        }
+
+        return result;
+    }
+    
+    public IRestauranteRepository getRepositoryRestaurante() {
+       String type = Utilities.loadProperty("customer.repository");
+        if (type.isEmpty()) {
+            type = "default";
+        }
+        IRestauranteRepository result = null;
+
+        switch (type) {
+         
+            case "mysql":
+                result = new RestauranteRepositoryImplMysql();
                 break;
         }
 

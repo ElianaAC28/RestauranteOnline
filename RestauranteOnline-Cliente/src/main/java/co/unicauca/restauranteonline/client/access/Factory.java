@@ -6,7 +6,7 @@ import co.unicauca.restauranteonline.commons.infra.Utilities;
  * Fabrica que se encarga de instanciar CustomerServiceImplSockets o cualquier
  * otro que se cree en el futuro.
  *
- * @author Libardo, Julio
+ * @author SotfwareTeam
  */
 public class Factory {
 
@@ -34,14 +34,14 @@ public class Factory {
      *
      * @return una clase hija de la abstracción IRepositorioClientes
      */
-    public ICustomerAccess getCustomerService() {
+    public IUsuarioAccess getUsuarioService() {
 
-        ICustomerAccess result = null;
+        IUsuarioAccess result = null;
         String type = Utilities.loadProperty("customer.service");
 
         switch (type) {
             case "default":
-                result = new CustomerAccessImplSockets();
+                result = new UsuarioAccessImplSockets();
                 break;
         }
 
@@ -65,6 +65,11 @@ public class Factory {
         }
         return result;
     }
+     /**
+     * Método que crea una instancia concreta de la jerarquia IAlmuerzoService
+     *
+     * @return una clase hija de la abstracción IAlmuerzoRepository
+     */
     public IAlmuerzoAccess getAlmuerzoService() {
 
         IAlmuerzoAccess result = null;

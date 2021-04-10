@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Interface del repositorio de Componentes.
  *
- * @author 
+ * @author SoftwareTeam
  */
 public interface IComponenteRepository {
 

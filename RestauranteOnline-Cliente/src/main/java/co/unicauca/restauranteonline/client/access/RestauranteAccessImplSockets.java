@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package co.unicauca.restauranteonline.client.access;
 
@@ -18,7 +14,7 @@ import java.util.logging.Logger;
 
 /**
  * 
- * @author GRUPO 5
+ * @author SoftwareTeam
  */
 public class RestauranteAccessImplSockets implements IRestauranteAccess{
     
@@ -42,7 +38,75 @@ public class RestauranteAccessImplSockets implements IRestauranteAccess{
     public Restaurante findRestaurante(String restId) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    /**
+     * Buscar un Restaurante utlizando un socket
+     *
+     * @param userId del administrador
+     * @return Objeto restaurant
+     * @throws Exception
+     */
+    public String findRestauranteUser(String userId) throws Exception{
+        String jsonResponse = null;
+        String requestJson = findRestauranteRequestJson(userId);
+        try {
+            mySocket.connect();
+            jsonResponse = mySocket.sendStream(requestJson);
+            mySocket.closeStream();
+            mySocket.disconnect();
 
+        } catch (IOException ex) {
+            Logger.getLogger(ComponenteAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+        }
+        if (jsonResponse == null) {
+            throw new Exception("No se pudo conectar con el servidor. Revise la red o que el servidor esté escuchando. ");
+        } else {
+            if (jsonResponse.contains("error")) {
+                //Devolvió algún error
+                Logger.getLogger(ComponenteAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                throw new Exception(extractMessages(jsonResponse));
+            } else {
+                //Encontró el customer
+                Restaurante restaurante = jsonToRestaurante(jsonResponse);
+                return restaurante.getNit();
+            }
+        }
+    }
+
+    /**
+     * Crea una solicitud json para ser enviada por el socket
+     *
+     *
+     * @param userId id del administrador
+     * @return solicitud de consulta del restaurante en formato Json, algo como:
+     * 
+     */
+    private String findRestauranteRequestJson(String userId) {
+        Protocol protocol = new Protocol();
+        protocol.setResource("Restaurante");
+        protocol.setAction("getId");
+        protocol.addParameter("userId", userId);
+
+        Gson gson = new Gson();
+        String requestJson = gson.toJson(protocol);
+
+        return requestJson;
+    }
+    
+    /**
+     * Convierte jsonRestaurante, proveniente del server socket, de json a un
+     * objeto componente
+     *
+     * @param jsonComponente objeto componente en formato json
+     */
+    private Restaurante jsonToRestaurante(String jsonRestaurante) {
+
+        Gson gson = new Gson();
+        Restaurante restaurante = gson.fromJson(jsonRestaurante, Restaurante.class);
+
+        return restaurante;
+    }
+    
     /**
      * Crea un Restaurante. Utiliza socket para pedir el servicio al servidor
      *
@@ -108,7 +172,7 @@ public class RestauranteAccessImplSockets implements IRestauranteAccess{
     }
     
     /**
-     * Crea la solicitud json de creación del customer para ser enviado por el
+     * Crea la solicitud json de creación del Restaurante para ser enviado por el
      * socket
      *
      * @param restaurante objeto restaurante
